@@ -77,7 +77,7 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 /********** Tapadera *********************/
 	 Radio_interno_tapadera = 0. *m;
 	 Radio_externo_tapadera = Radio_externo;
-	 Altura_tapadera = Grosor_cilindro;
+	 Altura_tapadera = Grosor_cilindro/4;
 	 Angulo_Inicial_tapadera = 0. *deg;
 	 Angulo_Final_tapadera  = 360.*m;
 

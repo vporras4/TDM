@@ -45,6 +45,7 @@ target_link_libraries(TDM_G4exec ${Geant4_LIBRARIES} )
 #
 set(TDM_SCRIPTS
     vis.mac
+    example.mac
   )
 
 foreach(_script ${TDM_SCRIPTS})
