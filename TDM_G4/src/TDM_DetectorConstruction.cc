@@ -44,8 +44,8 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 ColimadorY_SizeHalf = 0.2*m;
 	 ColimadorZ_SizeHalf = 0.01*m;
 
-	 FieldX_SizeHalf = 0.05*m;
-	 FieldY_SizeHalf = 0.05*m;
+	 FieldX_SizeHalf = 0.2*m;
+	 FieldY_SizeHalf = 0.2*m;
 
 	 DF = 1.0*m;			//distancia fuente-parte final camilla
 	 Distancia = 0.1*m;    //distancia de los colimadores a la fuente
