@@ -47,7 +47,7 @@ set(TDM_SCRIPTS
     vis.mac
   )
 
-foreach(_script ${Hunapu_SCRIPTS})
+foreach(_script ${TDM_SCRIPTS})
   configure_file(
     ${PROJECT_SOURCE_DIR}/${_script}
     ${PROJECT_BINARY_DIR}/${_script}
