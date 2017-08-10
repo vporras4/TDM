@@ -49,14 +49,39 @@ public:
   G4double FieldY_SizeHalf;
 
   G4double H1CX;
-  G4double H2CX;
+  G4double DF; //Distancia camilla-fuente
+  G4double Distancia; //
   G4double D1CX;
 
 
   G4double H1CY;
-  G4double H2CY;
+  //G4double H2CY;
   G4double D1CY;
 
+  // Blindaje Fuente
+
+  G4double Largo;
+  G4double Ancho;
+  G4double grosor;
+  G4double Xconstante;
+
+  /**************************  CILINDRO PARA BLINDAJE *********************/
+
+  G4double Radio_interno;
+    G4double Radio_externo;
+    G4double Altura_cilindro;
+    G4double Angulo_Inicial;
+    G4double Angulo_Final;
+    G4double Grosor_cilindro;
+    G4double Diagonal_campo;
+
+    /************************* Tapadera cilindro blindaje ****************/
+
+    G4double Radio_interno_tapadera;
+        G4double Radio_externo_tapadera;
+        G4double Altura_tapadera;
+        G4double Angulo_Inicial_tapadera;
+        G4double Angulo_Final_tapadera;
 
 };
 #endif

@@ -40,22 +40,46 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 camilla_Y = 0.8*m;
 	 camilla_Z = 0.05*m;
 
-	 ColimadorX_SizeHalf = 0.15*m;
-	 ColimadorY_SizeHalf = 0.15*m;
-	 ColimadorZ_SizeHalf = 0.025*m;
+	 ColimadorX_SizeHalf = 0.2*m;
+	 ColimadorY_SizeHalf = 0.2*m;
+	 ColimadorZ_SizeHalf = 0.01*m;
 
 	 FieldX_SizeHalf = 0.05*m;
 	 FieldY_SizeHalf = 0.05*m;
 
-	 H1CX = 0.20;			//distancia fuente-parte final bloque
-	 H2CX = 0.75;			//distancia fuente-parte final camilla
-	 D1CX = (H1CX/H2CX)*FieldX_SizeHalf; //distancia eje x - bloque
+	 DF = 1.0*m;			//distancia fuente-parte final camilla
+	 Distancia = 0.1*m;    //distancia de los colimadores a la fuente
+	 H1CX = Distancia + (2.0*ColimadorZ_SizeHalf);			//distancia fuente-parte final bloque
+	 D1CX = (H1CX/DF)*FieldX_SizeHalf; //distancia eje x - bloque
 
 
-	 H1CY = 0.25;							//distancia fuente-parte final bloque
-	 H2CY = 0.75;							//distancia fuente-parte final camilla
-	 D1CY = (H1CY/H2CY)*FieldY_SizeHalf;	//distancia eje y - bloque
+	 H1CY = Distancia + (4.0*ColimadorZ_SizeHalf);							//distancia fuente-parte final bloque
+	 D1CY = (H1CY/DF)*FieldY_SizeHalf;	//distancia eje y - bloque
 
+
+	 //////// Blindaje de la fuente
+	 Xconstante = (H1CX/DF)*0.2*m;
+	 Largo = ((ColimadorX_SizeHalf/2)+ Xconstante);
+	 Ancho = ((ColimadorY_SizeHalf/2)+ Xconstante);
+	 grosor = ColimadorZ_SizeHalf;
+
+
+	 /***********Blindaje de forma cilindrica *******/
+
+	 Grosor_cilindro = 0.1*m ;
+	 Diagonal_campo = ((2^(3/2))*(FieldX_SizeHalf)*Distancia)/DF +Distancia;
+	 Radio_interno = Diagonal_campo/2;
+	 Radio_externo = Radio_interno + grosor;
+	 Altura_cilindro = 0.1*m;
+	 Angulo_Inicial = 0. *deg;
+	 Angulo_Final = 360. *deg;
+
+	 /********** Tapadera *********************/
+	 Radio_interno_tapadera = 0. *m;
+	 Radio_externo_tapadera = Radio_externo;
+	 Altura_tapadera = Grosor_cilindro;
+	 Angulo_Inicial_tapadera = 0. *deg;
+	 Angulo_Final_tapadera  = 360.*m;
 
 
 }
@@ -223,25 +247,23 @@ G4LogicalVolume* logic_WaterCylinder =
 
 
 
-
-
   //                               COLIMADORES
   //				1 y 2 son en X, 3 y 4 son en Y.
 
  /********************************* COLIMADOR 1 **********************************/
 
-   G4Box* Solid_Colimator1 =
+    G4Box* Solid_Colimator1 =
     new G4Box("solid_colimator1 ",                       						//its name
     		ColimadorX_SizeHalf, ColimadorY_SizeHalf, ColimadorZ_SizeHalf);    //its size
 
   G4LogicalVolume* Logic_Colimator1 =
     new G4LogicalVolume(Solid_Colimator1,          							//its solid
-                        water,           									//its material
+                        Lead,           									//its material
                         "logic_colimator1 ");    								//its name
 
  //G4VPhysicalVolume* physical_Colimator1 =
     new G4PVPlacement(0,                 								    //no rotation
-                      G4ThreeVector(D1CX+ColimadorX_SizeHalf,0.0*m,-0.825*m),					//at (0,0,0)
+                      G4ThreeVector(D1CX+ColimadorX_SizeHalf+(Diagonal_campo/(2^(3/2))),0.0*m,-DF +Distancia+ColimadorZ_SizeHalf),					//at (0,0,0)
                       Logic_Colimator1,			          					//its logical volume
                       "physical_colimator1 ",               					//its name
 					  logic_WorldCube,         								//its mother  volume
@@ -252,7 +274,7 @@ G4LogicalVolume* logic_WaterCylinder =
 
 /*************************COLIMADOR 2************************************/
 
-  G4Box* Solid_Colimator2=
+   G4Box* Solid_Colimator2=
    new G4Box("solid_colimator2",                       						//its name
    		ColimadorX_SizeHalf, ColimadorY_SizeHalf, ColimadorZ_SizeHalf);    //its size
 
@@ -263,7 +285,7 @@ G4LogicalVolume* logic_WaterCylinder =
 
  //G4VPhysicalVolume* physical_Colimator2 =
    new G4PVPlacement(0,                 								    //no rotation
-                     G4ThreeVector(-D1CX-ColimadorX_SizeHalf,0.0*m,-0.825*m),       								//at (0,0,0)
+                     G4ThreeVector(-D1CX-ColimadorX_SizeHalf-(Diagonal_campo/(2^(3/2))),0.0*m,-DF +Distancia +ColimadorZ_SizeHalf),       								//at (0,0,0)
                      Logic_Colimator2,			          					//its logical volume
                      "physical_colimator2",               					//its name
 					  logic_WorldCube,         								//its mother  volume
@@ -286,7 +308,7 @@ G4LogicalVolume* Logic_Colimator3 =
 
 //G4VPhysicalVolume* physical_Colimator3 =
   new G4PVPlacement(0,                 								    //no rotation
-                    G4ThreeVector(0.0*m,D1CY+ColimadorY_SizeHalf,-0.775*m),       								//at (0,0,0)
+                    G4ThreeVector(0.0*m,D1CY+ColimadorY_SizeHalf+(Diagonal_campo/(2^(3/2))),-DF + Distancia + (3*ColimadorZ_SizeHalf)),       								//at (0,0,0)
                     Logic_Colimator3,			          					//its logical volume
                     "physical_colimator3",               					//its name
 					  logic_WorldCube,         								//its mother  volume
@@ -308,7 +330,7 @@ G4LogicalVolume* Logic_Colimator4 =
 
 //G4VPhysicalVolume* physical_Colimator4 =
  new G4PVPlacement(0,                 								    //no rotation
-                   G4ThreeVector(0.0*m,-D1CY-ColimadorY_SizeHalf,-0.775*m),       								//at (0,0,0)
+                   G4ThreeVector(0.0*m,-D1CY-ColimadorY_SizeHalf-(Diagonal_campo/(2^(3/2))),-DF +Distancia + (3*ColimadorZ_SizeHalf)),       								//at (0,0,0)
                    Logic_Colimator4,			          					//its logical volume
                    "physical_colimator4",               					//its name
 					  logic_WorldCube,         								//its mother  volume
@@ -317,7 +339,161 @@ G4LogicalVolume* Logic_Colimator4 =
                    checkOverlaps);     //overlaps checking*/
 
 
-  /*************************************************************************/
+ /*************************************************************************/
+
+ /**************Blindaje de la fuente *******************/
+/*
+ G4Box* Blindaje1 =
+  new G4Box("Blindaje1",                       						//its name
+  		grosor,2*Largo, Ancho);    //its size
+
+ G4LogicalVolume* Logic_Blindaje1 =
+  new G4LogicalVolume(Blindaje1,          							//its solid
+                      Lead,           									//its material
+                      "logic_blindaje1");    								//its name
+
+ //G4VPhysicalVolume* physical_Colimator4 =
+  new G4PVPlacement(0,                 								    //no rotation
+                    G4ThreeVector(-Largo-grosor,0.0*m, -DF+(Distancia - Ancho)),       								//at (0,0,0)
+                    Logic_Blindaje1,			          					//its logical volume
+                    "physical_blindaje1",               					//its name
+ 					  logic_WorldCube,         								//its mother  volume
+                    false,                 								//no boolean operation
+                    0,                     								//copy number
+                    checkOverlaps);     //overlaps checking
+
+  G4Box* Blindaje2 =
+    new G4Box("Blindaje2",                       						//its name
+    		grosor,2*Largo, Ancho);    //its size
+
+   G4LogicalVolume* Logic_Blindaje2 =
+    new G4LogicalVolume(Blindaje2,          							//its solid
+                        Lead,           									//its material
+                        "logic_blindaje2");    								//its name
+
+   //G4VPhysicalVolume* physical_Colimator4 =
+    new G4PVPlacement(0,                 								    //no rotation
+                      G4ThreeVector(Largo+grosor,0.0*m, -DF+(Distancia-Ancho)),       								//at (0,0,0)
+                      Logic_Blindaje2,			          					//its logical volume
+                      "physical_blindaje2",               					//its name
+   					  logic_WorldCube,         								//its mother  volume
+                      false,                 								//no boolean operation
+                      0,                     								//copy number
+                      checkOverlaps);     //overlaps checking
+
+
+    G4Box* Blindaje3 =
+      new G4Box("Blindaje3",                       						//its name
+      		Largo,grosor, Ancho);    //its size
+
+     G4LogicalVolume* Logic_Blindaje3 =
+      new G4LogicalVolume(Blindaje3,          							//its solid
+                          Lead,           									//its material
+                          "logic_blindaje1");    								//its name
+
+
+      new G4PVPlacement(0,                 								    //no rotation
+                        G4ThreeVector(0.0*m,-Largo-grosor, -DF+Distancia-Ancho),       								//at (0,0,0)
+                        Logic_Blindaje3,			          					//its logical volume
+                        "physical_blindaje3",               					//its name
+     					  logic_WorldCube,         								//its mother  volume
+                        false,                 								//no boolean operation
+                        0,                     								//copy number
+                        checkOverlaps);     //overlaps checking
+
+
+      G4Box* Blindaje4 =
+            new G4Box("Blindaje4",                       						//its name
+            		Largo,grosor, Ancho);    //its size
+
+           G4LogicalVolume* Logic_Blindaje4 =
+            new G4LogicalVolume(Blindaje4,          							//its solid
+                                Lead,           									//its material
+                                "logic_blindaje4");    								//its name
+
+
+            new G4PVPlacement(0,                 								    //no rotation
+                              G4ThreeVector(0.0*m,Largo+grosor, -DF+Distancia-Ancho),       								//at (0,0,0)
+                              Logic_Blindaje4,			          					//its logical volume
+                              "physical_blindaje4",               					//its name
+           					  logic_WorldCube,         								//its mother  volume
+                              false,                 								//no boolean operation
+                              0,                     								//copy number
+                              checkOverlaps);     //overlaps checking
+
+
+            G4Box* Blindaje5 =
+                  new G4Box("Blindaje5",                       						//its name
+                  		2*Largo,2*Ancho, grosor);    //its size
+
+                 G4LogicalVolume* Logic_Blindaje5 =
+                  new G4LogicalVolume(Blindaje5,          							//its solid
+                                      Lead,           									//its material
+                                      "logic_blindaje5");    								//its name
+
+
+                  new G4PVPlacement(0,                 								    //no rotation
+                                    G4ThreeVector(0.0*m,0.0*m, -DF-(2*Ancho - Distancia)-grosor),       								//at (0,0,0)
+                                    Logic_Blindaje5,			          					//its logical volume
+                                    "physical_blindaje5",               					//its name
+                 					  logic_WorldCube,         								//its mother  volume
+                                    false,                 								//no boolean operation
+                                    0,                     								//copy number
+                                    checkOverlaps);     //overlaps checking*/
+
+ /***************** Blindaje de forma cilindrica *************/
+
+ G4Tubs* Blindaje_cilindro
+   = new G4Tubs("cilindroblindaje",
+ 		  Radio_interno,
+ 		  Radio_externo,
+ 		  Altura_cilindro,
+ 		  Angulo_Inicial,
+ 		  Angulo_Final
+ 		  );
+
+ G4LogicalVolume* logic_cilindroblindaje =
+ 		new G4LogicalVolume(Blindaje_cilindro,
+ 				Lead,
+ 				"cilindroblindaje_logic");
+
+ //G4VPhysicalVolume* physical_WaterCylinder =
+ 		new G4PVPlacement(0,
+ 				G4ThreeVector(0.0*m,0.0*m, -DF),					//centrado en 0,0,0
+ 				logic_cilindroblindaje,
+ 				"Leadclinder_physical",
+ 				logic_WorldCube,
+ 				false,
+ 				0,
+ 				checkOverlaps
+ 				);
+
+/*****************Tapadera Blindaje *********************/
+
+ 		G4Tubs* Tapadera
+ 		   = new G4Tubs("tapaderablindaje",
+ 		 		  Radio_interno_tapadera,
+ 		 		  Radio_externo_tapadera,
+ 		 		  Altura_tapadera,
+ 		 		  Angulo_Inicial_tapadera,
+ 		 		  Angulo_Final_tapadera
+ 		 		  );
+
+ 		 G4LogicalVolume* logic_tapadera =
+ 		 		new G4LogicalVolume(Tapadera,
+ 		 				Lead,
+ 		 				"tapadera_logic");
+
+ 		 //G4VPhysicalVolume* physical_WaterCylinder =
+ 		 		new G4PVPlacement(0,
+ 		 				G4ThreeVector(0.0*m,0.0*m, -DF-Altura_cilindro),					//centrado en 0,0,0
+ 		 				logic_tapadera,
+ 		 				"Leadtapadera_physical",
+ 		 				logic_WorldCube,
+ 		 				false,
+ 		 				0,
+ 		 				checkOverlaps
+ 		 				);
 
    return physical_WorldCube;
 }
