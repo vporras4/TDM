@@ -82,6 +82,8 @@ public:
         G4double Altura_tapadera;
         G4double Angulo_Inicial_tapadera;
         G4double Angulo_Final_tapadera;
+        G4double Campo_Max;
+        G4double Corrimiento_colimadores;
 
 };
 #endif
