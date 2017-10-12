@@ -500,3 +500,14 @@ G4LogicalVolume* Logic_Colimator4 =
 
    return physical_WorldCube;
 }
+
+void TDM_DetectorConstruction::SetSphereOn(G4bool b) {
+  fSphereOn=b;
+  G4RunManager::GetRunManager()->ReinitializeGeometry();
+}
+
+//................. ********..................//
+
+//Superficies Sensibles
+
+

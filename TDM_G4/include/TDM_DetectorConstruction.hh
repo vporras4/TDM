@@ -17,6 +17,8 @@ public:
   // virtual method from G4VUserDetectorConstruction.
   virtual G4VPhysicalVolume* Construct();
 
+
+
   // Data members
 
   // World cube
@@ -84,6 +86,13 @@ public:
         G4double Angulo_Final_tapadera;
         G4double Campo_Max;
         G4double Corrimiento_colimadores;
+
+private:
+
+        void SetSphereOn(G4bool );
+             static G4bool GetSphereOn(){return fSphereOn;}
+
+             static G4bool fSphereOn;
 
 };
 #endif
