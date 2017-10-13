@@ -99,7 +99,7 @@ extern G4ThreadLocal G4Allocator<TDMHit>* TDMHitAllocator;
 
 inline void* TDMHit::operator new(size_t){
   if(!TDMHitAllocator)
-      TMDHitAllocator = new G4Allocator<TDMHit>;
+      TDMHitAllocator = new G4Allocator<TDMHit>;
   return (void *) TDMHitAllocator->MallocSingle();
 }
 

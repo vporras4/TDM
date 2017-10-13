@@ -10,6 +10,8 @@
 #include "G4PVPlacement.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4RotationMatrix.hh"
+#include "TDMSD.hh"
+#include "G4SDManager.hh"
 
 #include "G4PhysicalConstants.hh"
 
@@ -83,7 +85,10 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 Angulo_Inicial_tapadera = 0. *deg;
 	 Angulo_Final_tapadera  = 360.*m;
 
-
+	 DetectorX_SizeHalf=10*cm;
+	 DetectorY_SizeHalf=10*cm;
+	 DetectorZ_SizeHalf=1*mm;
+	 SensitiveDetector = 0;
 }
 
 TDM_DetectorConstruction::~TDM_DetectorConstruction()
@@ -497,17 +502,41 @@ G4LogicalVolume* Logic_Colimator4 =
  		 				checkOverlaps
  		 				);
 
+ /******************* Detector prueba ****************/
 
+ 		 		G4Box* Detector_prueba=
+ 		 		 new G4Box("Detector_prueba",                       						//its name
+ 		 		 		DetectorX_SizeHalf, DetectorY_SizeHalf, DetectorZ_SizeHalf);    //its size
+
+ 		 		G4LogicalVolume* Logic_Detector =
+ 		 		 new G4LogicalVolume(Detector_prueba,          							//its solid
+ 		 		                     Lead,           									//its material
+ 		 		                     "logic_detector");    								//its name
+ 		 		//G4VPhysicalVolume* physical_Colimator4 =
+ 		 		 new G4PVPlacement(0,                 								    //no rotation
+ 		 		                   G4ThreeVector(0.0*m,0.0*m,0.70*m),       								//at (0,0,0)
+ 		 		                   Logic_Detector,			          					//its logical volume
+ 		 		                   "physical_detector",               					//its name
+ 		 							  logic_WorldCube,         								//its mother  volume
+ 		 		                   false,                 								//no boolean operation
+ 		 		                   0,                     								//copy number
+ 		 		                   checkOverlaps);     //overlaps checking*/
+
+ 		 		SensitiveDetector = Logic_Detector;
    return physical_WorldCube;
 }
 
-void TDM_DetectorConstruction::SetSphereOn(G4bool b) {
-  fSphereOn=b;
-  G4RunManager::GetRunManager()->ReinitializeGeometry();
-}
-
-//................. ********..................//
-
 //Superficies Sensibles
 
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+
+void TDM_DetectorConstruction::ConstructSDandField() {
+
+  if (!SensitiveDetector) return;
+
+  TDMSD* test_SD = new TDMSD("/TDM/testSD");
+  G4SDManager::GetSDMpointer()->AddNewDetector(test_SD);
+  SetSensitiveDetector(SensitiveDetector, test_SD);
+}
 

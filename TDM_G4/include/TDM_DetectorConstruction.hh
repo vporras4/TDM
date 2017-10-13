@@ -6,6 +6,8 @@
 
 
 class G4LogicalVolume;
+class TDMMainVolume;
+
 
 class TDM_DetectorConstruction : public G4VUserDetectorConstruction
 {
@@ -13,6 +15,8 @@ public:
   // constructor and destructor.
   TDM_DetectorConstruction();
   virtual ~TDM_DetectorConstruction();
+  virtual void ConstructSDandField();
+  void SetDefaults();
 
   // virtual method from G4VUserDetectorConstruction.
   virtual G4VPhysicalVolume* Construct();
@@ -87,12 +91,15 @@ public:
         G4double Campo_Max;
         G4double Corrimiento_colimadores;
 
-private:
+     /***************************Detector de prueba *********************/
 
-        void SetSphereOn(G4bool );
-             static G4bool GetSphereOn(){return fSphereOn;}
+        G4double DetectorX_SizeHalf;
+        G4double DetectorY_SizeHalf;
+        G4double DetectorZ_SizeHalf;
 
-             static G4bool fSphereOn;
+
+
+       G4LogicalVolume* SensitiveDetector;
 
 };
 #endif

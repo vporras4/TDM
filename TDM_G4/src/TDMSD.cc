@@ -32,7 +32,6 @@
 #include "TDMSD.hh"
 #include "TDMHit.hh"
 #include "TDM_DetectorConstruction.hh"
-#include "TDMUserTrackInformation.hh"
 
 #include "G4VPhysicalVolume.hh"
 #include "G4LogicalVolume.hh"
