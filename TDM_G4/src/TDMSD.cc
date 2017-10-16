@@ -42,6 +42,10 @@
 #include "G4ios.hh"
 #include "G4ParticleTypes.hh"
 #include "G4ParticleDefinition.hh"
+#include "G4HCofThisEvent.hh"
+#include "G4Step.hh"
+#include "G4ThreeVector.hh"
+#include "G4SDManager.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -81,8 +85,30 @@ void TDMSD::Initialize(G4HCofThisEvent* hitsCE){
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-G4bool TDMSD::ProcessHits(G4Step* ,G4TouchableHistory* ){
-  return false;
+G4bool TDMSD::ProcessHits(G4Step* TDMaStep,G4TouchableHistory* ){
+
+	// energy deposit
+	  G4double edep = TDMaStep->GetTotalEnergyDeposit();
+
+	  if (edep==0.) return false;
+
+	  TDMHit* newHit = new TDMHit();
+
+	 //newHit->SetTrackID  (aStep->GetTrack()->GetTrackID());
+	//  newHit->SetChamberNb(aStep->GetPreStepPoint()->GetTouchableHandle()
+	                                               //->GetCopyNumber());
+	  newHit->setfener(edep);
+	  newHit->SetTDMPos (TDMaStep->GetPostStepPoint()->GetPosition());
+
+	  fTDMHitCollection->insert( newHit );
+
+	  //newHit->Print();
+
+
+
+
+
+	return true;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

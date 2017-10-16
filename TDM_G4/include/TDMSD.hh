@@ -18,14 +18,14 @@ class TDMSD : public G4VSensitiveDetector
     TDMSD(G4String name);
     virtual ~TDMSD();
 
-    virtual void Initialize(G4HCofThisEvent* );
-    virtual G4bool ProcessHits(G4Step* aStep, G4TouchableHistory* );
+    virtual void Initialize(G4HCofThisEvent* hitCollection);
+    virtual G4bool ProcessHits(G4Step* aStep, G4TouchableHistory* history);
 
     //A version of processHits that keeps aStep constant
 
     //G4bool ProcessHits_constStep(const G4Step* ,
                              //    G4TouchableHistory* );
-    virtual void EndOfEvent(G4HCofThisEvent* );
+    virtual void EndOfEvent(G4HCofThisEvent* hitCollection);
     virtual void clear();
     void DrawAll();
     void PrintAll();

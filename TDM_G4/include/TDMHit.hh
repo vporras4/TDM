@@ -41,6 +41,7 @@
 #include "G4RotationMatrix.hh"
 #include "G4VPhysicalVolume.hh"
 
+
 #include "tls.hh"
 
 class G4VTouchable;
@@ -73,14 +74,24 @@ class TDMHit : public G4VHit
     inline void SetPMTPhysVol(G4VPhysicalVolume* physVol){this->fPhysVol=physVol;}
     inline G4VPhysicalVolume* GetPMTPhysVol(){return fPhysVol;}*/
 
+    //void Setener (G4double de)
+
+
+    //set methods
     inline void setfener(G4double n ){fener =n;}
+   // inline void setfpos(G)
     inline G4double Getfener() {return fener;}
 
-    inline void SetPMTPos(G4double x,G4double y,G4double z){
-      fPos=G4ThreeVector(x,y,z);
+    inline void SetTDMPos(G4ThreeVector aVector){
+      fPos=aVector;
+
+      //get methods
+     // inline void G4double getfener(G4double n ){fener =n;}
+
+
     }
 
-    inline G4ThreeVector GetPMTPos(){return fPos;}
+    inline G4ThreeVector GetTDMPos(){return fPos;}
 
   private:
 
