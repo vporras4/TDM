@@ -85,9 +85,11 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 Angulo_Inicial_tapadera = 0. *deg;
 	 Angulo_Final_tapadera  = 360.*m;
 
-	 DetectorX_SizeHalf=10*cm;
+	 /**************Detector de prueba *****/
+
+	 DetectorX_SizeHalf=1*mm;
 	 DetectorY_SizeHalf=10*cm;
-	 DetectorZ_SizeHalf=1*mm;
+	 DetectorZ_SizeHalf=10*cm;
 	 SensitiveDetector = 0;
 }
 
@@ -514,7 +516,7 @@ G4LogicalVolume* Logic_Colimator4 =
  		 		                     "logic_detector");    								//its name
  		 		//G4VPhysicalVolume* physical_Colimator4 =
  		 		 new G4PVPlacement(0,                 								    //no rotation
- 		 		                   G4ThreeVector(0.0*m,0.0*m,0.70*m),       								//at (0,0,0)
+ 		 		                   G4ThreeVector(0.7*m,0.1*m,0.0*m),       								//at (0,0,0)
  		 		                   Logic_Detector,			          					//its logical volume
  		 		                   "physical_detector",               					//its name
  		 							  logic_WorldCube,         								//its mother  volume

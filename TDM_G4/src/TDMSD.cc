@@ -90,6 +90,10 @@ G4bool TDMSD::ProcessHits(G4Step* TDMaStep,G4TouchableHistory* ){
 	// energy deposit
 	  G4double edep = TDMaStep->GetTotalEnergyDeposit();
 
+
+	  G4cout << "Hit detected!!!" << G4endl;
+	  G4cout << "Position: " << TDMaStep->GetPostStepPoint()->GetPosition() << G4endl;
+
 	  if (edep==0.) return false;
 
 	  TDMHit* newHit = new TDMHit();

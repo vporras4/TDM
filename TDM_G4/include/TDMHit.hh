@@ -59,8 +59,8 @@ class TDMHit : public G4VHit
     inline void *operator new(size_t);
     inline void operator delete(void *aHit);
 
-    virtual void Draw();
-    virtual void Print();
+    //virtual void Draw();
+    //virtual void Print();
 
     /*inline void SetDrawit(G4bool b){fDrawit=b;}
     inline G4bool GetDrawit(){return fDrawit;}
