@@ -21,7 +21,7 @@ TDM_PrimaryGeneratorAction::TDM_PrimaryGeneratorAction()
   fParticleGun(0)
 {
 	//G4cout << "hola todos" << G4endl;
-  G4int n_particle = 1;
+ // G4int n_particle = 1;
   //fParticleGun  = new G4GeneralParticleSource(n_particle);
 
   fParticleGun = new G4GeneralParticleSource();
@@ -54,7 +54,7 @@ void TDM_PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 	 double xrand = -x+ G4UniformRand()*2*x;
 	 double yrand = y*(-1+2* G4UniformRand());
 
-	  G4cout << xrand << "\t" << yrand << G4endl;
+	//  G4cout << xrand << "\t" << yrand << G4endl; // Posición del haz
 
 	//  fParticleGun->SetParticleMomentumDirection(G4ThreeVector(xrand,yrand,z));
 	 // fParticleGun->SetParticlePosition(G4ThreeVector(0.0*m,0.0*m,1.0*m));

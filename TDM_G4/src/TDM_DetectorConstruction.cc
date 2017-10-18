@@ -87,9 +87,9 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 
 	 /**************Detector de prueba *****/
 
-	 DetectorX_SizeHalf=1*mm;
-	 DetectorY_SizeHalf=10*cm;
-	 DetectorZ_SizeHalf=10*cm;
+	 DetectorX_SizeHalf=50*cm;
+	 DetectorY_SizeHalf=50*cm;
+	 DetectorZ_SizeHalf=1*mm;
 	 SensitiveDetector = 0;
 }
 
@@ -228,7 +228,7 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
  *
  *
  * * * * * * * * Cilindro de agua******************************/
-G4Tubs* trackerTube
+/*G4Tubs* trackerTube
   = new G4Tubs("Person",
 		  innerRadius,
 		  outerRadius,
@@ -253,7 +253,7 @@ G4LogicalVolume* logic_WaterCylinder =
 				checkOverlaps
 				);
 
-
+*/
 
 
   //                               COLIMADORES
@@ -516,7 +516,7 @@ G4LogicalVolume* Logic_Colimator4 =
  		 		                     "logic_detector");    								//its name
  		 		//G4VPhysicalVolume* physical_Colimator4 =
  		 		 new G4PVPlacement(0,                 								    //no rotation
- 		 		                   G4ThreeVector(0.7*m,0.1*m,0.0*m),       								//at (0,0,0)
+ 		 		                   G4ThreeVector(0.0*m,0.1*m,0.7*m),       								//at (0,0,0)
  		 		                   Logic_Detector,			          					//its logical volume
  		 		                   "physical_detector",               					//its name
  		 							  logic_WorldCube,         								//its mother  volume

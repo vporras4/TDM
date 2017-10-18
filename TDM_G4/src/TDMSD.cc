@@ -46,6 +46,8 @@
 #include "G4Step.hh"
 #include "G4ThreeVector.hh"
 #include "G4SDManager.hh"
+#include "G4UnitsTable.hh"
+#include "G4SystemOfUnits.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -85,13 +87,19 @@ void TDMSD::Initialize(G4HCofThisEvent* hitsCE){
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-G4bool TDMSD::ProcessHits(G4Step* TDMaStep,G4TouchableHistory* ){
+G4bool TDMSD::ProcessHits(G4Step* TDMaStep,G4TouchableHistory*){
 
 	// energy deposit
 	  G4double edep = TDMaStep->GetTotalEnergyDeposit();
 
+	  G4Track* TDMTrack = TDMaStep -> GetTrack();
+	  const G4ParticleDefinition* partdef = TDMTrack-> GetParticleDefinition();
+
+
 
 	  G4cout << "Hit detected!!!" << G4endl;
+	  G4cout << "Particle: " << partdef->GetParticleName() <<G4endl;
+	  G4cout << "Kinetic Energy: " << G4BestUnit(TDMTrack->GetKineticEnergy(),"Energy")<<G4endl;
 	  G4cout << "Position: " << TDMaStep->GetPostStepPoint()->GetPosition() << G4endl;
 
 	  if (edep==0.) return false;
