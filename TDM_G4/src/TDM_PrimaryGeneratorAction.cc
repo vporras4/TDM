@@ -47,12 +47,12 @@ void TDM_PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 
 	fParticleGun->GeneratePrimaryVertex(anEvent);
 
-	  G4double x = 0.1;
+	  /*G4double x = 0.1;
 	  G4double y = 0.1;
-	  G4double z = 1.0;
+	  G4double z = 1.0;*/
 
-	 double xrand = -x+ G4UniformRand()*2*x;
-	 double yrand = y*(-1+2* G4UniformRand());
+	 //double xrand = -x+ G4UniformRand()*2*x;
+	 //double yrand = y*(-1+2* G4UniformRand());
 
 	//  G4cout << xrand << "\t" << yrand << G4endl; // Posición del haz
 

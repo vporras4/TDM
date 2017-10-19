@@ -55,7 +55,7 @@ TDMHit::TDMHit(const TDMHit &right) : G4VHit()
   /*fPmtNumber=right.fPmtNumber;
   fPhotons=right.fPhotons;
   fPhysVol=right.fPhysVol;
-  fDrawit=right.fDrawit;*/
+  fDrawit=right.f it;*/
 	 fPos = right.fPos;
 	  fener = right.fener;
 }

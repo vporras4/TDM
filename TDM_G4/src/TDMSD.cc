@@ -96,11 +96,18 @@ G4bool TDMSD::ProcessHits(G4Step* TDMaStep,G4TouchableHistory*){
 	  const G4ParticleDefinition* partdef = TDMTrack-> GetParticleDefinition();
 
 
+	  G4ThreeVector Posicion = TDMaStep->GetPostStepPoint()->GetPosition();
+	  G4double posx = Posicion.getX();
+	  G4double posy = Posicion.getY();
+	  G4double posz = Posicion.getZ();
+	  //posy, posz;
 
-	  G4cout << "Hit detected!!!" << G4endl;
-	  G4cout << "Particle: " << partdef->GetParticleName() <<G4endl;
-	  G4cout << "Kinetic Energy: " << G4BestUnit(TDMTrack->GetKineticEnergy(),"Energy")<<G4endl;
-	  G4cout << "Position: " << TDMaStep->GetPostStepPoint()->GetPosition() << G4endl;
+
+
+	  //G4cout << "Hit detected!!!" << G4endl;
+	  //G4cout << "Particle: " << partdef->GetParticleName() <<G4endl;
+	  //G4cout << "Kinetic Energy: " << G4BestUnit(TDMTrack->GetKineticEnergy(),"Energy")<<G4endl;
+	  G4cout << partdef->GetParticleName() << "\t"<< posx <<"\t" << posy <<"\t" << posz <<"\t" << (TDMTrack->GetKineticEnergy())*1000 <<G4endl;
 
 	  if (edep==0.) return false;
 
