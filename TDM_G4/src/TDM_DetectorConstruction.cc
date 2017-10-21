@@ -516,7 +516,7 @@ G4LogicalVolume* Logic_Colimator4 =
  		 		                     "logic_detector");    								//its name
  		 		//G4VPhysicalVolume* physical_Colimator4 =
  		 		 new G4PVPlacement(0,                 								    //no rotation
- 		 		                   G4ThreeVector(0.0*m,0.1*m,0.7*m),       								//at (0,0,0)
+ 		 		                   G4ThreeVector(0.0*m,0.0*m,0.7*m),       								//at (0,0,0)
  		 		                   Logic_Detector,			          					//its logical volume
  		 		                   "physical_detector",               					//its name
  		 							  logic_WorldCube,         								//its mother  volume
