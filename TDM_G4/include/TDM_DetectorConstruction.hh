@@ -72,6 +72,7 @@ public:
   G4double Xconstante;
 
   G4double Xfinal;
+  G4double Yfinal;
 
   /**************************  CILINDRO PARA BLINDAJE *********************/
 

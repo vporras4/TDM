@@ -47,9 +47,9 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 ColimadorY_SizeHalf = 0.2*m;
 	 ColimadorZ_SizeHalf = 0.035*m;
 
-	 Campo_Max = 0.2*m;
-	 FieldX_SizeHalf = 0.025*m;
-	 FieldY_SizeHalf = 0.025*m;
+	 Campo_Max = 0.25*m;
+	 FieldX_SizeHalf = 0.1*m;
+	 FieldY_SizeHalf = 0.1*m;
 
 	 DF = 1.0*m;			//distancia fuente-parte final camilla
 	 Distancia = 0.1*m;    //distancia de los colimadores a la fuente
@@ -60,8 +60,8 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 H1CY = Distancia + (4.0*ColimadorZ_SizeHalf);							//distancia fuente-parte final bloque
 	 D1CY = (H1CY/DF)*FieldY_SizeHalf;	//distancia eje y - bloque
 
-	 Xfinal = (2*ColimadorZ_SizeHalf)*tan(FieldX_SizeHalf/DF);
-
+	 Xfinal = (2*ColimadorZ_SizeHalf + Distancia)*tan(FieldX_SizeHalf/DF); //Distancia desde el eje
+	 Yfinal = (4*ColimadorZ_SizeHalf + Distancia)*tan(FieldY_SizeHalf/DF); //Distancia desde el eje
 	 //////// Blindaje de la fuente
 	 Xconstante = (H1CX/DF)*0.2*m;
 	 Largo = ((ColimadorX_SizeHalf/2)+ Xconstante);
@@ -266,11 +266,11 @@ G4LogicalVolume* logic_WaterCylinder =
   G4LogicalVolume* Logic_Colimator1 =
     new G4LogicalVolume(Solid_Colimator1,          							//its solid
                         Lead,           									//its material
-                        "logic_colimator1 ");    								//its name
+                        "logic_colimator1");    								//its name
 
  //G4VPhysicalVolume* physical_Colimator1 =
     new G4PVPlacement(0,                 								    //no rotation
-                      G4ThreeVector(-Radio_interno-Xfinal-ColimadorX_SizeHalf,0.0*m,-DF +Distancia+ColimadorZ_SizeHalf),					//at (0,0,0)
+                      G4ThreeVector(-Xfinal-ColimadorX_SizeHalf,0.0*m,-DF +Distancia+ColimadorZ_SizeHalf),					//at (0,0,0)
                       Logic_Colimator1,			          					//its logical volume
                       "physical_colimator1 ",               					//its name
 					  logic_WorldCube,         								//its mother  volume
@@ -292,7 +292,7 @@ G4LogicalVolume* logic_WaterCylinder =
 
  //G4VPhysicalVolume* physical_Colimator2 =
    new G4PVPlacement(0,                 								    //no rotation
-                     G4ThreeVector(Radio_interno+Xfinal+ColimadorX_SizeHalf,0.0*m,-DF +Distancia +ColimadorZ_SizeHalf),       								//at (0,0,0)
+                     G4ThreeVector(Xfinal+ColimadorX_SizeHalf,0.0*m,-DF +Distancia +ColimadorZ_SizeHalf),       								//at (0,0,0)
                      Logic_Colimator2,			          					//its logical volume
                      "physical_colimator2",               					//its name
 					  logic_WorldCube,         								//its mother  volume
@@ -315,7 +315,7 @@ G4LogicalVolume* Logic_Colimator3 =
 
 //G4VPhysicalVolume* physical_Colimator3 =
   new G4PVPlacement(0,                 								    //no rotation
-                    G4ThreeVector(0.0*m,-Radio_interno-Xfinal-ColimadorY_SizeHalf,-DF + Distancia + (3*ColimadorZ_SizeHalf)),       								//at (0,0,0)
+                    G4ThreeVector(0.0*m,-Yfinal-ColimadorY_SizeHalf,-DF + Distancia + (3*ColimadorZ_SizeHalf)),       								//at (0,0,0)
                     Logic_Colimator3,			          					//its logical volume
                     "physical_colimator3",               					//its name
 					  logic_WorldCube,         								//its mother  volume
@@ -337,7 +337,7 @@ G4LogicalVolume* Logic_Colimator4 =
 
 //G4VPhysicalVolume* physical_Colimator4 =
  new G4PVPlacement(0,                 								    //no rotation
-                   G4ThreeVector(0.0*m,Radio_interno+Xfinal+ColimadorY_SizeHalf,-DF +Distancia + (3*ColimadorZ_SizeHalf)),       								//at (0,0,0)
+                   G4ThreeVector(0.0*m,Yfinal+ColimadorY_SizeHalf,-DF +Distancia + (3*ColimadorZ_SizeHalf)),       								//at (0,0,0)
                    Logic_Colimator4,			          					//its logical volume
                    "physical_colimator4",               					//its name
 					  logic_WorldCube,         								//its mother  volume
@@ -514,7 +514,7 @@ G4LogicalVolume* Logic_Colimator4 =
  		 		                     "logic_detector");    								//its name
  		 		//G4VPhysicalVolume* physical_Colimator4 =
  		 		 new G4PVPlacement(0,                 								    //no rotation
- 		 		                   G4ThreeVector(0.0*m,0.0*m,-0.3*m),       								//at (0,0,0)
+ 		 		                   G4ThreeVector(0.0*m,0.0*m,-0.0*m),       								//at (0,0,0)
  		 		                   Logic_Detector,			          					//its logical volume
  		 		                   "physical_detector",               					//its name
  		 							  logic_WorldCube,         								//its mother  volume
