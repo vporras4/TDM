@@ -71,6 +71,8 @@ public:
   G4double grosor;
   G4double Xconstante;
 
+  G4double Xfinal;
+
   /**************************  CILINDRO PARA BLINDAJE *********************/
 
   G4double Radio_interno;
