@@ -107,7 +107,8 @@ G4bool TDMSD::ProcessHits(G4Step* TDMaStep,G4TouchableHistory*){
 	  //G4cout << "Hit detected!!!" << G4endl;
 	  //G4cout << "Particle: " << partdef->GetParticleName() <<G4endl;
 	  //G4cout << "Kinetic Energy: " << G4BestUnit(TDMTrack->GetKineticEnergy(),"Energy")<<G4endl;
-	  G4cout << partdef->GetParticleName() << "\t"<< posx <<"\t" << posy <<"\t" << posz <<"\t" << (TDMTrack->GetKineticEnergy())*1000 <<G4endl;
+	  //G4cout << partdef->GetParticleName() << "\t"<< posx <<"\t" << posy <<"\t" << posz <<"\t" << (TDMTrack->GetKineticEnergy()) <<G4endl;
+	  G4cout << partdef->GetParticleName() << "\t"<< posx <<"\t" << posy <<"\t" << posz <<"\t" << (TDMTrack->GetKineticEnergy()) <<G4endl;
 
 	  if (edep==0.) return false;
 

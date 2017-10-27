@@ -91,7 +91,7 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 
 	 DetectorX_SizeHalf=1*m;
 	 DetectorY_SizeHalf=1*m;
-	 DetectorZ_SizeHalf=0.05*m;
+	 DetectorZ_SizeHalf=0.0005*m;
 	 SensitiveDetector = 0;
 }
 
@@ -189,7 +189,7 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
 
   //G4VPhysicalVolume* physical_camilla =
     new G4PVPlacement(0,                 								    //no rotation
-                      G4ThreeVector(0.0*m,0.0*m,-0.30*m),       			//at (0,0,-0.3)
+                      G4ThreeVector(0.0*m,0.0*m,camilla_Z),       			//at (0,0,-0.3)
                       logic_camilla,			          					//its logical volume
                       "camilla_physical",               					//its name
                       logic_WorldCube,                     								//its mother  volume
@@ -242,7 +242,7 @@ G4LogicalVolume* logic_WaterCylinder =
 
 //G4VPhysicalVolume* physical_WaterCylinder =
 		new G4PVPlacement(myRotation,
-				G4ThreeVector(),					//centrado en 0,0,0
+				G4ThreeVector(0,0,2*camilla_Z+outerRadius)					//centrado en 0,0,0
 				logic_WaterCylinder,
 				"WaterCylinder_physical",
 				logic_WorldCube,
