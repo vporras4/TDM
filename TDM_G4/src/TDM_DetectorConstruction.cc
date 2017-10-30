@@ -119,6 +119,11 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
   G4Element* Pb = new G4Element("Lead" , "L" , z=82, a=207.2*g/mole);
 
 
+  // Vacuum
+    //
+    G4Material* vacuum = new G4Material("vacuum", z=1., a=1.01*g/mole, density=universe_mean_density, kStateGas, 0.1*kelvin, 1.e-19*pascal);
+
+
   // Air
   //
 
@@ -163,7 +168,7 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
 
   G4LogicalVolume* logic_WorldCube =
     new G4LogicalVolume(solid_WorldCube,          							//its solid
-                        air,           										//its material
+                        vacuum,           										//its material
                         "WorldCube_logic");    								//its name
 
   G4VPhysicalVolume* physical_WorldCube =
@@ -510,7 +515,7 @@ G4LogicalVolume* Logic_Colimator4 =
 
  		 		G4LogicalVolume* Logic_Detector =
  		 		 new G4LogicalVolume(Detector_prueba,          							//its solid
- 		 		                     Lead,           									//its material
+ 		 		                     vacuum,           									//its material
  		 		                     "logic_detector");    								//its name
  		 		//G4VPhysicalVolume* physical_Colimator4 =
  		 		 new G4PVPlacement(0,                 								    //no rotation
