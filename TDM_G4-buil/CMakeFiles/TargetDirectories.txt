@@ -1,3 +1,0 @@
-/home/victor/Tesis/git_clone/TDM/TDM_G4-buil/CMakeFiles/rebuild_cache.dir
-/home/victor/Tesis/git_clone/TDM/TDM_G4-buil/CMakeFiles/edit_cache.dir
-/home/victor/Tesis/git_clone/TDM/TDM_G4-buil/CMakeFiles/TDM_G4exec.dir
