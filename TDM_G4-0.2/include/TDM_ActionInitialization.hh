@@ -11,6 +11,7 @@ class TDM_ActionInitialization : public G4VUserActionInitialization
     TDM_ActionInitialization();
     virtual ~TDM_ActionInitialization();
 
+    virtual void BuildForMaster() const;
     virtual void Build() const;
 };
 

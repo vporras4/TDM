@@ -3,6 +3,7 @@
 #include "TDM_ActionInitialization.hh"
 
 #include "G4RunManager.hh"
+#include "G4MTRunManager.hh"
 #include "G4UImanager.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4VisExecutive.hh"
@@ -17,8 +18,12 @@
 int main(int argc,char** argv) {
 
   // Run manager
-  G4RunManager * runManager = new G4RunManager;
-
+#ifdef G4MULTITHREADED
+  auto runManager = new G4MTRunManager;
+  runManager->SetNumberOfThreads(6);
+#else
+  auto runManager = new G4RunManager;
+#endif
   // UserInitialization classes (mandatory)
   //---
   //  Create Detector

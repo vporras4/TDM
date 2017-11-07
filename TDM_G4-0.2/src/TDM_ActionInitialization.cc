@@ -10,6 +10,11 @@ TDM_ActionInitialization::TDM_ActionInitialization()
 TDM_ActionInitialization::~TDM_ActionInitialization()
 {}
 
+void TDM_ActionInitialization::BuildForMaster() const
+{
+  SetUserAction(new TDM_RunAction);
+}
+
 void TDM_ActionInitialization::Build() const
 {
   SetUserAction(new TDM_PrimaryGeneratorAction);

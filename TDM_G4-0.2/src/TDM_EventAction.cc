@@ -107,12 +107,14 @@ void TDM_EventAction::EndOfEventAction(const G4Event* event)
 	  analysisManager->FillNtupleDColumn(1, absoDodep);
 	  analysisManager->AddNtupleRow();
 
+//	  G4cout << "Dose: " << absoDodep << G4endl;
+
 	  //print per event (modulo n)
 	  //
 	  auto eventID = event->GetEventID();
 //	  auto printModulo = G4RunManager::GetRunManager()->GetPrintProgress();
 //	  if ( ( printModulo > 0 ) && ( eventID % printModulo == 0 ) ) {
-	    G4cout << "-----------> End of event: " << eventID << G4endl;
-	    PrintEventStatistics(absoEdep, absoTrackLength,absoDodep);
+	    G4cout << "\rEvent: " << eventID << std::flush;
+//	    PrintEventStatistics(absoEdep, absoTrackLength,absoDodep);
 //	  }
 }
