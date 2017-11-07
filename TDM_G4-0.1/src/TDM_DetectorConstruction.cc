@@ -14,6 +14,14 @@
 #include "TDMSD.hh"
 #include "G4SDManager.hh"
 
+#include "G4SDManager.hh"
+#include "G4SDChargedFilter.hh"
+#include "G4MultiFunctionalDetector.hh"
+#include "G4VPrimitiveScorer.hh"
+#include "G4PSEnergyDeposit.hh"
+#include "G4PSDoseDeposit.hh"
+#include "G4PSTrackLength.hh"
+
 #include "G4PhysicalConstants.hh"
 
 TDM_DetectorConstruction::TDM_DetectorConstruction()
@@ -47,7 +55,7 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 ColimadorY_SizeHalf = 0.2*m;
 	 ColimadorZ_SizeHalf = 0.035*m;
 
-	 Campo_Max = 0.25*m;
+	 Campo_Max = 0.45*m;
 	 FieldX_SizeHalf = 0.1*m;
 	 FieldY_SizeHalf = 0.1*m;
 
@@ -93,6 +101,12 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 DetectorY_SizeHalf=1*m;
 	 DetectorZ_SizeHalf=0.0005*m;
 	 SensitiveDetector = 0;
+
+	 /************ Primitive Score *******/
+
+	 TLD_HalfSizeX = 10*cm;
+	 TLD_HalfSizeY = 10*cm;
+	 TLD_HalfSizeZ = 0.5*cm;
 }
 
 TDM_DetectorConstruction::~TDM_DetectorConstruction()
@@ -168,7 +182,7 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
 
   G4LogicalVolume* logic_WorldCube =
     new G4LogicalVolume(solid_WorldCube,          							//its solid
-                        vacuum,           										//its material
+                        air,           										//its material
                         "WorldCube_logic");    								//its name
 
   G4VPhysicalVolume* physical_WorldCube =
@@ -528,6 +542,34 @@ G4LogicalVolume* Logic_Colimator4 =
  		 		                   checkOverlaps);     //overlaps checking*/
 
  		 		SensitiveDetector = Logic_Detector;
+
+
+ /************************** Primitive Score ************************/
+
+ 		 		 // Absorber
+ 		 		  //
+ 		 		  auto absorberS
+ 		 		    = new G4Box("Abso",            // its name
+ 		 		                 TLD_HalfSizeX, TLD_HalfSizeY, TLD_HalfSizeZ); // its size
+
+ 		 		  auto absorberLV
+ 		 		    = new G4LogicalVolume(
+ 		 		                 absorberS,        // its solid
+ 		 		                 water, // its material
+ 		 		                 "AbsoLV");          // its name
+
+ 		 		   new G4PVPlacement(
+ 		 		                 0,                // no rotation
+ 		 		                 G4ThreeVector(0, 0, -0.7*m), //  its position
+ 		 		                 absorberLV,       // its logical volume
+ 		 		                 "Abso",           // its name
+								 logic_WorldCube,          // its mother  volume
+ 		 		                 false,            // no boolean operation
+ 		 		                 0,                // copy number
+ 		 		                 checkOverlaps);  // checking overlaps
+
+ 		 		  //
+
    return physical_WorldCube;
 }
 
@@ -540,8 +582,35 @@ void TDM_DetectorConstruction::ConstructSDandField() {
 
   if (!SensitiveDetector) return;
 
-  TDMSD* test_SD = new TDMSD("/TDM/testSD");
+/*  TDMSD* test_SD = new TDMSD("/TDM/testSD");
   G4SDManager::GetSDMpointer()->AddNewDetector(test_SD);
   SetSensitiveDetector(SensitiveDetector, test_SD);
+*/
+  /*************** Primitive Score  *********************/
+
+  G4SDManager::GetSDMpointer()->SetVerboseLevel(0);
+    //
+    // Scorers
+    //
+
+    // declare Absorber as a MultiFunctionalDetector scorer
+    //
+    auto absDetector = new G4MultiFunctionalDetector("Absorber");
+    G4SDManager::GetSDMpointer()->AddNewDetector(absDetector);
+
+    G4VPrimitiveScorer* primitive;
+    primitive = new G4PSEnergyDeposit("Edep");
+    absDetector->RegisterPrimitive(primitive);
+    primitive = new G4PSDoseDeposit("Dodep");
+    absDetector->RegisterPrimitive(primitive);
+
+    primitive = new G4PSTrackLength("TrackLength");
+  //  auto charged = new G4SDChargedFilter("gammaFilter");
+  //  primitive ->SetFilter(charged);
+    absDetector->RegisterPrimitive(primitive);
+
+    SetSensitiveDetector("AbsoLV",absDetector);
+
+
 }
 

@@ -104,5 +104,10 @@ public:
 
        G4LogicalVolume* SensitiveDetector;
 
+     /************************* Primitive Score ***********************/
+
+       G4double TLD_HalfSizeX;
+       G4double TLD_HalfSizeY;
+       G4double TLD_HalfSizeZ;
 };
 #endif
