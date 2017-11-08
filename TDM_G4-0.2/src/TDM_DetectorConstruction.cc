@@ -150,6 +150,13 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
   water->AddElement(H, 2);
   water->AddElement(O, 1);
 
+  //PMMA material
+  G4Material* pmma = new G4Material("pmma", density=1.18*g/cm3, nelements=3);
+  pmma->AddElement(C, 5);
+  pmma->AddElement(H, 8);
+  pmma->AddElement(O, 2);
+
+
   // Carbon Fiber
   G4Material* CarbonFiber = new G4Material("CarbonFiber", density= 0.145*g/cm3, nelements=1);
   CarbonFiber->AddElement(C, 1);
@@ -555,7 +562,7 @@ G4LogicalVolume* Logic_Colimator4 =
  		 		  auto absorberLV
  		 		    = new G4LogicalVolume(
  		 		                 absorberS,        // its solid
- 		 		                 water, // its material
+ 		 		                 pmma, // its material
  		 		                 "AbsoLV");          // its name
 
  		 		   new G4PVPlacement(
