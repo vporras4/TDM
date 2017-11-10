@@ -131,12 +131,36 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
   G4Element* O = new G4Element("Oxygen"  , "O", z=8 , a=16.00*g/mole);
   G4Element* C = new G4Element("Carbon", "C",z=12, a = 12.01*g/mole);
   G4Element* Pb = new G4Element("Lead" , "L" , z=82, a=207.2*g/mole);
+  G4Element* Li6 = new G4Element("Lithium6", "Li6", z=3, a=6.015*g/mole);
+  G4Element* Li7 = new G4Element("Lithium7", "Li7", z=3, a=7.016*g/mole);
+  G4Element* F = new G4Element("Fluorine", "F", z=9, a=18.99*g/mole);
+  G4Element* Ti = new G4Element("Titanium", "Ti",z=22,a=47.867*g/mole);
+  G4Element* Mg = new G4Element("Magnesium", "Mg",z=12,a=24.305*g/mole);
+  //G4Element* 6LiF = new G4Element("6LiF", "Li", z=3, a=6*g/mole);
+  //G4Element* 7LiF = new G4Element("Lithium", "Li", z=3, a=6*g/mole);
 
 
   // Vacuum
     //
     G4Material* vacuum = new G4Material("vacuum", z=1., a=1.01*g/mole, density=universe_mean_density, kStateGas, 0.1*kelvin, 1.e-19*pascal);
 
+
+    //Fluoruros de Litio
+    G4Material* LiF6 = new G4Material("LiF6", density= 2.55*g/cm3, nelements=2);
+    LiF6->AddElement(F, 1);
+    LiF6->AddElement(Li6, 1);
+
+    G4Material* LiF7 = new G4Material("LiF7", density= 2.65*g/cm3, nelements=2);
+    LiF7->AddElement(F, 1);
+    LiF7->AddElement(Li7, 1);
+
+    // TLD100
+
+    G4Material* TLD100 = new G4Material("TLD100", density= 2.65*g/cm3, nelements=4);
+    TLD100->AddElement(LiF6, 1);
+    TLD100->AddElement(LiF7, 1);
+    TLD100->AddElement(Li6, 1);
+    TLD100->AddElement(Li7, 1);
 
   // Air
   //
