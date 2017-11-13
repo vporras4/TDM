@@ -157,10 +157,10 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
     // TLD100
 
     G4Material* TLD100 = new G4Material("TLD100", density= 2.65*g/cm3, nelements=4);
-    TLD100->AddElement(LiF6, 1);
-    TLD100->AddElement(LiF7, 1);
-    TLD100->AddElement(Li6, 1);
-    TLD100->AddElement(Li7, 1);
+    TLD100->AddMaterial(LiF6, 7.5995*perCent);
+    TLD100->AddMaterial(LiF7, 92.3795*perCent);
+    TLD100->AddElement(Mg, 0.02*perCent);
+    TLD100->AddElement(Ti, 0.001*perCent);
 
   // Air
   //
@@ -586,12 +586,12 @@ G4LogicalVolume* Logic_Colimator4 =
  		 		  auto absorberLV
  		 		    = new G4LogicalVolume(
  		 		                 absorberS,        // its solid
- 		 		                 pmma, // its material
+ 		 		                 TLD100, // its material
  		 		                 "AbsoLV");          // its name
 
  		 		   new G4PVPlacement(
  		 		                 0,                // no rotation
- 		 		                 G4ThreeVector(0, 0, -0.7*m), //  its position
+ 		 		                 G4ThreeVector(0, 0, -1.3*m), //  its position
  		 		                 absorberLV,       // its logical volume
  		 		                 "Abso",           // its name
 								 logic_WorldCube,          // its mother  volume
@@ -611,12 +611,12 @@ G4LogicalVolume* Logic_Colimator4 =
 
 void TDM_DetectorConstruction::ConstructSDandField() {
 
-  if (!SensitiveDetector) return;
+ /* if (!SensitiveDetector) returnke;
 
-/*  TDMSD* test_SD = new TDMSD("/TDM/testSD");
+  TDMSD* test_SD = new TDMSD("/TDM/testSD");
   G4SDManager::GetSDMpointer()->AddNewDetector(test_SD);
-  SetSensitiveDetector(SensitiveDetector, test_SD);
-*/
+  SetSensitiveDetector(SensitiveDetector, test_SD); */
+
   /*************** Primitive Score  *********************/
 
   G4SDManager::GetSDMpointer()->SetVerboseLevel(0);
@@ -641,7 +641,6 @@ void TDM_DetectorConstruction::ConstructSDandField() {
     absDetector->RegisterPrimitive(primitive);
 
     SetSensitiveDetector("AbsoLV",absDetector);
-
 
 }
 

@@ -64,7 +64,7 @@ void TDM_RunAction::BeginOfRunAction(const G4Run*)
 
 	  // Open an output file
 	  //
-	  G4String fileName = "TDM-output";
+	  G4String fileName = "TDM-output1000";
 	  analysisManager->OpenFile(fileName);
 }
 
