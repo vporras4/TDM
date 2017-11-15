@@ -28,7 +28,7 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 : G4VUserDetectorConstruction()
 {
 	// World cube (world)
-	WorldCube_SizeHalf	= 2.00*m;
+	WorldCube_SizeHalf	= 3.00*m;
 
 	// Water cube (world)
 	WaterCube_SizeHalf	= 0.50*m;
@@ -36,13 +36,9 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	// Water cylinder
 
 	 innerRadius = 0.*m;
-
 	 outerRadius = 0.25*m;
-
      hz = 0.9*m;
-
 	 startAngle = 0.*deg;
-
 	 spanningAngle = 360.*deg;
 
 	 //camilla
@@ -55,7 +51,7 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 ColimadorY_SizeHalf = 0.2*m;
 	 ColimadorZ_SizeHalf = 0.035*m;
 
-	 Campo_Max = 0.45*m;
+	 Campo_Max = 0.2*m;
 	 FieldX_SizeHalf = 0.1*m;
 	 FieldY_SizeHalf = 0.1*m;
 
@@ -68,9 +64,11 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 H1CY = Distancia + (4.0*ColimadorZ_SizeHalf);							//distancia fuente-parte final bloque
 	 D1CY = (H1CY/DF)*FieldY_SizeHalf;	//distancia eje y - bloque
 
-	 Xfinal = (2*ColimadorZ_SizeHalf + Distancia)*tan(FieldX_SizeHalf/DF); //Distancia desde el eje
-	 Yfinal = (4*ColimadorZ_SizeHalf + Distancia)*tan(FieldY_SizeHalf/DF); //Distancia desde el eje
-	 //////// Blindaje de la fuente
+	//Xfinal = (2*ColimadorZ_SizeHalf + Distancia)*(FieldX_SizeHalf/DF); //Distancia desde el eje1
+	//Yfinal = (4*ColimadorZ_SizeHalf + Distancia)*(FieldY_SizeHalf/DF); //Distancia desde el eje
+	 Xfinal = (2*ColimadorZ_SizeHalf + Distancia)*(FieldX_SizeHalf/DF); //Distancia desde el eje1
+	 Yfinal = (4*ColimadorZ_SizeHalf + Distancia)*(FieldY_SizeHalf/DF); //Distancia desde el eje
+	 //////// Blindaje de la fuente1
 	 Xconstante = (H1CX/DF)*0.2*m;
 	 Largo = ((ColimadorX_SizeHalf/2)+ Xconstante);
 	 Ancho = ((ColimadorY_SizeHalf/2)+ Xconstante);
@@ -564,7 +562,7 @@ G4LogicalVolume* Logic_Colimator4 =
  		 		                     "logic_detector");    								//its name
  		 		//G4VPhysicalVolume* physical_Colimator4 =
  		 		 new G4PVPlacement(0,                 								    //no rotation
- 		 		                   G4ThreeVector(0.0*m,0.0*m,-0.0*m),       								//at (0,0,0)
+ 		 		                   G4ThreeVector(0.0*m,0.0*m,-1.7*m),       								//at (0,0,0)
  		 		                   Logic_Detector,			          					//its logical volume
  		 		                   "physical_detector",               					//its name
  		 							  logic_WorldCube,         								//its mother  volume
@@ -591,7 +589,7 @@ G4LogicalVolume* Logic_Colimator4 =
 
  		 		   new G4PVPlacement(
  		 		                 0,                // no rotation
- 		 		                 G4ThreeVector(0, 0, -1.3*m), //  its position
+ 		 		                 G4ThreeVector(0, 0, 0.0*m), //  its position
  		 		                 absorberLV,       // its logical volume
  		 		                 "Abso",           // its name
 								 logic_WorldCube,          // its mother  volume
@@ -608,14 +606,13 @@ G4LogicalVolume* Logic_Colimator4 =
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-
 void TDM_DetectorConstruction::ConstructSDandField() {
 
- /* if (!SensitiveDetector) returnke;
+/* if (!SensitiveDetector) return;
 
   TDMSD* test_SD = new TDMSD("/TDM/testSD");
   G4SDManager::GetSDMpointer()->AddNewDetector(test_SD);
-  SetSensitiveDetector(SensitiveDetector, test_SD); */
+  SetSensitiveDetector(SensitiveDetector, test_SD);*/
 
   /*************** Primitive Score  *********************/
 

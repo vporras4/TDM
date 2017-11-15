@@ -82,13 +82,12 @@ void TDM_EventAction::BeginOfEventAction(const G4Event*)
 void TDM_EventAction::EndOfEventAction(const G4Event* event)
 {
 	// Get hist collections IDs
-	  if ( fAbsoEdepHCID == -1 ) {
+	 if ( fAbsoEdepHCID == -1 ) {
 	    fAbsoEdepHCID
 	      = G4SDManager::GetSDMpointer()->GetCollectionID("Absorber/Edep");
 	    fAbsoDodepHCID
 	    	      = G4SDManager::GetSDMpointer()->GetCollectionID("Absorber/Dodep");
-	    fAbsoTrackLengthHCID
-	      = G4SDManager::GetSDMpointer()->GetCollectionID("Absorber/TrackLength");
+
 	  }
 
 	  // Get sum values from hits collections
@@ -114,7 +113,7 @@ void TDM_EventAction::EndOfEventAction(const G4Event* event)
 	  auto eventID = event->GetEventID();
 //	  auto printModulo = G4RunManager::GetRunManager()->GetPrintProgress();
 //	  if ( ( printModulo > 0 ) && ( eventID % printModulo == 0 ) ) {
-	    G4cout << "\rEvent: " << eventID << std::flush;
+	  G4cout << "\rEvent: " << eventID << std::flush;                       // No. Event
 //	    PrintEventStatistics(absoEdep, absoTrackLength,absoDodep);
 //	  }
 }
