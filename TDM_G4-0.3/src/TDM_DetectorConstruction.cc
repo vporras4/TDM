@@ -573,7 +573,7 @@ G4LogicalVolume* Logic_Colimator4 =
  		 		SensitiveDetector = Logic_Detector;
 
  		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "abso01", G4ThreeVector(0*m,0*m,0*m));
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "abso02", G4ThreeVector(-1*m,0*m,0*m));
+ 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "abso02", G4ThreeVector(-1*m,0*m,0*m));
 
 
    return physical_WorldCube;
@@ -598,6 +598,8 @@ inline void  TDM_DetectorConstruction::TDM_TLD_Cons( G4Material* Material, G4Log
 					 Material, // its material
 					 Name.append("LV"));          // its name
 
+	  G4cout << "TDM_TLD_Cons Name: " << Name << G4endl;
+
 	   new G4PVPlacement(
 					 0,                // no rotation
 					 Position, //  its position
@@ -606,7 +608,7 @@ inline void  TDM_DetectorConstruction::TDM_TLD_Cons( G4Material* Material, G4Log
 					 MotherVolume,          // its mother  volume
 					 false,            // no boolean operation
 					 0,                // copy number
-					 1);  // checking overlaps
+					 false);  // checking overlaps
 
 	 		 		  //
 }
@@ -616,6 +618,7 @@ inline void  TDM_DetectorConstruction::TDM_TLD_Cons( G4Material* Material, G4Log
 inline void TDM_DetectorConstruction::TDM_SetTLD_SD( G4String Name , G4MultiFunctionalDetector* Detector)
 {
 	SetSensitiveDetector(Name.append("LV"),Detector);
+	G4cout << "TDM_SetTLD_SD Name: " << Name << G4endl;
 }
 
 //Superficies Sensibles
@@ -653,8 +656,10 @@ void TDM_DetectorConstruction::ConstructSDandField() {
   //  primitive ->SetFilter(charged);
     absDetector->RegisterPrimitive(primitive);
 
-   // TDM_SetTLD_SD( "abso01" , absDetector);
-    TDM_SetTLD_SD( "abso02" , absDetector);
+    TDM_SetTLD_SD( "abso01" , absDetector);
+   // TDM_SetTLD_SD( "abso02" , absDetector);
+    //SetSensitiveDetector("abso01LV",absDetector);
+
 
 
 }
