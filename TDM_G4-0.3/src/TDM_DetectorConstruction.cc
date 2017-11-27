@@ -103,13 +103,18 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 
 	 /************ Primitive Score *******/
 
-	 TLD_HalfSizeX = 10*cm;
-	 TLD_HalfSizeY = 10*cm;
-	 TLD_HalfSizeZ = 0.5*cm;
+	 TLD_HalfSizeY = 5*cm;
+	 TLD_HalfSizeX = 0.5*cm;
+	 TLD_HalfSizeZ = 5*cm;
 
 	 /************ TLDNumber **************/
 
 	 TLDNumber = 4;
+
+	 /********************* PMMA ********************************/
+	  PMMAX_SizeHalf=0.5*m;
+	  PMMAY_SizeHalf=0.5*m;
+	  PMMAZ_SizeHalf=15/2 *cm;
 }
 
 TDM_DetectorConstruction::~TDM_DetectorConstruction()
@@ -230,7 +235,7 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
                       checkOverlaps);        								//overlaps checking
 
 // **************************camilla********************************************//
-  /*
+
   G4Box* solid_camilla=
       new G4Box("camilla",                       						//its name
       		camilla_X, camilla_Y, camilla_Z);    //its size
@@ -251,7 +256,7 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
                       checkOverlaps);        								//overlaps checking
 
 
-*/
+
 /*
 
   G4Box* solid_WaterCube=
@@ -577,65 +582,87 @@ G4LogicalVolume* Logic_Colimator4 =
 
  		 		SensitiveDetector = Logic_Detector;
 
+ /******************************** Medio Dispersor PMMA *********************************/
+
+ 		 		G4Box* PMMA=
+ 		 		      new G4Box("PMMA",                       						//its name
+ 		 		    		PMMAX_SizeHalf,PMMAY_SizeHalf, PMMAZ_SizeHalf);    //its size
+
+ 		 		  G4LogicalVolume* logic_PMMA =
+ 		 		      new G4LogicalVolume(PMMA,          							//its solid
+ 		 		                          pmma,           										//its material
+ 		 		                          "camilla_logic");    								//its name
+
+ 		 		  //G4VPhysicalVolume* physical_camilla =
+ 		 		    new G4PVPlacement(0,                 								    //no rotation
+ 		 		                      G4ThreeVector(0.0*m,0.0*m,2*camilla_Z + PMMAZ_SizeHalf),       			//at (0,0,-0.3)
+ 		 		                      logic_PMMA,			          					//its logical volume
+ 		 		                      "PMMA_physical",               					//its name
+ 		 		                      logic_WorldCube,                     								//its mother  volume
+ 		 		                      false,                 								//no boolean operation
+ 		 		                      0,                     								//copy number
+ 		 		                      checkOverlaps);        								//overlaps checking
+
+
  /*************************************Detectors Primitive Score ****************************/
 
  		 		/****************Detector 0 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "0Abso", G4ThreeVector(0*m,0*m,0*m));
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "0Abso", G4ThreeVector(1*m,0*m,2*camilla_Z + PMMAZ_SizeHalf));
 
  		 		/****************Detector 1 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "1Abso", G4ThreeVector(0*m,0*m,-0.5*m));
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "1Abso", G4ThreeVector(1*m,0*m,65*cm));
  		 		/****************Detector 2 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "2Abso", G4ThreeVector(0*m,1*m,-1*m));
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "2Abso", G4ThreeVector(1*m,0*m,30*cm));
  		 		/****************Detector 3 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "3Abso", G4ThreeVector(0*m,1.5*m,-1.5*m));
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "3Abso", G4ThreeVector(1*m,0*m,-15*cm));
 
  		 		/****************Detector 4 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "4Abso", G4ThreeVector(0*m,2*m,-2*m));
+ 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "4Abso", G4ThreeVector(0*m,2*m,-2*m));
  		 		/****************Detector 5 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "5Abso", G4ThreeVector(0*m,2.5*m,-2.5*m));
+ 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "5Abso", G4ThreeVector(0*m,2.5*m,-2.5*m));
  		 		/****************Detector 6 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "6Abso", G4ThreeVector(0*m,-1*m,0*m));
+ 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "6Abso", G4ThreeVector(0*m,-1*m,0*m));
 
  		 		/****************Detector 7 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "7Abso", G4ThreeVector(0*m,-1.5*m,-0.5*m));
+ 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "7Abso", G4ThreeVector(0*m,-1.5*m,-0.5*m));
  		 		/****************Detector 8 ************************************/
- 		 		 TDM_TLD_Cons( TLD100, logic_WorldCube, "8Abso", G4ThreeVector(0*m,-2*m,-1*m));
+ 		 		// TDM_TLD_Cons( TLD100, logic_WorldCube, "8Abso", G4ThreeVector(0*m,-2*m,-1*m));
  				/****************Detector 9 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "9Abso", G4ThreeVector(0*m,-2.5*m,-1.5*m));
+ 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "9Abso", G4ThreeVector(0*m,-2.5*m,-1.5*m));
 
  		 		/****************Detector 10 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "10Abso", G4ThreeVector(-1*m,0*m,-2*m));
+ 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "10Abso", G4ThreeVector(-1*m,0*m,-2*m));
  		 		/****************Detector 11 ************************************/
- 		 		 TDM_TLD_Cons( TLD100, logic_WorldCube, "11Abso", G4ThreeVector(-1.5*m,0*m,-2.5*m));
+ 		 		 //TDM_TLD_Cons( TLD100, logic_WorldCube, "11Abso", G4ThreeVector(-1.5*m,0*m,-2.5*m));
 
  		 		/****************Detector 12 ************************************/
- 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "12Abso", G4ThreeVector(0*m,0*m,0*m));
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "12Abso", G4ThreeVector(0*m,0*m,0*m));
 
  		 		 		 		/****************Detector 13 ************************************/
- 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "13Abso", G4ThreeVector(1*m,0*m,-0.5*m));
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "13Abso", G4ThreeVector(1*m,0*m,-0.5*m));
  		 		 		 		/****************Detector 14 ************************************/
- 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "14Abso", G4ThreeVector(1.5*m,0*m,-1*m));
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "14Abso", G4ThreeVector(1.5*m,0*m,-1*m));
  		 		 		 		/****************Detector 15 ************************************/
- 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "15Abso", G4ThreeVector(2*m,0*m,-1.5*m));
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "15Abso", G4ThreeVector(2*m,0*m,-1.5*m));
 
  		 		 		 		/****************Detector 16 ************************************/
- 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "16Abso", G4ThreeVector(2.5*m,0*m,-2*m));
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "16Abso", G4ThreeVector(2.5*m,0*m,-2*m));
  		 		 		 		/****************Detector 17 ************************************/
- 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "17Abso", G4ThreeVector(-1*m,0*m,-2.5*m));
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "17Abso", G4ThreeVector(-1*m,0*m,-2.5*m));
  		 		 		 		/****************Detector 18 ************************************/
- 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "18Abso", G4ThreeVector(-1.5*m,-1*m,0*m));
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "18Abso", G4ThreeVector(-1.5*m,-1*m,0*m));
 
  		 		 		 		/****************Detector 19 ************************************/
- 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "19Abso", G4ThreeVector(-2*m,-1.5*m,-0.5*m));
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "19Abso", G4ThreeVector(-2*m,-1.5*m,-0.5*m));
  		 		 		 		/****************Detector 20 ************************************/
- 		 		 		 		 TDM_TLD_Cons( TLD100, logic_WorldCube, "20Abso", G4ThreeVector(-2.5*m,-2*m,-1*m));
+ 		 		 		 		// TDM_TLD_Cons( TLD100, logic_WorldCube, "20Abso", G4ThreeVector(-2.5*m,-2*m,-1*m));
  		 		 				/****************Detector 21 ************************************/
- 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "21Abso", G4ThreeVector(-3*m,-2.5*m,-1.5*m));
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "21Abso", G4ThreeVector(-3*m,-2.5*m,-1.5*m));
 
  		 		 		 		/****************Detector 22 ************************************/
- 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "22Abso", G4ThreeVector(-1*m,0*m,-2*m));
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "22Abso", G4ThreeVector(-1*m,0*m,-2*m));
  		 		 		 		/****************Detector 23 ************************************/
- 		 		 		 		 TDM_TLD_Cons( TLD100, logic_WorldCube, "23Abso", G4ThreeVector(-1.5*m,0*m,-2.5*m));
+ 		 		 		 		// TDM_TLD_Cons( TLD100, logic_WorldCube, "23Abso", G4ThreeVector(-1.5*m,0*m,-2.5*m));
 
    return physical_WorldCube;
 }

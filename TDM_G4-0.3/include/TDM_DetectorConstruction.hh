@@ -120,5 +120,10 @@ public:
 
        /****************** TLD100 Number **************************/
        G4int TLDNumber;
+
+       /********************* PMMA ********************************/
+       G4double PMMAX_SizeHalf;
+       G4double PMMAY_SizeHalf;
+       G4double PMMAZ_SizeHalf;
 };
 #endif
