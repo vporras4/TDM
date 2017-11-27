@@ -637,7 +637,6 @@ G4LogicalVolume* Logic_Colimator4 =
  		 		 		 		/****************Detector 23 ************************************/
  		 		 		 		 TDM_TLD_Cons( TLD100, logic_WorldCube, "23Abso", G4ThreeVector(-1.5*m,0*m,-2.5*m));
 
-
    return physical_WorldCube;
 }
 
@@ -657,6 +656,8 @@ inline void  TDM_DetectorConstruction::TDM_TLD_Cons( G4Material* Material, G4Log
 					 Material, // its material
 					 Name.append("LV"));          // its name
 
+	  G4cout << "TDM_TLD_Cons Name: " << Name << G4endl;
+
 	   new G4PVPlacement(
 					 0,                // no rotation
 					 Position, //  its position
@@ -665,7 +666,7 @@ inline void  TDM_DetectorConstruction::TDM_TLD_Cons( G4Material* Material, G4Log
 					 MotherVolume,          // its mother  volume
 					 false,            // no boolean operation
 					 0,                // copy number
-					 1);  // checking overlaps
+					 false);  // checking overlaps
 
 	 		 		  //
 }
@@ -701,7 +702,12 @@ inline void TDM_DetectorConstruction::TDM_SetTLD_SD(  G4String Name )
 
 /*inline void TDM_DetectorConstruction::TDM_SetTLD_SD( G4String Name , G4MultiFunctionalDetector* Detector)
 {
+<<<<<<< HEAD
 	 SetSensitiveDetector(Name.append("LV"),Detector);
+=======
+	SetSensitiveDetector(Name.append("LV"),Detector);
+	G4cout << "TDM_SetTLD_SD Name: " << Name << G4endl;
+>>>>>>> 45538758e4bc6f65d878037747b925a771735447
 }
 */
 
@@ -754,7 +760,6 @@ void TDM_DetectorConstruction::ConstructSDandField() {
 
 	 	 TDM_SetTLD_SD(a);
  	 	 	 }
-
 
 }
 

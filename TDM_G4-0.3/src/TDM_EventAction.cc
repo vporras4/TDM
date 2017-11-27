@@ -143,8 +143,8 @@ void TDM_EventAction::EndOfEventAction(const G4Event* event)
 	  analysisManager->FillNtupleDColumn((2*i), X);
 	  analysisManager->FillNtupleDColumn((2*i)+1, Y);
 
-	  G4cout << b << X << G4endl;
-	  G4cout << c << X << G4endl;
+	  //G4cout << b << X << G4endl;
+	  //G4cout << c << X << G4endl;
 
 	}
 	analysisManager->AddNtupleRow();
