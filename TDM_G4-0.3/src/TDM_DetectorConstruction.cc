@@ -24,11 +24,12 @@
 
 #include "G4PhysicalConstants.hh"
 
+
 TDM_DetectorConstruction::TDM_DetectorConstruction()
 : G4VUserDetectorConstruction()
 {
 	// World cube (world)
-	WorldCube_SizeHalf	= 3.00*m;
+	WorldCube_SizeHalf	= 5.00*m;
 
 	// Water cube (world)
 	WaterCube_SizeHalf	= 0.50*m;
@@ -105,6 +106,10 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 TLD_HalfSizeX = 10*cm;
 	 TLD_HalfSizeY = 10*cm;
 	 TLD_HalfSizeZ = 0.5*cm;
+
+	 /************ TLDNumber **************/
+
+	 TLDNumber = 4;
 }
 
 TDM_DetectorConstruction::~TDM_DetectorConstruction()
@@ -572,15 +577,69 @@ G4LogicalVolume* Logic_Colimator4 =
 
  		 		SensitiveDetector = Logic_Detector;
 
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "abso01", G4ThreeVector(0*m,0*m,0*m));
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "abso02", G4ThreeVector(-1*m,0*m,0*m));
+ /*************************************Detectors Primitive Score ****************************/
+
+ 		 		/****************Detector 0 ************************************/
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "0Abso", G4ThreeVector(0*m,0*m,0*m));
+
+ 		 		/****************Detector 1 ************************************/
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "1Abso", G4ThreeVector(0*m,0*m,-0.5*m));
+ 		 		/****************Detector 2 ************************************/
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "2Abso", G4ThreeVector(0*m,1*m,-1*m));
+ 		 		/****************Detector 3 ************************************/
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "3Abso", G4ThreeVector(0*m,1.5*m,-1.5*m));
+
+ 		 		/****************Detector 4 ************************************/
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "4Abso", G4ThreeVector(0*m,2*m,-2*m));
+ 		 		/****************Detector 5 ************************************/
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "5Abso", G4ThreeVector(0*m,2.5*m,-2.5*m));
+ 		 		/****************Detector 6 ************************************/
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "6Abso", G4ThreeVector(0*m,-1*m,0*m));
+
+ 		 		/****************Detector 7 ************************************/
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "7Abso", G4ThreeVector(0*m,-1.5*m,-0.5*m));
+ 		 		/****************Detector 8 ************************************/
+ 		 		 TDM_TLD_Cons( TLD100, logic_WorldCube, "8Abso", G4ThreeVector(0*m,-2*m,-1*m));
+ 				/****************Detector 9 ************************************/
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "9Abso", G4ThreeVector(0*m,-2.5*m,-1.5*m));
+
+ 		 		/****************Detector 10 ************************************/
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "10Abso", G4ThreeVector(-1*m,0*m,-2*m));
+ 		 		/****************Detector 11 ************************************/
+ 		 		 TDM_TLD_Cons( TLD100, logic_WorldCube, "11Abso", G4ThreeVector(-1.5*m,0*m,-2.5*m));
+
+ 		 		/****************Detector 12 ************************************/
+ 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "12Abso", G4ThreeVector(0*m,0*m,0*m));
+
+ 		 		 		 		/****************Detector 13 ************************************/
+ 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "13Abso", G4ThreeVector(1*m,0*m,-0.5*m));
+ 		 		 		 		/****************Detector 14 ************************************/
+ 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "14Abso", G4ThreeVector(1.5*m,0*m,-1*m));
+ 		 		 		 		/****************Detector 15 ************************************/
+ 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "15Abso", G4ThreeVector(2*m,0*m,-1.5*m));
+
+ 		 		 		 		/****************Detector 16 ************************************/
+ 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "16Abso", G4ThreeVector(2.5*m,0*m,-2*m));
+ 		 		 		 		/****************Detector 17 ************************************/
+ 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "17Abso", G4ThreeVector(-1*m,0*m,-2.5*m));
+ 		 		 		 		/****************Detector 18 ************************************/
+ 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "18Abso", G4ThreeVector(-1.5*m,-1*m,0*m));
+
+ 		 		 		 		/****************Detector 19 ************************************/
+ 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "19Abso", G4ThreeVector(-2*m,-1.5*m,-0.5*m));
+ 		 		 		 		/****************Detector 20 ************************************/
+ 		 		 		 		 TDM_TLD_Cons( TLD100, logic_WorldCube, "20Abso", G4ThreeVector(-2.5*m,-2*m,-1*m));
+ 		 		 				/****************Detector 21 ************************************/
+ 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "21Abso", G4ThreeVector(-3*m,-2.5*m,-1.5*m));
+
+ 		 		 		 		/****************Detector 22 ************************************/
+ 		 		 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "22Abso", G4ThreeVector(-1*m,0*m,-2*m));
+ 		 		 		 		/****************Detector 23 ************************************/
+ 		 		 		 		 TDM_TLD_Cons( TLD100, logic_WorldCube, "23Abso", G4ThreeVector(-1.5*m,0*m,-2.5*m));
 
 
    return physical_WorldCube;
 }
-
-
-
 
 inline void  TDM_DetectorConstruction::TDM_TLD_Cons( G4Material* Material, G4LogicalVolume* MotherVolume, G4String Name, G4ThreeVector Position)
 {
@@ -602,7 +661,7 @@ inline void  TDM_DetectorConstruction::TDM_TLD_Cons( G4Material* Material, G4Log
 					 0,                // no rotation
 					 Position, //  its position
 					 absorberLV,       // its logical volume
-					 Name.append("Pl"),           // its name
+					 Name.append("PL"),           // its name
 					 MotherVolume,          // its mother  volume
 					 false,            // no boolean operation
 					 0,                // copy number
@@ -611,12 +670,40 @@ inline void  TDM_DetectorConstruction::TDM_TLD_Cons( G4Material* Material, G4Log
 	 		 		  //
 }
 
-
-
-inline void TDM_DetectorConstruction::TDM_SetTLD_SD( G4String Name , G4MultiFunctionalDetector* Detector)
+inline void TDM_DetectorConstruction::TDM_SetTLD_SD(  G4String Name )
 {
-	SetSensitiveDetector(Name.append("LV"),Detector);
+	G4SDManager::GetSDMpointer()->SetVerboseLevel(0);
+	    //
+	    // Scorers
+	    //
+	    // declare Absorber as a MultiFunctionalDetector scorer
+	    //
+	    auto Detector = new G4MultiFunctionalDetector(Name);
+	    G4SDManager::GetSDMpointer()->AddNewDetector(Detector);
+
+	    G4VPrimitiveScorer* primitive;
+	    G4String Edepname = Name+"Edep";
+	    primitive = new G4PSEnergyDeposit(Edepname);
+	    Detector->RegisterPrimitive(primitive);
+	    G4String Dodepname = Name+"Dodep";
+	    primitive = new G4PSDoseDeposit(Dodepname);
+	    Detector->RegisterPrimitive(primitive);
+
+	   // primitive = new G4PSTrackLength("TrackLength");
+	  //  auto charged = new G4SDChargedFilter("gammaFilter");
+	  //  primitive ->SetFilter(charged);
+	    //absDetector->RegisterPrimitive(primitive);
+
+	    SetSensitiveDetector(Name.append("LV"),Detector);
 }
+
+
+
+/*inline void TDM_DetectorConstruction::TDM_SetTLD_SD( G4String Name , G4MultiFunctionalDetector* Detector)
+{
+	 SetSensitiveDetector(Name.append("LV"),Detector);
+}
+*/
 
 //Superficies Sensibles
 
@@ -632,7 +719,7 @@ void TDM_DetectorConstruction::ConstructSDandField() {
 
   /*************** Primitive Score  *********************/
 
-  G4SDManager::GetSDMpointer()->SetVerboseLevel(0);
+ /* G4SDManager::GetSDMpointer()->SetVerboseLevel(0);
     //
     // Scorers
     //
@@ -648,13 +735,25 @@ void TDM_DetectorConstruction::ConstructSDandField() {
     primitive = new G4PSDoseDeposit("Dodep");
     absDetector->RegisterPrimitive(primitive);
 
-    primitive = new G4PSTrackLength("TrackLength");
+   // primitive = new G4PSTrackLength("TrackLength");
   //  auto charged = new G4SDChargedFilter("gammaFilter");
   //  primitive ->SetFilter(charged);
-    absDetector->RegisterPrimitive(primitive);
+    //absDetector->RegisterPrimitive(primitive);
+*/
 
-   // TDM_SetTLD_SD( "abso01" , absDetector);
-    TDM_SetTLD_SD( "abso02" , absDetector);
+ for (G4int i = 0; i < TLDNumber; i++){
+
+	 	 /* Change i into String */
+
+	 	 G4String n;
+	 	 std::stringstream convert;
+	 	 convert << i;
+	 	 n = convert.str();
+
+	 	 G4String a = n+"Abso";
+
+	 	 TDM_SetTLD_SD(a);
+ 	 	 	 }
 
 
 }

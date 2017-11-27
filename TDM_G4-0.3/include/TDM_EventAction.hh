@@ -5,6 +5,8 @@
 #include "globals.hh"
 
 #include "G4THitsMap.hh"
+#include <sstream>
+#include <iostream>
 
 /// Event action class
 ///
@@ -30,9 +32,12 @@ class TDM_EventAction : public G4UserEventAction
     void PrintEventStatistics(G4double absoEdep, G4double absoTrackLength,G4double absoDodep) const;
 
     // data members
-    G4int  fAbsoEdepHCID;
-    G4int  fAbsoTrackLengthHCID;
-    G4int fAbsoDodepHCID;
+
+    G4int TLDNumber ;
+
+    G4int * fAbsoEdepHCID = new G4int[TLDNumber];
+    G4int * fAbsoDodepHCID = new G4int[TLDNumber];
+    G4int * fAbsoTrackLengthHCID = new G4int[TLDNumber];
 
 };
 

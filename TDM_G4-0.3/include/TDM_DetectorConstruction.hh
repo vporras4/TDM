@@ -27,7 +27,8 @@ public:
 
   // TLD construction
   inline void TDM_TLD_Cons( G4Material* Material, G4LogicalVolume* MotherVolume, G4String Name, G4ThreeVector Position);
-  inline void TDM_SetTLD_SD( G4String Name , G4MultiFunctionalDetector* Detector);
+  //inline void TDM_SetTLD_SD( G4String Name , G4MultiFunctionalDetector* Detector);
+  inline void TDM_SetTLD_SD(  G4String Name );
 
 
   // Data members
@@ -116,5 +117,8 @@ public:
        G4double TLD_HalfSizeX;
        G4double TLD_HalfSizeY;
        G4double TLD_HalfSizeZ;
+
+       /****************** TLD100 Number **************************/
+       G4int TLDNumber;
 };
 #endif

@@ -35,11 +35,24 @@ TDM_RunAction::TDM_RunAction()
 	  // Book histograms, ntuple
 	  //
 
+	  G4int TLDNumber = 4;
+
 	  // Creating ntuple
 	  //
-	  analysisManager->CreateNtuple("B4", "Edep and Dodep");
-	  analysisManager->CreateNtupleDColumn("Eabs");
-	  analysisManager->CreateNtupleDColumn("Dodep");
+	  analysisManager->CreateNtuple("TDM", "Edep and Dodep");
+	  for (G4int n = 0;n<TLDNumber;n++){
+
+		 	 G4String N;
+		 	 std::stringstream convert;
+		 	 convert << n;
+		 	 N = convert.str();
+
+		 	 G4String a = N+"Edep";
+		 	 G4String b = N+"Dodep";
+
+	  analysisManager->CreateNtupleDColumn(a);
+	  analysisManager->CreateNtupleDColumn(b);
+	  }
 	  analysisManager->FinishNtuple();
 }
 

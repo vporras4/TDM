@@ -94,8 +94,8 @@ void TDM_EventAction::EndOfEventAction(const G4Event* event)
 	  //
 	  auto absoEdep = GetSum(GetHitsCollection(fAbsoEdepHCID, event));
 	  auto absoDodep = GetSum(GetHitsCollection(fAbsoDodepHCID, event));
-	  auto absoTrackLength
-	    = GetSum(GetHitsCollection(fAbsoTrackLengthHCID, event));
+	  //auto absoTrackLength
+	    //= GetSum(GetHitsCollection(fAbsoTrackLengthHCID, event));
 	  // get analysis manager
 	  auto analysisManager = G4AnalysisManager::Instance();
 
