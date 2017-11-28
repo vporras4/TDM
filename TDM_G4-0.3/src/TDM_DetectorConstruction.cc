@@ -112,9 +112,9 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 TLDNumber = 4;
 
 	 /********************* PMMA ********************************/
-	  PMMAX_SizeHalf=0.5*m;
-	  PMMAY_SizeHalf=0.5*m;
-	  PMMAZ_SizeHalf=15/2 *cm;
+	  PMMAX_SizeHalf=0.25*m;
+	  PMMAY_SizeHalf=0.25*m;
+	  PMMAZ_SizeHalf=15/4 *cm;
 }
 
 TDM_DetectorConstruction::~TDM_DetectorConstruction()
@@ -590,7 +590,7 @@ G4LogicalVolume* Logic_Colimator4 =
 
  		 		  G4LogicalVolume* logic_PMMA =
  		 		      new G4LogicalVolume(PMMA,          							//its solid
- 		 		                          pmma,           										//its material
+ 		 		                          water,           										//its material
  		 		                          "camilla_logic");    								//its name
 
  		 		  //G4VPhysicalVolume* physical_camilla =
@@ -607,14 +607,14 @@ G4LogicalVolume* Logic_Colimator4 =
  /*************************************Detectors Primitive Score ****************************/
 
  		 		/****************Detector 0 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "0Abso", G4ThreeVector(1*m,0*m,2*camilla_Z + PMMAZ_SizeHalf));
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "0Abso", G4ThreeVector(1*m,0*m,2*camilla_Z + PMMAZ_SizeHalf)); //UN METRO DEL CENTRO DEL PMMA
 
  		 		/****************Detector 1 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "1Abso", G4ThreeVector(1*m,0*m,65*cm));
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "1Abso", G4ThreeVector(1*m,0*m,65*cm)); // OJOS, UN METRO DE LA CAMILLA
  		 		/****************Detector 2 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "2Abso", G4ThreeVector(1*m,0*m,30*cm));
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "2Abso", G4ThreeVector(1*m,0*m,30*cm)); // CORAZON, UN METRO DE LA CAMILLA
  		 		/****************Detector 3 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "3Abso", G4ThreeVector(1*m,0*m,-15*cm));
+ 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "3Abso", G4ThreeVector(1*m,0*m,-15*cm)); // GONADAS, UN METRO DE LA CAMILLA
 
  		 		/****************Detector 4 ************************************/
  		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "4Abso", G4ThreeVector(0*m,2*m,-2*m));
