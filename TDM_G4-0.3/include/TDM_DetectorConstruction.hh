@@ -34,7 +34,9 @@ public:
   // Data members
 
   // World cube
-  G4int WorldCube_SizeHalf;
+  G4int WorldCube_SizeHalfX;
+  G4int WorldCube_SizeHalfY;
+  G4int WorldCube_SizeHalfZ;
 
   // Water cube
   G4int WaterCube_SizeHalf;
@@ -108,6 +110,12 @@ public:
         G4double DetectorY_SizeHalf;
         G4double DetectorZ_SizeHalf;
 
+
+        G4double Radio_interno_detector;
+        G4double Radio_externo_detector;
+        G4double Altura_detector;
+		G4double Angulo_Inicial_detector;
+		G4double Angulo_Final_detector;
 
 
        G4LogicalVolume* SensitiveDetector;

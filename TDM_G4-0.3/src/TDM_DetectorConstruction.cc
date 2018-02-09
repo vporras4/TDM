@@ -29,7 +29,9 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 : G4VUserDetectorConstruction()
 {
 	// World cube (world)
-	WorldCube_SizeHalf	= 5.00*m;
+	WorldCube_SizeHalfX	= (4.745/2.0)*m;
+	WorldCube_SizeHalfY	= (3.480/2.0)*m;
+	WorldCube_SizeHalfZ	= (2.460/2.0)*m;
 
 	// Water cube (world)
 	WaterCube_SizeHalf	= 0.50*m;
@@ -44,9 +46,9 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 
 	 //camilla
 
-	 camilla_X = 0.5*m;
-	 camilla_Y = 0.8*m;
-	 camilla_Z = 0.05*m;
+	 camilla_X = (2.2/2.0)*m;
+	 camilla_Y = (0.43/2.0)*m;
+	 camilla_Z = (0.02/2.0)*m;
 
 	 ColimadorX_SizeHalf = 0.2*m;
 	 ColimadorY_SizeHalf = 0.2*m;
@@ -56,8 +58,8 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 FieldX_SizeHalf = 0.1*m;
 	 FieldY_SizeHalf = 0.1*m;
 
-	 DF = 1.0*m;			//distancia fuente-parte final camilla
-	 Distancia = 0.1*m;    //distancia de los colimadores a la fuente
+	 DF = 0.519*m;			//distancia fuente-parte final camilla
+	 Distancia = 0.203*m;    //distancia de los colimadores a la fuente
 	 H1CX = Distancia + (2.0*ColimadorZ_SizeHalf);			//distancia fuente-parte final bloque
 	 D1CX = (H1CX/DF)*FieldX_SizeHalf; //distancia eje x - bloque
 
@@ -78,11 +80,12 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 
 	 /***********Blindaje de forma cilindrica *******/
 
-	 Grosor_cilindro = 0.02*m ;
-	 Diagonal_campo = ((2^(3/2))*(Campo_Max)*Distancia)/DF; //Diagonal del campo en el cilindro
+	 Grosor_cilindro = 0.5*cm;
+	 //Diagonal_campo = ((2^(3/2))*(Campo_Max)*Distancia)/DF; //Diagonal del campo en el cilindro
+	 Diagonal_campo = 8.2*cm;
 	 Radio_interno = Diagonal_campo/2;
-	 Radio_externo = Radio_interno + grosor;
-	 Altura_cilindro = 0.1*m;
+	 Radio_externo = Radio_interno + Grosor_cilindro;
+	 Altura_cilindro = (0.425/2)*m;
 	 Angulo_Inicial = 0. *deg;
 	 Angulo_Final = 360. *deg;
 	 Corrimiento_colimadores = ((FieldX_SizeHalf)*Distancia)/DF;
@@ -90,7 +93,7 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 /********** Tapadera *********************/
 	 Radio_interno_tapadera = 0. *m;
 	 Radio_externo_tapadera = Radio_externo;
-	 Altura_tapadera = Grosor_cilindro/4;
+	 Altura_tapadera = Grosor_cilindro/2;
 	 Angulo_Inicial_tapadera = 0. *deg;
 	 Angulo_Final_tapadera  = 360.*m;
 
@@ -100,6 +103,15 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 DetectorY_SizeHalf=1*m;
 	 DetectorZ_SizeHalf=0.0005*m;
 	 SensitiveDetector = 0;
+
+
+	 Radio_interno_detector = 0.0*m;
+	 Radio_externo_detector = (38.2/2)*cm;
+	 Altura_detector = (2.5/2)*cm;
+	 Angulo_Inicial_detector = 0*deg;
+	 Angulo_Final_detector = 360*deg;
+
+
 
 	 /************ Primitive Score *******/
 
@@ -112,9 +124,9 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 TLDNumber = 4;
 
 	 /********************* PMMA ********************************/
-	  PMMAX_SizeHalf=0.25*m;
-	  PMMAY_SizeHalf=0.25*m;
-	  PMMAZ_SizeHalf=15/4 *cm;
+	  PMMAX_SizeHalf=0.203/2*m;
+	  PMMAY_SizeHalf=0.203/2*m;
+	  PMMAZ_SizeHalf=19.3/2 *cm;
 }
 
 TDM_DetectorConstruction::~TDM_DetectorConstruction()
@@ -217,7 +229,7 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
 
   G4Box* solid_WorldCube=
     new G4Box("WorldCube_solid",                       						//its name
-    		WorldCube_SizeHalf, WorldCube_SizeHalf, WorldCube_SizeHalf);    //its size
+    		WorldCube_SizeHalfX, WorldCube_SizeHalfY, WorldCube_SizeHalfZ);    //its size
 
   G4LogicalVolume* logic_WorldCube =
     new G4LogicalVolume(solid_WorldCube,          							//its solid
@@ -247,7 +259,7 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
 
   //G4VPhysicalVolume* physical_camilla =
     new G4PVPlacement(0,                 								    //no rotation
-                      G4ThreeVector(0.0*m,0.0*m,camilla_Z),       			//at (0,0,-0.3)
+                      G4ThreeVector(-0.6945*m,0.297*m,-0.209*m),       			//at (0,0,-0.3)
                       logic_camilla,			          					//its logical volume
                       "camilla_physical",               					//its name
                       logic_WorldCube,                     								//its mother  volume
@@ -317,7 +329,7 @@ G4LogicalVolume* logic_WaterCylinder =
 
  /********************************* COLIMADOR 1 **********************************/
 
-    G4Box* Solid_Colimator1 =
+  /*  G4Box* Solid_Colimator1 =
     new G4Box("solid_colimator1 ",                       						//its name
     		ColimadorX_SizeHalf, ColimadorY_SizeHalf, ColimadorZ_SizeHalf);    //its size
 
@@ -339,7 +351,7 @@ G4LogicalVolume* logic_WaterCylinder =
 
 /*************************COLIMADOR 2************************************/
 
-   G4Box* Solid_Colimator2=
+ /*  G4Box* Solid_Colimator2=
    new G4Box("solid_colimator2",                       						//its name
    		ColimadorX_SizeHalf, ColimadorY_SizeHalf, ColimadorZ_SizeHalf);    //its size
 
@@ -362,7 +374,7 @@ G4LogicalVolume* logic_WaterCylinder =
   /******************************COLIMADOR 3*************************************/
 
 
-  G4Box* Solid_Colimator3=
+ /* G4Box* Solid_Colimator3=
   new G4Box("solid_colimator3",                       						//its name
   		ColimadorX_SizeHalf, ColimadorY_SizeHalf, ColimadorZ_SizeHalf);    //its size
 
@@ -382,7 +394,7 @@ G4LogicalVolume* Logic_Colimator3 =
                     checkOverlaps);     //overlaps checking//
 
 
-  /********************************COLIMADOR 4****************************/
+
 
  G4Box* Solid_Colimator4=
  new G4Box("solid_colimator4",                       						//its name
@@ -404,11 +416,11 @@ G4LogicalVolume* Logic_Colimator4 =
                    checkOverlaps);     //overlaps checking//
 
 
- /*************************************************************************/
+
 
  /**************Blindaje de la fuente *******************/
-/*
- G4Box* Blindaje1 =
+
+ /*G4Box* Blindaje1 =
   new G4Box("Blindaje1",                       						//its name
   		grosor,2*Largo, Ancho);    //its size
 
@@ -524,7 +536,7 @@ G4LogicalVolume* Logic_Colimator4 =
 
  //G4VPhysicalVolume* physical_WaterCylinder =
  		new G4PVPlacement(0,
- 				G4ThreeVector(0.0*m,0.0*m, -DF+Distancia-Altura_cilindro ),					//centrado en 0,0,0
+ 				G4ThreeVector(-0.5495*m,0.265*m, 0.5085*m ),					//centrado en 0,0,0
  				logic_cilindroblindaje,
  				"Leadclinder_physical",
  				logic_WorldCube,
@@ -551,7 +563,7 @@ G4LogicalVolume* Logic_Colimator4 =
 
  		 //G4VPhysicalVolume* physical_WaterCylinder =
  		 		new G4PVPlacement(0,
- 		 				G4ThreeVector(0.0*m,0.0*m, -DF-Altura_cilindro-Altura_tapadera),					//centrado en 0,0,0
+ 		 				G4ThreeVector(-0.5495*m,0.265*m, 0.5085*m+Altura_cilindro+Altura_tapadera),					//centrado en 0,0,0
  		 				logic_tapadera,
  		 				"Leadtapadera_physical",
  		 				logic_WorldCube,
@@ -562,7 +574,32 @@ G4LogicalVolume* Logic_Colimator4 =
 
  /******************* Detector prueba ****************/
 
- 		 		G4Box* Detector_prueba=
+ 		 		G4Tubs* Detector_prueba
+ 		 		 		   = new G4Tubs("Detector",
+ 		 		 		 		  Radio_interno_detector ,
+ 		 		 		 		  Radio_externo_detector ,
+ 		 		 		 		  Altura_detector,
+ 		 		 		 		  Angulo_Inicial_detector ,
+ 		 		 		 		  Angulo_Final_detector
+ 		 		 		 		  );
+
+ 		 		 		 G4LogicalVolume* Logic_Detector =
+ 		 		 		 		new G4LogicalVolume(Detector_prueba,
+ 		 		 		 				vacuum,
+ 		 		 		 				"detector_prueba_logic");
+
+ 		 		 		 //G4VPhysicalVolume* physical_WaterCylinder =
+ 		 		 		 		new G4PVPlacement(0,
+ 		 		 		 				G4ThreeVector(-0.5495*m, 0.265*m, -0.4915*m),					//centrado en 0,0,0
+ 		 		 		 				Logic_Detector,
+ 		 		 		 				"Leadtapadera_physical",
+ 		 		 		 				logic_WorldCube,
+ 		 		 		 				false,
+ 		 		 		 				0,
+ 		 		 		 				checkOverlaps
+ 		 		 		 				);
+
+ 		 		/*G4Box* Detector_prueba=
  		 		 new G4Box("Detector_prueba",                       						//its name
  		 		 		DetectorX_SizeHalf, DetectorY_SizeHalf, DetectorZ_SizeHalf);    //its size
 
@@ -572,7 +609,7 @@ G4LogicalVolume* Logic_Colimator4 =
  		 		                     "logic_detector");    								//its name
  		 		//G4VPhysicalVolume* physical_Colimator4 =
  		 		 new G4PVPlacement(0,                 								    //no rotation
- 		 		                   G4ThreeVector(0.0*m,0.0*m,-1.7*m),       								//at (0,0,0)
+ 		 		                   G4ThreeVector(-0.5495*m,0.265*m,0.229*m),       								//at (0,0,0)
  		 		                   Logic_Detector,			          					//its logical volume
  		 		                   "physical_detector",               					//its name
  		 							  logic_WorldCube,         								//its mother  volume

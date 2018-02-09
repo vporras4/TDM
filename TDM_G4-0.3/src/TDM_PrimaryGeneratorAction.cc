@@ -33,7 +33,7 @@ TDM_PrimaryGeneratorAction::TDM_PrimaryGeneratorAction()
     = particleTable->FindParticle(particleName="gamma");
   fParticleGun->SetParticleDefinition(particle);
  // fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.0,0.0,1.0));
-  fParticleGun->SetParticlePosition(G4ThreeVector(0.0*m,0.0*m,-1.0*m));
+  fParticleGun->SetParticlePosition(G4ThreeVector(-0.5495*m,0.265*m,0.499*m));
  // fParticleGun->SetParticleEnergy(40.0*keV);
 }
 
