@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>TDM_G4Example-Release@Build2</name>
+	<comment></comment>
+	<projects></projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.cdt.make.core.makeBuilder</name>
+			<triggers>clean,full,incremental,</triggers>
+			<arguments>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.cleanBuildTarget</key>
+					<value>clean</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableCleanBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.append_environment</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.stopOnError</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enabledIncrementalBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.command</key>
+					<value>/usr/bin/make</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.contents</key>
+					<value>org.eclipse.cdt.make.core.activeConfigSettings</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.target.inc</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.arguments</key>
+					<value>-j4</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.buildLocation</key>
+					<value>/home/eduardo/Geant4/Github Clones/TDM/Build2</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.useDefaultBuildCmd</key>
+					<value>false</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.environment</key>
+					<value>VERBOSE=1|CMAKE_NO_VERBOSE=1|</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableFullBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.target.auto</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableAutoBuild</key>
+					<value>false</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.target.clean</key>
+					<value>clean</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.fullBuildTarget</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.buildArguments</key>
+					<value></value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.location</key>
+					<value>/home/eduardo/Geant4/Github Clones/TDM/Build2</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.autoBuildTarget</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.core.errorOutputParser</key>
+					<value>org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;</value>
+				</dictionary>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.cdt.make.core.ScannerConfigBuilder</name>
+			<arguments/>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.cdt.make.core.makeNature</nature>
+		<nature>org.eclipse.cdt.make.core.ScannerConfigNature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>[Source directory]</name>
+			<type>2</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2</location>
+		</link>
+		<link>
+			<name>[Subprojects]</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Subprojects]/TDM_G4Example</name>
+			<type>2</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2</location>
+		</link>
+		<link>
+			<name>[Targets]</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Source Files/TDM_G4main.cc</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/TDM_G4main.cc</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Source Files/TDMHit.cc</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/src/TDMHit.cc</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Source Files/TDMSD.cc</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/src/TDMSD.cc</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Source Files/TDM_ActionInitialization.cc</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/src/TDM_ActionInitialization.cc</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Source Files/TDM_DetectorConstruction.cc</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/src/TDM_DetectorConstruction.cc</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Source Files/TDM_EventAction.cc</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/src/TDM_EventAction.cc</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Source Files/TDM_PhysicsList.cc</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/src/TDM_PhysicsList.cc</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Source Files/TDM_PrimaryGeneratorAction.cc</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/src/TDM_PrimaryGeneratorAction.cc</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Source Files/TDM_Run.cc</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/src/TDM_Run.cc</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Source Files/TDM_RunAction.cc</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/src/TDM_RunAction.cc</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Header Files/TDMHit.hh</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/include/TDMHit.hh</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Header Files/TDMSD.hh</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/include/TDMSD.hh</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Header Files/TDM_ActionInitialization.hh</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/include/TDM_ActionInitialization.hh</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Header Files/TDM_Analysis.hh</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/include/TDM_Analysis.hh</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Header Files/TDM_DetectorConstruction.hh</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/include/TDM_DetectorConstruction.hh</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Header Files/TDM_EventAction.hh</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/include/TDM_EventAction.hh</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Header Files/TDM_PhysicsList.hh</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/include/TDM_PhysicsList.hh</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Header Files/TDM_PrimaryGeneratorAction.hh</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/include/TDM_PrimaryGeneratorAction.hh</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Header Files/TDM_Run.hh</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/include/TDM_Run.hh</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Header Files/TDM_RunAction.hh</name>
+			<type>1</type>
+			<location>/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.2/include/TDM_RunAction.hh</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] TDM_G4exec/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>

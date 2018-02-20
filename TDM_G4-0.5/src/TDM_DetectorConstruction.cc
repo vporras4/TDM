@@ -1,0 +1,836 @@
+#include <math.h>
+#include "TDM_DetectorConstruction.hh"
+
+#include "G4RunManager.hh"
+#include "G4Material.hh"
+#include "G4Element.hh"
+#include "G4NistManager.hh"
+#include "G4Box.hh"
+#include "G4Tubs.hh"
+#include "G4LogicalVolume.hh"
+#include "G4PVPlacement.hh"
+#include "G4SystemOfUnits.hh"
+#include "G4RotationMatrix.hh"
+#include "TDMSD.hh"
+#include "G4SDManager.hh"
+
+#include "G4SDManager.hh"
+#include "G4SDChargedFilter.hh"
+#include "G4MultiFunctionalDetector.hh"
+#include "G4VPrimitiveScorer.hh"
+#include "G4PSEnergyDeposit.hh"
+#include "G4PSDoseDeposit.hh"
+#include "G4PSTrackLength.hh"
+
+#include "G4PhysicalConstants.hh"
+
+
+TDM_DetectorConstruction::TDM_DetectorConstruction()
+: G4VUserDetectorConstruction()
+{
+	// World cube (world)
+	WorldCube_SizeHalfX	= (4.745/2.0)*m;
+	WorldCube_SizeHalfY	= (3.480/2.0)*m;
+	WorldCube_SizeHalfZ	= (2.460/2.0)*m;
+
+	// Water cube (world)
+	WaterCube_SizeHalf	= 0.50*m;
+
+	// Water cylinder
+
+	 innerRadius = 0.*m;
+	 outerRadius = 0.25*m;
+     hz = 0.9*m;
+	 startAngle = 0.*deg;
+	 spanningAngle = 360.*deg;
+
+	 //camilla
+
+	 camilla_X = (2.2/2.0)*m;
+	 camilla_Y = (0.43/2.0)*m;
+	 camilla_Z = (0.02/2.0)*m;
+
+	 ColimadorX_SizeHalf = 0.2*m;
+	 ColimadorY_SizeHalf = 0.2*m;
+	 ColimadorZ_SizeHalf = 0.035*m;
+
+	 Campo_Max = 0.2*m;
+	 FieldX_SizeHalf = 0.1*m;
+	 FieldY_SizeHalf = 0.1*m;
+
+	 DF = 0.519*m;			//distancia fuente-parte final camilla
+	 Distancia = 0.203*m;    //distancia de los colimadores a la fuente
+	 H1CX = Distancia + (2.0*ColimadorZ_SizeHalf);			//distancia fuente-parte final bloque
+	 D1CX = (H1CX/DF)*FieldX_SizeHalf; //distancia eje x - bloque
+
+
+	 H1CY = Distancia + (4.0*ColimadorZ_SizeHalf);							//distancia fuente-parte final bloque
+	 D1CY = (H1CY/DF)*FieldY_SizeHalf;	//distancia eje y - bloque
+
+	//Xfinal = (2*ColimadorZ_SizeHalf + Distancia)*(FieldX_SizeHalf/DF); //Distancia desde el eje1
+	//Yfinal = (4*ColimadorZ_SizeHalf + Distancia)*(FieldY_SizeHalf/DF); //Distancia desde el eje
+	 Xfinal = (2*ColimadorZ_SizeHalf + Distancia)*(FieldX_SizeHalf/DF); //Distancia desde el eje1
+	 Yfinal = (4*ColimadorZ_SizeHalf + Distancia)*(FieldY_SizeHalf/DF); //Distancia desde el eje
+	 //////// Blindaje de la fuente1
+	 Xconstante = (H1CX/DF)*0.2*m;
+	 Largo = ((ColimadorX_SizeHalf/2)+ Xconstante);
+	 Ancho = ((ColimadorY_SizeHalf/2)+ Xconstante);
+	 grosor = ColimadorZ_SizeHalf;
+
+
+	 /***********Blindaje de forma cilindrica *******/
+
+	 Grosor_cilindro = 0.5*cm;
+	 //Diagonal_campo = ((2^(3/2))*(Campo_Max)*Distancia)/DF; //Diagonal del campo en el cilindro
+	 Diagonal_campo = 8.2*cm;
+	 Radio_interno = Diagonal_campo/2;
+	 Radio_externo = Radio_interno + Grosor_cilindro;
+	 Altura_cilindro = (0.425/2)*m;
+	 Angulo_Inicial = 0. *deg;
+	 Angulo_Final = 360. *deg;
+	 Corrimiento_colimadores = ((FieldX_SizeHalf)*Distancia)/DF;
+
+	 /********** Tapadera *********************/
+	 Radio_interno_tapadera = 0. *m;
+	 Radio_externo_tapadera = Radio_externo;
+	 Altura_tapadera = Grosor_cilindro/2;
+	 Angulo_Inicial_tapadera = 0. *deg;
+	 Angulo_Final_tapadera  = 360.*m;
+
+	 /**************Detector de prueba *****/
+
+	 DetectorX_SizeHalf=1*m;
+	 DetectorY_SizeHalf=1*m;
+	 DetectorZ_SizeHalf=0.0005*m;
+	 SensitiveDetector = 0;
+
+
+	 Radio_interno_detector = 0.0*m;
+	 Radio_externo_detector = (38.2/2)*cm;
+	 Altura_detector = (2.5/2)*cm;
+	 Angulo_Inicial_detector = 0*deg;
+	 Angulo_Final_detector = 360*deg;
+
+
+
+	 /************ Primitive Score *******/
+
+	// TLD_HalfSizeY = 1*m;
+	// TLD_HalfSizeX = 1*m;
+	// TLD_HalfSizeZ = 0.0005*m;
+
+	 TLD_HalfSizeY = 1.25*cm;
+	 TLD_HalfSizeX = 0.5*cm;
+	 TLD_HalfSizeZ = 0.5*cm;
+
+	 /************ TLDNumber **************/
+
+	 TLDNumber = 1;
+
+	 /********************* PMMA ********************************/
+	  PMMAX_SizeHalf=0.203/2*m;
+	  PMMAY_SizeHalf=0.203/2*m;
+	  PMMAZ_SizeHalf=19.3/2 *cm;
+}
+
+TDM_DetectorConstruction::~TDM_DetectorConstruction()
+{ }
+
+G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
+{
+//rotation
+
+	G4RotationMatrix* myRotation = new G4RotationMatrix();
+	 myRotation->rotateX(90.*deg);
+	 myRotation->rotateY(0.*deg);
+	 myRotation->rotateZ(0.*rad);
+
+
+  // Some elements
+  G4double a, z, density;
+  G4int nelements;
+
+  G4Element* N = new G4Element("Nitrogen", "N", z=7 , a=14.01*g/mole);
+  G4Element* H = new G4Element("Hydrogen", "H", z=1 , a=1.01*g/mole);
+  G4Element* O = new G4Element("Oxygen"  , "O", z=8 , a=16.00*g/mole);
+  G4Element* C = new G4Element("Carbon", "C",z=12, a = 12.01*g/mole);
+  G4Element* Pb = new G4Element("Lead" , "L" , z=82, a=207.2*g/mole);
+  G4Element* Li6 = new G4Element("Lithium6", "Li6", z=3, a=6.015*g/mole);
+  G4Element* Li7 = new G4Element("Lithium7", "Li7", z=3, a=7.016*g/mole);
+  G4Element* F = new G4Element("Fluorine", "F", z=9, a=18.99*g/mole);
+  G4Element* Ti = new G4Element("Titanium", "Ti",z=22,a=47.867*g/mole);
+  G4Element* Mg = new G4Element("Magnesium", "Mg",z=12,a=24.305*g/mole);
+  //G4Element* 6LiF = new G4Element("6LiF", "Li", z=3, a=6*g/mole);
+  //G4Element* 7LiF = new G4Element("Lithium", "Li", z=3, a=6*g/mole);
+
+
+  // Vacuum
+
+    G4Material* vacuum = new G4Material("vacuum", z=1., a=1.01*g/mole, density=universe_mean_density, kStateGas, 0.1*kelvin, 1.e-19*pascal);
+
+
+    //Fluoruros de Litio
+    G4Material* LiF6 = new G4Material("LiF6", density= 2.55*g/cm3, nelements=2);
+    LiF6->AddElement(F, 1);
+    LiF6->AddElement(Li6, 1);
+
+    G4Material* LiF7 = new G4Material("LiF7", density= 2.65*g/cm3, nelements=2);
+    LiF7->AddElement(F, 1);
+    LiF7->AddElement(Li7, 1);
+
+    // TLD100
+
+    G4Material* TLD100 = new G4Material("TLD100", density= 2.65*g/cm3, nelements=4);
+    TLD100->AddMaterial(LiF6, 7.5995*perCent);
+    TLD100->AddMaterial(LiF7, 92.3795*perCent);
+    TLD100->AddElement(Mg, 0.02*perCent);
+    TLD100->AddElement(Ti, 0.001*perCent);
+
+  // Air
+  //
+
+  G4Material* air = new G4Material("Air", density=1.29*mg/cm3, nelements=2);
+  air->AddElement(N, 70.*perCent);
+  air->AddElement(O, 30.*perCent);
+
+  // Water material
+  G4Material* water = new G4Material("Water", density= 1.0*g/cm3, nelements=2);
+  water->AddElement(H, 2);
+  water->AddElement(O, 1);
+
+  //PMMA material
+  G4Material* pmma = new G4Material("pmma", density=1.18*g/cm3, nelements=3);
+  pmma->AddElement(C, 5);
+  pmma->AddElement(H, 8);
+  pmma->AddElement(O, 2);
+
+
+  // Carbon Fiber
+  G4Material* CarbonFiber = new G4Material("CarbonFiber", density= 0.145*g/cm3, nelements=1);
+  CarbonFiber->AddElement(C, 1);
+
+  //Lead
+  G4Material* Lead = new G4Material("Lead", density=11.35*g/cm3, nelements=1);
+  Lead->AddElement(Pb,1);
+
+//=====================================
+
+
+
+   //
+   // Volumes definitions
+   //
+
+
+
+  // Option to switch on/off checking of volumes overlaps
+  //
+  G4bool checkOverlaps = false;
+
+  //
+  // World: WorldCube acts as world
+  //
+
+  G4Box* solid_WorldCube=
+    new G4Box("WorldCube_solid",                       						//its name
+    		WorldCube_SizeHalfX, WorldCube_SizeHalfY, WorldCube_SizeHalfZ);    //its size
+
+  G4LogicalVolume* logic_WorldCube =
+    new G4LogicalVolume(solid_WorldCube,          							//its solid
+                        air,           										//its material
+                        "WorldCube_logic");    								//its name
+
+  G4VPhysicalVolume* physical_WorldCube =
+    new G4PVPlacement(0,                 								    //no rotation
+                      G4ThreeVector(),       								//at (0,0,0)
+                      logic_WorldCube,			          					//its logical volume
+                      "WorldCube_physical",               					//its name
+                      0,                     								//its mother  volume
+                      false,                 								//no boolean operation
+                      0,                     								//copy number
+                      checkOverlaps);        								//overlaps checking
+
+// **************************camilla********************************************//
+
+  G4Box* solid_camilla=
+      new G4Box("camilla",                       						//its name
+      		camilla_X, camilla_Y, camilla_Z);    //its size
+
+  G4LogicalVolume* logic_camilla =
+      new G4LogicalVolume(solid_camilla,          							//its solid
+                          CarbonFiber,           										//its material
+                          "camilla_logic");    								//its name
+
+  //G4VPhysicalVolume* physical_camilla =
+    new G4PVPlacement(0,                 								    //no rotation
+                      G4ThreeVector(-0.6945*m,0.297*m,-0.209*m),       			//at (0,0,-0.3)
+                      logic_camilla,			          					//its logical volume
+                      "camilla_physical",               					//its name
+                      logic_WorldCube,                     								//its mother  volume
+                      false,                 								//no boolean operation
+                      0,                     								//copy number
+                      checkOverlaps);        								//overlaps checking
+
+
+
+/*
+
+  G4Box* solid_WaterCube=
+    new G4Box("WaterCube_solid",                       						//its name
+    		WaterCube_SizeHalf, WaterCube_SizeHalf, WaterCube_SizeHalf);*/    //its size
+
+
+
+
+
+ /* G4LogicalVolume* logic_WaterCube =
+    new G4LogicalVolume(solid_WaterCube,          							//its solid
+                        water,           									//its material
+                        "WaterCube_logic");    								//its name
+
+  G4VPhysicalVolume* physical_WaterCube =
+    new G4PVPlacement(0,                 								    //no rotation
+                      G4ThreeVector(),       								//at (0,0,0)
+                      logic_WaterCube,			          					//its logical volume
+                      "WaterCube_physical",               					//its name
+					  logic_WorldCube,         								//its mother  volume
+                      false,                 								//no boolean operation
+                      0,                     								//copy number
+                      checkOverlaps);     //overlaps checking// */
+
+
+/****************Cilindro de agua******************************/
+/*G4Tubs* trackerTube
+  = new G4Tubs("Person",
+		  innerRadius,
+		  outerRadius,
+		  hz,
+		  startAngle,
+		  spanningAngle
+		  );
+
+G4LogicalVolume* logic_WaterCylinder =
+		new G4LogicalVolume(trackerTube,
+				water,
+				"WaterCylinder_logic");
+
+//G4VPhysicalVolume* physical_WaterCylinder =
+		new G4PVPlacement(myRotation,
+				G4ThreeVector(0,0,2*camilla_Z+outerRadius)					//centrado en 0,0,0
+				logic_WaterCylinder,
+				"WaterCylinder_physical",
+				logic_WorldCube,
+				false,
+				0,
+				checkOverlaps
+				);
+
+*/
+
+
+  //                               COLIMADORES
+  //				1 y 2 son en X, 3 y 4 son en Y.
+
+ /********************************* COLIMADOR 1 **********************************/
+
+  /*  G4Box* Solid_Colimator1 =
+    new G4Box("solid_colimator1 ",                       						//its name
+    		ColimadorX_SizeHalf, ColimadorY_SizeHalf, ColimadorZ_SizeHalf);    //its size
+
+  G4LogicalVolume* Logic_Colimator1 =
+    new G4LogicalVolume(Solid_Colimator1,          							//its solid
+                        Lead,           									//its material
+                        "logic_colimator1");    								//its name
+
+ //G4VPhysicalVolume* physical_Colimator1 =
+    new G4PVPlacement(0,                 								    //no rotation
+                      G4ThreeVector(-Xfinal-ColimadorX_SizeHalf,0.0*m,-DF +Distancia+ColimadorZ_SizeHalf),					//at (0,0,0)
+                      Logic_Colimator1,			          					//its logical volume
+                      "physical_colimator1 ",               					//its name
+					  logic_WorldCube,         								//its mother  volume
+                      false,                 								//no boolean operation
+                      0,                     								//copy number
+                      checkOverlaps);     //overlaps checking*/
+
+
+/*************************COLIMADOR 2************************************/
+
+ /*  G4Box* Solid_Colimator2=
+   new G4Box("solid_colimator2",                       						//its name
+   		ColimadorX_SizeHalf, ColimadorY_SizeHalf, ColimadorZ_SizeHalf);    //its size
+
+ G4LogicalVolume* Logic_Colimator2 =
+   new G4LogicalVolume(Solid_Colimator2,          							//its solid
+                       Lead,           									//its material
+                       "logic_colimator2");    								//its name
+
+ //G4VPhysicalVolume* physical_Colimator2 =
+   new G4PVPlacement(0,                 								    //no rotation
+                     G4ThreeVector(Xfinal+ColimadorX_SizeHalf,0.0*m,-DF +Distancia +ColimadorZ_SizeHalf),       								//at (0,0,0)
+                     Logic_Colimator2,			          					//its logical volume
+                     "physical_colimator2",               					//its name
+					  logic_WorldCube,         								//its mother  volume
+                     false,                 								//no boolean operation
+                     0,                     								//copy number
+                     checkOverlaps);     //overlaps checking*/
+
+
+  /******************************COLIMADOR 3*************************************/
+
+
+ /* G4Box* Solid_Colimator3=
+  new G4Box("solid_colimator3",                       						//its name
+  		ColimadorX_SizeHalf, ColimadorY_SizeHalf, ColimadorZ_SizeHalf);    //its size
+
+G4LogicalVolume* Logic_Colimator3 =
+  new G4LogicalVolume(Solid_Colimator3,          							//its solid
+                      Lead,           									//its material
+                      "logic_colimator3");    								//its name
+
+//G4VPhysicalVolume* physical_Colimator3 =
+  new G4PVPlacement(0,                 								    //no rotation
+                    G4ThreeVector(0.0*m,-Yfinal-ColimadorY_SizeHalf,-DF + Distancia + (3*ColimadorZ_SizeHalf)),       								//at (0,0,0)
+                    Logic_Colimator3,			          					//its logical volume
+                    "physical_colimator3",               					//its name
+					  logic_WorldCube,         								//its mother  volume
+                    false,                 								//no boolean operation
+                    0,                     								//copy number
+                    checkOverlaps);     //overlaps checking//
+
+
+
+
+ G4Box* Solid_Colimator4=
+ new G4Box("solid_colimator4",                       						//its name
+ 		ColimadorX_SizeHalf, ColimadorY_SizeHalf, ColimadorZ_SizeHalf);    //its size
+
+G4LogicalVolume* Logic_Colimator4 =
+ new G4LogicalVolume(Solid_Colimator4,          							//its solid
+                     Lead,           									//its material
+                     "logic_colimator4");    								//its name
+
+//G4VPhysicalVolume* physical_Colimator4 =
+ new G4PVPlacement(0,                 								    //no rotation
+                   G4ThreeVector(0.0*m,Yfinal+ColimadorY_SizeHalf,-DF +Distancia + (3*ColimadorZ_SizeHalf)),       								//at (0,0,0)
+                   Logic_Colimator4,			          					//its logical volume
+                   "physical_colimator4",               					//its name
+					  logic_WorldCube,         								//its mother  volume
+                   false,                 								//no boolean operation
+                   0,                     								//copy number
+                   checkOverlaps);     //overlaps checking//
+
+
+
+
+ /**************Blindaje de la fuente *******************/
+
+ /*G4Box* Blindaje1 =
+  new G4Box("Blindaje1",                       						//its name
+  		grosor,2*Largo, Ancho);    //its size
+
+ G4LogicalVolume* Logic_Blindaje1 =
+  new G4LogicalVolume(Blindaje1,          							//its solid
+                      Lead,           									//its material
+                      "logic_blindaje1");    								//its name
+
+ //G4VPhysicalVolume* physical_Colimator4 =
+  new G4PVPlacement(0,                 								    //no rotation
+                    G4ThreeVector(-Largo-grosor,0.0*m, -DF+(Distancia - Ancho)),       								//at (0,0,0)
+                    Logic_Blindaje1,			          					//its logical volume
+                    "physical_blindaje1",               					//its name
+ 					  logic_WorldCube,         								//its mother  volume
+                    false,                 								//no boolean operation
+                    0,                     								//copy number
+                    checkOverlaps);     //overlaps checking
+
+  G4Box* Blindaje2 =
+    new G4Box("Blindaje2",                       						//its name
+    		grosor,2*Largo, Ancho);    //its size
+
+   G4LogicalVolume* Logic_Blindaje2 =
+    new G4LogicalVolume(Blindaje2,          							//its solid
+                        Lead,           									//its material
+                        "logic_blindaje2");    								//its name
+
+   //G4VPhysicalVolume* physical_Colimator4 =
+    new G4PVPlacement(0,                 								    //no rotation
+                      G4ThreeVector(Largo+grosor,0.0*m, -DF+(Distancia-Ancho)),       								//at (0,0,0)
+                      Logic_Blindaje2,			          					//its logical volume
+                      "physical_blindaje2",               					//its name
+   					  logic_WorldCube,         								//its mother  volume
+                      false,                 								//no boolean operation
+                      0,                     								//copy number
+                      checkOverlaps);     //overlaps checking
+
+
+    G4Box* Blindaje3 =
+      new G4Box("Blindaje3",                       						//its name
+      		Largo,grosor, Ancho);    //its size
+
+     G4LogicalVolume* Logic_Blindaje3 =
+      new G4LogicalVolume(Blindaje3,          							//its solid
+                          Lead,           									//its material
+                          "logic_blindaje1");    								//its name
+
+
+      new G4PVPlacement(0,                 								    //no rotation
+                        G4ThreeVector(0.0*m,-Largo-grosor, -DF+Distancia-Ancho),       								//at (0,0,0)
+                        Logic_Blindaje3,			          					//its logical volume
+                        "physical_blindaje3",               					//its name
+     					  logic_WorldCube,         								//its mother  volume
+                        false,                 								//no boolean operation
+                        0,                     								//copy number
+                        checkOverlaps);     //overlaps checking
+
+
+      G4Box* Blindaje4 =
+            new G4Box("Blindaje4",                       						//its name
+            		Largo,grosor, Ancho);    //its size
+
+           G4LogicalVolume* Logic_Blindaje4 =
+            new G4LogicalVolume(Blindaje4,          							//its solid
+                                Lead,           									//its material
+                                "logic_blindaje4");    								//its name
+
+
+            new G4PVPlacement(0,                 								    //no rotation
+                              G4ThreeVector(0.0*m,Largo+grosor, -DF+Distancia-Ancho),       								//at (0,0,0)
+                              Logic_Blindaje4,			          					//its logical volume
+                              "physical_blindaje4",               					//its name
+           					  logic_WorldCube,         								//its mother  volume
+                              false,                 								//no boolean operation
+                              0,                     								//copy number
+                              checkOverlaps);     //overlaps checking
+
+
+            G4Box* Blindaje5 =
+                  new G4Box("Blindaje5",                       						//its name
+                  		2*Largo,2*Ancho, grosor);    //its size
+
+                 G4LogicalVolume* Logic_Blindaje5 =
+                  new G4LogicalVolume(Blindaje5,          							//its solid
+                                      Lead,           									//its material
+                                      "logic_blindaje5");    								//its name
+
+
+                  new G4PVPlacement(0,                 								    //no rotation
+                                    G4ThreeVector(0.0*m,0.0*m, -DF-(2*Ancho - Distancia)-grosor),       								//at (0,0,0)
+                                    Logic_Blindaje5,			          					//its logical volume
+                                    "physical_blindaje5",               					//its name
+                 					  logic_WorldCube,         								//its mother  volume
+                                    false,                 								//no boolean operation
+                                    0,                     								//copy number
+                                    checkOverlaps);     //overlaps checking*/
+
+ /***************** Blindaje de forma cilindrica *************/
+
+ G4Tubs* Blindaje_cilindro
+   = new G4Tubs("cilindroblindaje",
+ 		  Radio_interno,
+ 		  Radio_externo,
+ 		  Altura_cilindro,
+ 		  Angulo_Inicial,
+ 		  Angulo_Final
+ 		  );
+
+ G4LogicalVolume* logic_cilindroblindaje =
+ 		new G4LogicalVolume(Blindaje_cilindro,
+ 				Lead,
+ 				"cilindroblindaje_logic");
+
+ //G4VPhysicalVolume* physical_WaterCylinder =
+ 		new G4PVPlacement(0,
+ 				G4ThreeVector(-0.5495*m,0.265*m, 0.5085*m ),					//centrado en 0,0,0
+ 				logic_cilindroblindaje,
+ 				"Leadclinder_physical",
+ 				logic_WorldCube,
+ 				false,
+ 				0,
+ 				checkOverlaps
+ 				);
+
+/*****************Tapadera Blindaje *********************/
+
+ 		G4Tubs* Tapadera
+ 		   = new G4Tubs("tapaderablindaje",
+ 		 		  Radio_interno_tapadera,
+ 		 		  Radio_externo_tapadera,
+ 		 		  Altura_tapadera,
+ 		 		  Angulo_Inicial_tapadera,
+ 		 		  Angulo_Final_tapadera
+ 		 		  );
+
+ 		 G4LogicalVolume* logic_tapadera =
+ 		 		new G4LogicalVolume(Tapadera,
+ 		 				Lead,
+ 		 				"tapadera_logic");
+
+ 		 //G4VPhysicalVolume* physical_WaterCylinder =
+ 		 		new G4PVPlacement(0,
+ 		 				G4ThreeVector(-0.5495*m,0.265*m, 0.5085*m+Altura_cilindro+Altura_tapadera),					//centrado en 0,0,0
+ 		 				logic_tapadera,
+ 		 				"Leadtapadera_physical",
+ 		 				logic_WorldCube,
+ 		 				false,
+ 		 				0,
+ 		 				checkOverlaps
+ 		 				);
+
+ /******************* Detector prueba  ****************/
+
+ 		 	/*	G4Tubs* Detector_prueba
+ 		 		 		   = new G4Tubs("Detector",
+ 		 		 		 		  Radio_interno_detector ,
+ 		 		 		 		  Radio_externo_detector ,
+ 		 		 		 		  Altura_detector,
+ 		 		 		 		  Angulo_Inicial_detector ,
+ 		 		 		 		  Angulo_Final_detector
+ 		 		 		 		  );
+
+ 		 		 		 G4LogicalVolume* Logic_Detector =
+ 		 		 		 		new G4LogicalVolume(Detector_prueba,
+ 		 		 		 				vacuum,
+ 		 		 		 				"detector_prueba_logic");
+
+ 		 		 		 //G4VPhysicalVolume* physical_WaterCylinder =
+ 		 		 		 		new G4PVPlacement(0,
+ 		 		 		 				G4ThreeVector(-0.5495*m, 0.265*m, -0.4915*m),					//centrado en 0,0,0
+ 		 		 		 				Logic_Detector,
+ 		 		 		 				"Leadtapadera_physical",
+ 		 		 		 				logic_WorldCube,
+ 		 		 		 				false,
+ 		 		 		 				0,
+ 		 		 		 				checkOverlaps
+ 		 		 		 				);*/
+
+ 		 	/*	G4Box* Detector_prueba=
+ 		 		 new G4Box("Detector_prueba",                       						//its name
+ 		 		 		DetectorX_SizeHalf, DetectorY_SizeHalf, DetectorZ_SizeHalf);    //its size
+
+ 		 		G4LogicalVolume* Logic_Detector =
+ 		 		 new G4LogicalVolume(Detector_prueba,          							//its solid
+ 		 		                     vacuum,           									//its material
+ 		 		                     "logic_detector");    								//its name
+ 		 		//G4VPhysicalVolume* physical_Colimator4 =
+ 		 		 new G4PVPlacement(0,                 								    //no rotation
+ 		 		                   G4ThreeVector(-0.5495*m,0.265*m,-0.209*m + camilla_Z),       								//at (0,0,0)
+ 		 		                   Logic_Detector,			          					//its logical volume
+ 		 		                   "physical_detector",               					//its name
+ 		 							  logic_WorldCube,         								//its mother  volume
+ 		 		                   false,                 								//no boolean operation
+ 		 		                   0,                     								//copy number
+ 		 		                   checkOverlaps);     //overlaps checking*/
+
+ 		/* 	SensitiveDetector = Logic_Detector;*/
+
+
+
+
+ /******************************** Medio Dispersor PMMA *********************************/
+
+ 		 /*		G4Box* PMMA=
+ 		 		      new G4Box("PMMA",                       						//its name
+ 		 		    		PMMAX_SizeHalf,PMMAY_SizeHalf, PMMAZ_SizeHalf);    //its size
+
+ 		 		  G4LogicalVolume* logic_PMMA =
+ 		 		      new G4LogicalVolume(PMMA,          							//its solid
+ 		 		                          water,           										//its material
+ 		 		                          "camilla_logic");    								//its name
+
+ 		 		  //G4VPhysicalVolume* physical_camilla =
+ 		 		    new G4PVPlacement(0,                 								    //no rotation
+ 		 		                      G4ThreeVector(0.0*m,0.0*m,2*camilla_Z + PMMAZ_SizeHalf),       			//at (0,0,-0.3)
+ 		 		                      logic_PMMA,			          					//its logical volume
+ 		 		                      "PMMA_physical",               					//its name
+ 		 		                      logic_WorldCube,                     								//its mother  volume
+ 		 		                      false,                 								//no boolean operation
+ 		 		                      0,                     								//copy number
+ 		 		                      checkOverlaps);        								//overlaps checking
+
+
+ /*************************************Detectors Primitive Score ****************************/
+
+ 		 		/****************Detector 0 ************************************/
+ 		 		TDM_TLD_Cons( water, logic_WorldCube, "0Abso", G4ThreeVector(-0.55*m,0.265*m,-0.209*m + camilla_Z)); //UN METRO DEL CENTRO DEL PMMA
+
+ 		 		/****************Detector 1 ************************************/
+ 		 	//	TDM_TLD_Cons( TLD100, logic_WorldCube, "1Abso", G4ThreeVector(1*m,0*m,65*cm)); // OJOS, UN METRO DE LA CAMILLA
+ 		 		/****************Detector 2 ************************************/
+ 		 	//	TDM_TLD_Cons( TLD100, logic_WorldCube, "2Abso", G4ThreeVector(1*m,0*m,30*cm)); // CORAZON, UN METRO DE LA CAMILLA
+ 		 		/****************Detector 3 ************************************/
+ 		 	//	TDM_TLD_Cons( TLD100, logic_WorldCube, "3Abso", G4ThreeVector(1*m,0*m,-15*cm)); // GONADAS, UN METRO DE LA CAMILLA
+
+ 		 		/****************Detector 4 ************************************/
+ 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "4Abso", G4ThreeVector(0*m,2*m,-2*m));
+ 		 		/****************Detector 5 ************************************/
+ 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "5Abso", G4ThreeVector(0*m,2.5*m,-2.5*m));
+ 		 		/****************Detector 6 ************************************/
+ 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "6Abso", G4ThreeVector(0*m,-1*m,0*m));
+
+ 		 		/****************Detector 7 ************************************/
+ 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "7Abso", G4ThreeVector(0*m,-1.5*m,-0.5*m));
+ 		 		/****************Detector 8 ************************************/
+ 		 		// TDM_TLD_Cons( TLD100, logic_WorldCube, "8Abso", G4ThreeVector(0*m,-2*m,-1*m));
+ 				/****************Detector 9 ************************************/
+ 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "9Abso", G4ThreeVector(0*m,-2.5*m,-1.5*m));
+
+ 		 		/****************Detector 10 ************************************/
+ 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "10Abso", G4ThreeVector(-1*m,0*m,-2*m));
+ 		 		/****************Detector 11 ************************************/
+ 		 		 //TDM_TLD_Cons( TLD100, logic_WorldCube, "11Abso", G4ThreeVector(-1.5*m,0*m,-2.5*m));
+
+ 		 		/****************Detector 12 ************************************/
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "12Abso", G4ThreeVector(0*m,0*m,0*m));
+
+ 		 		 		 		/****************Detector 13 ************************************/
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "13Abso", G4ThreeVector(1*m,0*m,-0.5*m));
+ 		 		 		 		/****************Detector 14 ************************************/
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "14Abso", G4ThreeVector(1.5*m,0*m,-1*m));
+ 		 		 		 		/****************Detector 15 ************************************/
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "15Abso", G4ThreeVector(2*m,0*m,-1.5*m));
+
+ 		 		 		 		/****************Detector 16 ************************************/
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "16Abso", G4ThreeVector(2.5*m,0*m,-2*m));
+ 		 		 		 		/****************Detector 17 ************************************/
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "17Abso", G4ThreeVector(-1*m,0*m,-2.5*m));
+ 		 		 		 		/****************Detector 18 ************************************/
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "18Abso", G4ThreeVector(-1.5*m,-1*m,0*m));
+
+ 		 		 		 		/****************Detector 19 ************************************/
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "19Abso", G4ThreeVector(-2*m,-1.5*m,-0.5*m));
+ 		 		 		 		/****************Detector 20 ************************************/
+ 		 		 		 		// TDM_TLD_Cons( TLD100, logic_WorldCube, "20Abso", G4ThreeVector(-2.5*m,-2*m,-1*m));
+ 		 		 				/****************Detector 21 ************************************/
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "21Abso", G4ThreeVector(-3*m,-2.5*m,-1.5*m));
+
+ 		 		 		 		/****************Detector 22 ************************************/
+ 		 		 		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "22Abso", G4ThreeVector(-1*m,0*m,-2*m));
+ 		 		 		 		/****************Detector 23 ************************************/
+ 		 		 		 		// TDM_TLD_Cons( TLD100, logic_WorldCube, "23Abso", G4ThreeVector(-1.5*m,0*m,-2.5*m));
+
+   return physical_WorldCube;
+}
+
+inline void  TDM_DetectorConstruction::TDM_TLD_Cons( G4Material* Material, G4LogicalVolume* MotherVolume, G4String Name, G4ThreeVector Position)
+{
+	/************************** Primitive Score ************************/
+
+	 // Absorber
+	  //
+	  auto absorberS
+		= new G4Box(Name,            // its name
+					 TLD_HalfSizeX, TLD_HalfSizeY, TLD_HalfSizeZ); // its size
+
+	  auto absorberLV
+		= new G4LogicalVolume(
+					 absorberS,        // its solid
+					 Material, // its material
+					 Name.append("LV"));          // its name
+
+	  G4cout << "TDM_TLD_Cons Name: " << Name << G4endl;
+
+	   new G4PVPlacement(
+					 0,                // no rotation
+					 Position, //  its position
+					 absorberLV,       // its logical volume
+					 Name.append("PL"),           // its name
+					 MotherVolume,          // its mother  volume
+					 false,            // no boolean operation
+					 0,                // copy number
+					 false);  // checking overlaps
+
+	 		 		  //
+}
+
+inline void TDM_DetectorConstruction::TDM_SetTLD_SD(  G4String Name )
+{
+	G4SDManager::GetSDMpointer()->SetVerboseLevel(0);
+	    //
+	    // Scorers
+	    //
+	    // declare Absorber as a MultiFunctionalDetector scorer
+	    //
+	    auto Detector = new G4MultiFunctionalDetector(Name);
+	    G4SDManager::GetSDMpointer()->AddNewDetector(Detector);
+
+	    G4VPrimitiveScorer* primitive;
+	    G4String Edepname = Name+"Edep";
+	    primitive = new G4PSEnergyDeposit(Edepname);
+	    Detector->RegisterPrimitive(primitive);
+	    G4String Dodepname = Name+"Dodep";
+	    primitive = new G4PSDoseDeposit(Dodepname);
+	    Detector->RegisterPrimitive(primitive);
+
+	   // primitive = new G4PSTrackLength("TrackLength");
+	  //  auto charged = new G4SDChargedFilter("gammaFilter");
+	  //  primitive ->SetFilter(charged);
+	    //absDetector->RegisterPrimitive(primitive);
+
+	    SetSensitiveDetector(Name.append("LV"),Detector); // AGREGAR AL INCLUIR ALGUN TLD
+}
+
+
+
+/*inline void TDM_DetectorConstruction::TDM_SetTLD_SD( G4String Name , G4MultiFunctionalDetector* Detector)
+{
+<<<<<<< HEAD
+	 SetSensitiveDetector(Name.append("LV"),Detector);
+=======
+	SetSensitiveDetector(Name.append("LV"),Detector);
+	G4cout << "TDM_SetTLD_SD Name: " << Name << G4endl;
+>>>>>>> 45538758e4bc6f65d878037747b925a771735447
+}
+*/
+
+//Superficies Sensibles
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+void TDM_DetectorConstruction::ConstructSDandField() {
+
+/* if (!SensitiveDetector) return;
+
+  TDMSD* test_SD = new TDMSD("/TDM/testSD");
+  G4SDManager::GetSDMpointer()->AddNewDetector(test_SD);
+  SetSensitiveDetector(SensitiveDetector, test_SD);*/
+
+  /*************** Primitive Score  *********************/
+
+  G4SDManager::GetSDMpointer()->SetVerboseLevel(0);
+    //
+    // Scorers
+    //
+
+    // declare Absorber as a MultiFunctionalDetector scorer
+    //
+    auto absDetector = new G4MultiFunctionalDetector("Absorber");
+    G4SDManager::GetSDMpointer()->AddNewDetector(absDetector);
+
+    G4VPrimitiveScorer* primitive;
+    primitive = new G4PSEnergyDeposit("Edep");
+    absDetector->RegisterPrimitive(primitive);
+    primitive = new G4PSDoseDeposit("Dodep");
+    absDetector->RegisterPrimitive(primitive);
+
+   // primitive = new G4PSTrackLength("TrackLength");
+  //  auto charged = new G4SDChargedFilter("gammaFilter");
+  //  primitive ->SetFilter(charged);
+    //absDetector->RegisterPrimitive(primitive);
+
+
+ for (G4int i = 0; i < TLDNumber; i++){
+
+	 	 /* Change i into String */
+
+	 	 G4String n;
+	 	 std::stringstream convert;
+	 	 convert << i;
+	 	 n = convert.str();
+
+	 	 G4String a = n+"Abso";
+
+	 	 TDM_SetTLD_SD(a);
+ 	 	 	 }
+
+}
+

@@ -115,13 +115,17 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 
 	 /************ Primitive Score *******/
 
-	 TLD_HalfSizeY = 5*cm;
-	 TLD_HalfSizeX = 0.5*cm;
-	 TLD_HalfSizeZ = 5*cm;
+	 TLD_HalfSizeY = 1*m;
+	 TLD_HalfSizeX = 1*m;
+	 TLD_HalfSizeZ = 0.0005*m;
+
+	// TLD_HalfSizeY = 5*cm;
+	// TLD_HalfSizeX = 0.5*cm;
+	// TLD_HalfSizeZ = 5*cm;
 
 	 /************ TLDNumber **************/
 
-	 TLDNumber = 4;
+	 TLDNumber = 1;
 
 	 /********************* PMMA ********************************/
 	  PMMAX_SizeHalf=0.203/2*m;
@@ -161,7 +165,7 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
 
 
   // Vacuum
-    //
+
     G4Material* vacuum = new G4Material("vacuum", z=1., a=1.01*g/mole, density=universe_mean_density, kStateGas, 0.1*kelvin, 1.e-19*pascal);
 
 
@@ -572,9 +576,9 @@ G4LogicalVolume* Logic_Colimator4 =
  		 				checkOverlaps
  		 				);
 
- /******************* Detector prueba ****************/
+ /******************* Detector prueba  ****************/
 
- 		 		G4Tubs* Detector_prueba
+ 		 /*		G4Tubs* Detector_prueba
  		 		 		   = new G4Tubs("Detector",
  		 		 		 		  Radio_interno_detector ,
  		 		 		 		  Radio_externo_detector ,
@@ -590,16 +594,16 @@ G4LogicalVolume* Logic_Colimator4 =
 
  		 		 		 //G4VPhysicalVolume* physical_WaterCylinder =
  		 		 		 		new G4PVPlacement(0,
- 		 		 		 				G4ThreeVector(-0.5495*m, 0.265*m, -0.4915*m),					//centrado en 0,0,0
+ 		 		 		 				G4ThreeVector(-0.5495*m, 0.265*m, 0.229*m),					//centrado en 0,0,0
  		 		 		 				Logic_Detector,
  		 		 		 				"Leadtapadera_physical",
  		 		 		 				logic_WorldCube,
  		 		 		 				false,
  		 		 		 				0,
  		 		 		 				checkOverlaps
- 		 		 		 				);
+ 		 		 		 				);*/
 
- 		 		/*G4Box* Detector_prueba=
+ 		 		G4Box* Detector_prueba=
  		 		 new G4Box("Detector_prueba",                       						//its name
  		 		 		DetectorX_SizeHalf, DetectorY_SizeHalf, DetectorZ_SizeHalf);    //its size
 
@@ -609,19 +613,22 @@ G4LogicalVolume* Logic_Colimator4 =
  		 		                     "logic_detector");    								//its name
  		 		//G4VPhysicalVolume* physical_Colimator4 =
  		 		 new G4PVPlacement(0,                 								    //no rotation
- 		 		                   G4ThreeVector(-0.5495*m,0.265*m,0.229*m),       								//at (0,0,0)
+ 		 		                   G4ThreeVector(-0.5495*m,0.265*m,-0.209*m + camilla_Z),       								//at (0,0,0)
  		 		                   Logic_Detector,			          					//its logical volume
  		 		                   "physical_detector",               					//its name
  		 							  logic_WorldCube,         								//its mother  volume
  		 		                   false,                 								//no boolean operation
  		 		                   0,                     								//copy number
- 		 		                   checkOverlaps);     //overlaps checking*/
+ 		 		                   checkOverlaps);     //overlaps checking
 
- 		 		SensitiveDetector = Logic_Detector;
+ 		 	SensitiveDetector = Logic_Detector;
+
+
+
 
  /******************************** Medio Dispersor PMMA *********************************/
 
- 		 		G4Box* PMMA=
+ 		 /*		G4Box* PMMA=
  		 		      new G4Box("PMMA",                       						//its name
  		 		    		PMMAX_SizeHalf,PMMAY_SizeHalf, PMMAZ_SizeHalf);    //its size
 
@@ -644,14 +651,14 @@ G4LogicalVolume* Logic_Colimator4 =
  /*************************************Detectors Primitive Score ****************************/
 
  		 		/****************Detector 0 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "0Abso", G4ThreeVector(1*m,0*m,2*camilla_Z + PMMAZ_SizeHalf)); //UN METRO DEL CENTRO DEL PMMA
+ 		 	//	TDM_TLD_Cons( vacuum, logic_WorldCube, "0Abso", G4ThreeVector(-0.5495*m,0.265*m,1.230*m)); //UN METRO DEL CENTRO DEL PMMA
 
  		 		/****************Detector 1 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "1Abso", G4ThreeVector(1*m,0*m,65*cm)); // OJOS, UN METRO DE LA CAMILLA
+ 		 	//	TDM_TLD_Cons( TLD100, logic_WorldCube, "1Abso", G4ThreeVector(1*m,0*m,65*cm)); // OJOS, UN METRO DE LA CAMILLA
  		 		/****************Detector 2 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "2Abso", G4ThreeVector(1*m,0*m,30*cm)); // CORAZON, UN METRO DE LA CAMILLA
+ 		 	//	TDM_TLD_Cons( TLD100, logic_WorldCube, "2Abso", G4ThreeVector(1*m,0*m,30*cm)); // CORAZON, UN METRO DE LA CAMILLA
  		 		/****************Detector 3 ************************************/
- 		 		TDM_TLD_Cons( TLD100, logic_WorldCube, "3Abso", G4ThreeVector(1*m,0*m,-15*cm)); // GONADAS, UN METRO DE LA CAMILLA
+ 		 	//	TDM_TLD_Cons( TLD100, logic_WorldCube, "3Abso", G4ThreeVector(1*m,0*m,-15*cm)); // GONADAS, UN METRO DE LA CAMILLA
 
  		 		/****************Detector 4 ************************************/
  		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "4Abso", G4ThreeVector(0*m,2*m,-2*m));
@@ -759,7 +766,7 @@ inline void TDM_DetectorConstruction::TDM_SetTLD_SD(  G4String Name )
 	  //  primitive ->SetFilter(charged);
 	    //absDetector->RegisterPrimitive(primitive);
 
-	    SetSensitiveDetector(Name.append("LV"),Detector);
+	// SetSensitiveDetector(Name.append("LV"),Detector); // AGREGAR AL INCLUIR ALGUN TLD
 }
 
 
@@ -781,15 +788,15 @@ inline void TDM_DetectorConstruction::TDM_SetTLD_SD(  G4String Name )
 
 void TDM_DetectorConstruction::ConstructSDandField() {
 
-/* if (!SensitiveDetector) return;
+ if (!SensitiveDetector) return;
 
   TDMSD* test_SD = new TDMSD("/TDM/testSD");
   G4SDManager::GetSDMpointer()->AddNewDetector(test_SD);
-  SetSensitiveDetector(SensitiveDetector, test_SD);*/
+  SetSensitiveDetector(SensitiveDetector, test_SD);
 
   /*************** Primitive Score  *********************/
 
- /* G4SDManager::GetSDMpointer()->SetVerboseLevel(0);
+/*  G4SDManager::GetSDMpointer()->SetVerboseLevel(0);
     //
     // Scorers
     //
@@ -808,8 +815,8 @@ void TDM_DetectorConstruction::ConstructSDandField() {
    // primitive = new G4PSTrackLength("TrackLength");
   //  auto charged = new G4SDChargedFilter("gammaFilter");
   //  primitive ->SetFilter(charged);
-    //absDetector->RegisterPrimitive(primitive);
-*/
+    //absDetector->RegisterPrimitive(primitive);*/
+
 
  for (G4int i = 0; i < TLDNumber; i++){
 

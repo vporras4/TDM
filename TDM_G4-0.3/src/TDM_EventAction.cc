@@ -16,7 +16,7 @@
 TDM_EventAction::TDM_EventAction()
 : G4UserEventAction()
 {
-	TLDNumber = 4;
+	TLDNumber = 1;
 
 	for(G4int i =0;i<TLDNumber;i++){
 	fAbsoEdepHCID[i] = -1;
@@ -152,10 +152,10 @@ void TDM_EventAction::EndOfEventAction(const G4Event* event)
 	  //G4cout << "Dose: " << absoDodep[0] << G4endl;
 
 	  //print per event (modulo n)
-	  auto eventID = event->GetEventID();
+							//	  auto eventID = event->GetEventID(); // agregar cuando se agregue el TLD
 //	  auto printModulo = G4RunManager::GetRunManager()->GetPrintProgress();
 //	  if ( ( printModulo > 0 ) && ( eventID % printModulo == 0 ) ) {
-	  G4cout << "\rEvent: " << eventID << std::flush<<G4endl;                       // No. Event
+				//	  G4cout << "\rEvent: " << eventID << std::flush<<G4endl;                       // No. Event......AGREGAR AL INCLUIR ALGUN TLD
 //	    PrintEventStatistics(absoEdep, absoTrackLength,absoDodep);
 //	  }
 }
