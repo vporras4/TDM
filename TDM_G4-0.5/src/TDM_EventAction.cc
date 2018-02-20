@@ -89,8 +89,16 @@ void TDM_EventAction::BeginOfEventAction(const G4Event*)
 void TDM_EventAction::EndOfEventAction(const G4Event* event)
 {
 	// Get hist collections IDs
-	  	  // get analysis manager
-		  auto analysisManager = G4AnalysisManager::Instance();
+	// get analysis manager
+	auto analysisManager = G4AnalysisManager::Instance();
+
+	G4double * AbsoEdep = new G4double[TLDNumber]; // Minuscula
+	G4double * AbsoDodep = new G4double[TLDNumber]; // Minuscula
+
+	for(G4int n =0;n<TLDNumber;n++){
+		AbsoEdep[n]= 0; // Minuscula
+		AbsoDodep[n]=0; // Minuscula
+	}
 
 	for(G4int i = 0; i<TLDNumber;i++){
 		 //G4cout << i << G4endl;
@@ -118,13 +126,7 @@ void TDM_EventAction::EndOfEventAction(const G4Event* event)
 	 // auto absoEdep = GetSum(GetHitsCollection(fAbsoEdepHCID, event));
 	  //auto absoDodep = GetSum(GetHitsCollection(fAbsoDodepHCID, event));
 
-	 G4double * AbsoEdep = new G4double[TLDNumber]; // Minuscula
-	 G4double * AbsoDodep = new G4double[TLDNumber]; // Minuscula
 
-	 for(G4int n =0;n<TLDNumber;n++){
-		 AbsoEdep[n]= 0; // Minuscula
-		 AbsoDodep[n]=0; // Minuscula
-	 	}
 
 	 	 AbsoEdep[i] = GetSum(GetHitsCollection(fAbsoEdepHCID[i], event)); //Minuscula
 		 AbsoDodep[i] = GetSum(GetHitsCollection(fAbsoDodepHCID[i], event)); // Minuscula
@@ -146,13 +148,17 @@ void TDM_EventAction::EndOfEventAction(const G4Event* event)
 	  //G4cout << b << X << G4endl;
 	  //G4cout << c << X << G4endl;
 
+
 	}
 	analysisManager->AddNtupleRow();
+
+	delete AbsoEdep;
+	delete AbsoDodep;
 
 	  //G4cout << "Dose: " << absoDodep[0] << G4endl;
 
 	  //print per event (modulo n)
-	auto eventID = event->GetEventID(); // agregar cuando se agregue el TLD
+//	auto eventID = event->GetEventID(); // agregar cuando se agregue el TLD
 //	  auto printModulo = G4RunManager::GetRunManager()->GetPrintProgress();
 //	  if ( ( printModulo > 0 ) && ( eventID % printModulo == 0 ) ) {
 	//G4cout << "\rEvent: " << eventID << std::flush<<G4endl;                       // No. Event......AGREGAR AL INCLUIR ALGUN TLD

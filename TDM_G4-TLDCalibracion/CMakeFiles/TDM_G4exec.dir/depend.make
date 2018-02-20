@@ -668,8 +668,6 @@ CMakeFiles/TDM_G4exec.dir/src/TDM_ActionInitialization.cc.o: /home/eduardo/Geant
 CMakeFiles/TDM_G4exec.dir/src/TDM_ActionInitialization.cc.o: /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/tls.hh
 CMakeFiles/TDM_G4exec.dir/src/TDM_ActionInitialization.cc.o: /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/windefs.hh
 
-CMakeFiles/TDM_G4exec.dir/src/TDM_DetectorConstruction.cc.o: /home/eduardo/Geant4/Github\ Clones/TDM/TDM_G4-0.5/include/TDMHit.hh
-CMakeFiles/TDM_G4exec.dir/src/TDM_DetectorConstruction.cc.o: /home/eduardo/Geant4/Github\ Clones/TDM/TDM_G4-0.5/include/TDMSD.hh
 CMakeFiles/TDM_G4exec.dir/src/TDM_DetectorConstruction.cc.o: /home/eduardo/Geant4/Github\ Clones/TDM/TDM_G4-0.5/include/TDM_DetectorConstruction.hh
 CMakeFiles/TDM_G4exec.dir/src/TDM_DetectorConstruction.cc.o: /home/eduardo/Geant4/Github\ Clones/TDM/TDM_G4-0.5/src/TDM_DetectorConstruction.cc
 CMakeFiles/TDM_G4exec.dir/src/TDM_DetectorConstruction.cc.o: /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Geometry/BasicVector3D.h

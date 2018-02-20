@@ -205,8 +205,6 @@ G4SystemOfUnits.hh
 /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.5/src/G4SystemOfUnits.hh
 G4RotationMatrix.hh
 /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.5/src/G4RotationMatrix.hh
-TDMSD.hh
-/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.5/src/TDMSD.hh
 G4SDManager.hh
 /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.5/src/G4SDManager.hh
 G4SDManager.hh
