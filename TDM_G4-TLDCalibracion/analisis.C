@@ -5,34 +5,37 @@
 #include <cmath>
 
 void GetTDM_Totals(const char* TDMRootFileName){
+
+	const Int_t m = 1; // Number TLD 
+	
 	Long64_t Entries;
-	Double_t Edep[4] = {0};
-	Double_t Edep_total[4] ={ 0 };
-	Double_t Dodep[4] = {0};
-	Double_t Dodep_total[4] = {0};
+	Double_t AbsoEdep[m] = {0};
+	Double_t Edep_total[m] ={ 0 };
+	Double_t AbsoDodep[m] = {0};
+	Double_t Dodep_total[m] = {0};
 
 	TFile *TDMRootFile = new TFile( TDMRootFileName );
 	TTree *TDMTree = (TTree*)TDMRootFile->Get("TDM;1");
 	Entries = TDMTree->GetEntriesFast();
-	for( Int_t j = 0; j < 4 ; j++)
+	for( Int_t j = 0; j < m ; j++)
 	{
 		string n;
 	 	std::stringstream convert;
 	 	convert << j;
 	 	n = convert.str();
-		string name1 = n + "Edep";
-		string name2 = n + "Dodep";
-		TDMTree->SetBranchAddress(name1.c_str(),&Edep[j]);
-		TDMTree->SetBranchAddress(name2.c_str(),&Dodep[j]);
+		string name1 = n + "AbsoEdep";
+		string name2 = n + "AbsoDodep";
+		TDMTree->SetBranchAddress(name1.c_str(),&AbsoEdep[j]);
+		TDMTree->SetBranchAddress(name2.c_str(),&AbsoDodep[j]);
 	}
 
 	for(Long64_t i = 0; i < Entries ; i++ )
 	{
 		TDMTree->GetEntry(i);
-		for (Int_t k = 0; k < 4 ; k++ ) 
+		for (Int_t k = 0; k < m ; k++ ) 
 		{
-			Edep_total[k] += Edep[k];
-			Dodep_total[k] += Dodep[k];
+			Edep_total[k] += AbsoEdep[k];
+			Dodep_total[k] += AbsoDodep[k];
 		}
 	}
 

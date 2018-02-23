@@ -14,6 +14,9 @@
 #include <string>
 #include <vector>
 
+#include <stdio.h>      /* puts */
+#include <time.h>       /* time_t, struct tm, time, localtime, strftime */
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 TDM_RunAction::TDM_RunAction()
@@ -75,9 +78,25 @@ void TDM_RunAction::BeginOfRunAction(const G4Run*)
 	  // Get analysis manager
 	  auto analysisManager = G4AnalysisManager::Instance();
 
+	  //Definiendo el tiempo actual de maquina
+
+	  time_t rawtime;
+	    struct tm * timeinfo;
+	    char buffer [80];
+
+	    time (&rawtime);
+	    timeinfo = localtime (&rawtime);
+
+	    strftime (buffer,80,"%Y%m%d%H%M%S",timeinfo);
+
+	    G4String M;
+	    std::stringstream convert;
+	    convert << buffer;
+	    M = convert.str();
+
 	  // Open an output file
 	  //
-	  G4String fileName = "TDM-output1000";
+	  G4String fileName = "TDM-output-" + M;
 	  analysisManager->OpenFile(fileName);
 }
 

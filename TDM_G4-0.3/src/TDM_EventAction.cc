@@ -92,6 +92,14 @@ void TDM_EventAction::EndOfEventAction(const G4Event* event)
 	  	  // get analysis manager
 		  auto analysisManager = G4AnalysisManager::Instance();
 
+		G4double * AbsoEdep = new G4double[TLDNumber];
+		G4double * AbsoDodep = new G4double[TLDNumber];
+
+		for(G4int n =0;n<TLDNumber;n++){
+			AbsoEdep[n]= 0;
+			AbsoDodep[n]=0;
+									}
+
 	for(G4int i = 0; i<TLDNumber;i++){
 		 //G4cout << i << G4endl;
 		G4String C;//string which will contain the result
@@ -118,16 +126,8 @@ void TDM_EventAction::EndOfEventAction(const G4Event* event)
 	 // auto absoEdep = GetSum(GetHitsCollection(fAbsoEdepHCID, event));
 	  //auto absoDodep = GetSum(GetHitsCollection(fAbsoDodepHCID, event));
 
-	 G4double * absoEdep = new G4double[TLDNumber];
-	 G4double * absoDodep = new G4double[TLDNumber];
-
-	 for(G4int n =0;n<TLDNumber;n++){
-		 absoEdep[n]= 0;
-		 absoDodep[n]=0;
-	 	}
-
-	 	 absoEdep[i] = GetSum(GetHitsCollection(fAbsoEdepHCID[i], event));
-		 absoDodep[i] = GetSum(GetHitsCollection(fAbsoDodepHCID[i], event));
+	 	 AbsoEdep[i] = GetSum(GetHitsCollection(fAbsoEdepHCID[i], event));
+		 AbsoDodep[i] = GetSum(GetHitsCollection(fAbsoDodepHCID[i], event));
 
 
 	  //auto absoTrackLength
@@ -135,8 +135,8 @@ void TDM_EventAction::EndOfEventAction(const G4Event* event)
 	  // get analysis manager
 	  //auto analysisManager = G4AnalysisManager::Instance();
 
-	  G4double X = absoEdep[2*i];
-	  G4double Y = absoDodep[(2*i)+1];
+	  G4double X = AbsoEdep[i];
+	  G4double Y = AbsoDodep[i];
 
 	  // fill ntuple
 	  //

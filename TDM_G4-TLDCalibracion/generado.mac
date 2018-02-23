@@ -1,0 +1,59 @@
+/control/verbose 0
+/tracking/verbose 0
+/gps/particle gamma
+/gps/position -0.5495 0.265 0.499 m
+/gps/ang/type iso
+/gps/ang/maxtheta 11.418 deg
+/gps/ene/type Arb
+/gps/hist/file EspectroEnergia60keV.dat
+/gps/hist/inter Exp
+
+
+# corrida 0
+/random/setSeeds 3281 3712
+/run/beamOn 100000
+
+
+# corrida 1
+/random/setSeeds 3395 9835
+/run/beamOn 100000
+
+
+# corrida 2
+/random/setSeeds 7044 8156
+/run/beamOn 100000
+
+
+# corrida 3
+/random/setSeeds 5304 8581
+/run/beamOn 100000
+
+
+# corrida 4
+/random/setSeeds 8784 8751
+/run/beamOn 100000
+
+
+# corrida 5
+/random/setSeeds 8428 6147
+/run/beamOn 100000
+
+
+# corrida 6
+/random/setSeeds 3372 2303
+/run/beamOn 100000
+
+
+# corrida 7
+/random/setSeeds 1351 45
+/run/beamOn 100000
+
+
+# corrida 8
+/random/setSeeds 2339 5413
+/run/beamOn 100000
+
+
+# corrida 9
+/random/setSeeds 4898 5972
+/run/beamOn 100000

@@ -47,8 +47,8 @@ TDM_RunAction::TDM_RunAction()
 		 	 convert << n;
 		 	 N = convert.str();
 
-		 	 G4String a = N+"Edep";
-		 	 G4String b = N+"Dodep";
+		 	 G4String a = N+"AbsoEdep";
+		 	 G4String b = N+"AbsoDodep";
 
 	  analysisManager->CreateNtupleDColumn(a);
 	  analysisManager->CreateNtupleDColumn(b);
