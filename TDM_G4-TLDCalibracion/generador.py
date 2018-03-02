@@ -8,8 +8,8 @@ Created on Fri Feb 23 15:04:04 2018
 import numpy as np
 
 
-Numero_total_particulas = 1e6
-Numero_particulas_corrida = 100000
+Numero_total_particulas = 2.53e10
+Numero_particulas_corrida = 2000000000
 
 salida = open("generado.mac",'w')
 
