@@ -22,5 +22,5 @@
 #/gps/ene/max 0.06 MeV
 #/gps/ene/gradient 1
 #/gps/ene/intercept 1
-/run/beamOn 100
+/run/beamOn 1000000000
 

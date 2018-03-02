@@ -1,0 +1,104 @@
+
+
+*******************************************************************************
+Thu Mar  1 17:12:23 2018
+
+
+FIT:    data read from 'CurvaCalibracion.dat' u 1:2
+        format = x:z
+        #datapoints = 46
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x + b
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 1.5503703677e+21   0.00e+00  4.11e+09    1.000000e+00   1.000000e+00
+   5 1.1879120835e+01  -1.41e-05  4.11e+04   -1.483506e-10   1.000000e+00
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 11.8791
+rel. change during last iteration : -1.40983e-10
+
+degrees of freedom    (FIT_NDF)                        : 44
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.519596
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.26998
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = -1.48351e-10     +/- 2.597e-11    (17.5%)
+b               = 1                +/- 0.1508       (15.08%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -0.861  1.000 
+
+
+*******************************************************************************
+Thu Mar  1 17:13:26 2018
+
+
+FIT:    data read from 'CurvaCalibracion.dat' u 1:2
+        format = x:z
+        #datapoints = 46
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x + b
+fitted parameters initialized with current variable values
+
+Warning: Initial value of parameter 'a' is zero.
+Warning: Initial value of parameter 'b' is zero.
+iter      chisq       delta/lim  lambda   a             b            
+   0 1.8077968780e-09   0.00e+00  4.11e+09    1.000000e-30   1.000000e-30
+   4 8.7900631151e-17  -7.88e-09  4.11e+05    1.079834e-15   1.596560e-25
+
+After 4 iterations the fit converged.
+final sum of squares of residuals : 8.79006e-17
+rel. change during last iteration : -7.8807e-14
+
+degrees of freedom    (FIT_NDF)                        : 44
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.41341e-09
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.99774e-18
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 1.07983e-15      +/- 3.59e-20     (0.003324%)
+b               = 1.59656e-25      +/- 1.413e-09    (8.853e+17%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b               0.000  1.000 
+
+
+*******************************************************************************
+Thu Mar  1 17:14:22 2018
+
+
+FIT:    data read from 'CurvaCalibracion.dat' u 1:2
+        format = x:z
+        #datapoints = 46
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a            
+   0 1.5503703673e+21   0.00e+00  5.81e+09    1.000000e+00
+   6 8.7900631151e-17  -1.11e-08  5.81e+03    1.079834e-15
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 8.79006e-17
+rel. change during last iteration : -1.1148e-13
+
+degrees of freedom    (FIT_NDF)                        : 45
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.39762e-09
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.95335e-18
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 1.07983e-15      +/- 3.55e-20     (0.003287%)

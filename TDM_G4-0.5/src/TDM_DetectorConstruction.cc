@@ -119,8 +119,8 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	// TLD_HalfSizeX = 1*m;
 	// TLD_HalfSizeZ = 0.0005*m;
 
-	 TLD_HalfSizeY = 1.25*cm;
-	 TLD_HalfSizeX = 0.5*cm;
+	 TLD_HalfSizeY = 0.5*cm;
+	 TLD_HalfSizeX = 1.25*cm;
 	 TLD_HalfSizeZ = 0.5*cm;
 
 	 /************ TLDNumber **************/
@@ -130,7 +130,7 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	 /********************* PMMA ********************************/
 	  PMMAX_SizeHalf=0.203/2*m;
 	  PMMAY_SizeHalf=0.203/2*m;
-	  PMMAZ_SizeHalf=19.3/2 *cm;
+	  PMMAZ_SizeHalf=19.3/2*cm;
 }
 
 TDM_DetectorConstruction::~TDM_DetectorConstruction()
@@ -270,34 +270,6 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
                       false,                 								//no boolean operation
                       0,                     								//copy number
                       checkOverlaps);        								//overlaps checking
-
-
-
-/*
-
-  G4Box* solid_WaterCube=
-    new G4Box("WaterCube_solid",                       						//its name
-    		WaterCube_SizeHalf, WaterCube_SizeHalf, WaterCube_SizeHalf);*/    //its size
-
-
-
-
-
- /* G4LogicalVolume* logic_WaterCube =
-    new G4LogicalVolume(solid_WaterCube,          							//its solid
-                        water,           									//its material
-                        "WaterCube_logic");    								//its name
-
-  G4VPhysicalVolume* physical_WaterCube =
-    new G4PVPlacement(0,                 								    //no rotation
-                      G4ThreeVector(),       								//at (0,0,0)
-                      logic_WaterCube,			          					//its logical volume
-                      "WaterCube_physical",               					//its name
-					  logic_WorldCube,         								//its mother  volume
-                      false,                 								//no boolean operation
-                      0,                     								//copy number
-                      checkOverlaps);     //overlaps checking// */
-
 
 /****************Cilindro de agua******************************/
 /*G4Tubs* trackerTube
@@ -628,18 +600,18 @@ G4LogicalVolume* Logic_Colimator4 =
 
  /******************************** Medio Dispersor PMMA *********************************/
 
- 		 /*		G4Box* PMMA=
+ 	/*	 	G4Box* PMMA=
  		 		      new G4Box("PMMA",                       						//its name
  		 		    		PMMAX_SizeHalf,PMMAY_SizeHalf, PMMAZ_SizeHalf);    //its size
 
  		 		  G4LogicalVolume* logic_PMMA =
  		 		      new G4LogicalVolume(PMMA,          							//its solid
- 		 		                          water,           										//its material
- 		 		                          "camilla_logic");    								//its name
+ 		 		                          pmma,	           										//its material
+ 		 		                          "pmma_logic");    								//its name
 
  		 		  //G4VPhysicalVolume* physical_camilla =
  		 		    new G4PVPlacement(0,                 								    //no rotation
- 		 		                      G4ThreeVector(0.0*m,0.0*m,2*camilla_Z + PMMAZ_SizeHalf),       			//at (0,0,-0.3)
+ 		 		                      G4ThreeVector(-0.55*m,0.265*m,-0.209*m +camilla_Z + PMMAZ_SizeHalf+TLD_HalfSizeZ),       			//at (0,0,-0.3)
  		 		                      logic_PMMA,			          					//its logical volume
  		 		                      "PMMA_physical",               					//its name
  		 		                      logic_WorldCube,                     								//its mother  volume
@@ -651,14 +623,15 @@ G4LogicalVolume* Logic_Colimator4 =
  /*************************************Detectors Primitive Score ****************************/
 
  		 		/****************Detector 0 ************************************/
- 		 		TDM_TLD_Cons( water, logic_WorldCube, "0Abso", G4ThreeVector(-0.55*m,0.265*m,-0.209*m + camilla_Z)); //UN METRO DEL CENTRO DEL PMMA
+ 		 		TDM_TLD_Cons(water, logic_WorldCube, "0Abso", G4ThreeVector(-0.55*m,0.265*m,-0.209*m + camilla_Z)); //ABAJO DEL CENTRO DEL PMMA
+ 		 		//TDM_TLD_Cons(water, logic_WorldCube, "0Abso", G4ThreeVector(-0.55*m,0.265*m,-0.209*m + camilla_Z + 2*PMMAZ_SizeHalf + TLD_HalfSizeZ)); // ARRIBA DEL CENTRO DEL PMMA
 
  		 		/****************Detector 1 ************************************/
- 		 	//	TDM_TLD_Cons( TLD100, logic_WorldCube, "1Abso", G4ThreeVector(1*m,0*m,65*cm)); // OJOS, UN METRO DE LA CAMILLA
+ 		 		//TDM_TLD_Cons(water, logic_WorldCube, "1Abso", G4ThreeVector(-0.55*m,0.265*m,-0.209*m + camilla_Z + 2*PMMAZ_SizeHalf + TLD_HalfSizeZ)); // ARRIBA DEL CENTRO DEL PMMA
  		 		/****************Detector 2 ************************************/
- 		 	//	TDM_TLD_Cons( TLD100, logic_WorldCube, "2Abso", G4ThreeVector(1*m,0*m,30*cm)); // CORAZON, UN METRO DE LA CAMILLA
+ 		 		//TDM_TLD_Cons(water, logic_WorldCube, "2Abso", G4ThreeVector(-0.55*m,1.265*m,-0.209*m + camilla_Z + PMMAZ_SizeHalf)); // A 1 METRO DEL CENTRO DEL PMMA
  		 		/****************Detector 3 ************************************/
- 		 	//	TDM_TLD_Cons( TLD100, logic_WorldCube, "3Abso", G4ThreeVector(1*m,0*m,-15*cm)); // GONADAS, UN METRO DE LA CAMILLA
+ 		 		//TDM_TLD_Cons(water, logic_WorldCube, "3Abso", G4ThreeVector(2.3725*m- TLD_HalfSizeX,0.265*m,-0.209*m + camilla_Z + PMMAZ_SizeHalf)); // PUERTA DE LA CLINICA
 
  		 		/****************Detector 4 ************************************/
  		 		//TDM_TLD_Cons( TLD100, logic_WorldCube, "4Abso", G4ThreeVector(0*m,2*m,-2*m));
