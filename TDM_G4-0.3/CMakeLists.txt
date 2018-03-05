@@ -47,6 +47,7 @@ set(TDM_SCRIPTS
     vis.mac
     example.mac
     analisis.C
+    EspectroEnergia80keV.dat
   )
 
 foreach(_script ${TDM_SCRIPTS})

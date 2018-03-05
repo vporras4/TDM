@@ -1,0 +1,3 @@
+/home/victor/Tesis/git_clone/TDM/la mera mera/CMakeFiles/rebuild_cache.dir
+/home/victor/Tesis/git_clone/TDM/la mera mera/CMakeFiles/edit_cache.dir
+/home/victor/Tesis/git_clone/TDM/la mera mera/CMakeFiles/TDM_G4exec.dir
