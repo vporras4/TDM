@@ -600,7 +600,7 @@ G4LogicalVolume* Logic_Colimator4 =
 
  /******************************** Medio Dispersor PMMA *********************************/
 
- 	/*	 	G4Box* PMMA=
+ 		 	G4Box* PMMA=
  		 		      new G4Box("PMMA",                       						//its name
  		 		    		PMMAX_SizeHalf,PMMAY_SizeHalf, PMMAZ_SizeHalf);    //its size
 
