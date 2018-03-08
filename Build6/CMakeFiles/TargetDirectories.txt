@@ -1,0 +1,3 @@
+/home/eduardo/Geant4/Github Clones/TDM/Build6/CMakeFiles/rebuild_cache.dir
+/home/eduardo/Geant4/Github Clones/TDM/Build6/CMakeFiles/edit_cache.dir
+/home/eduardo/Geant4/Github Clones/TDM/Build6/CMakeFiles/TDM_G4exec.dir
