@@ -9,7 +9,8 @@
 #include "G4LogicalVolume.hh"
 #include "G4UnitsTable.hh"
 #include "G4SystemOfUnits.hh"
-#include "CLHEP/Random/Random.h"
+//#include "CLHEP/Random/Random.h"
+#include "Randomize.hh"
 
 
 #include <ctime>
@@ -28,7 +29,8 @@ TDM_RunAction::TDM_RunAction()
 	  // The choice of analysis technology is done via selectin of a namespace
 	  // in B4Analysis.hh
 
-	int startSeed = CLHEP::HepRandom::getTheSeed();
+	G4Random::setTheSeed(525);
+	int startSeed = G4Random::getTheSeed();
 	G4cout<<"Semilla: " << startSeed << G4endl;
 
 	  auto analysisManager = G4AnalysisManager::Instance();

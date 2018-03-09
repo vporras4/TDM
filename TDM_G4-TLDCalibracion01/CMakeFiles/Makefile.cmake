@@ -8,10 +8,8 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
   "/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.5/CMakeLists.txt"
-  "/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.5/MODIFICACION.C"
   "/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.5/analisis.C"
   "/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.5/example.mac"
-  "/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.5/examplecalibracion.mac"
   "/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.5/vis.mac"
   "CMakeFiles/3.7.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.7.2/CMakeCXXCompiler.cmake"
@@ -139,8 +137,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "vis.mac"
   "example.mac"
   "analisis.C"
-  "MODIFICACION.C"
-  "examplecalibracion.mac"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
