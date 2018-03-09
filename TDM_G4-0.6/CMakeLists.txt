@@ -49,6 +49,7 @@ set(TDM_SCRIPTS
     analisis.C
     MODIFICACION.C
     examplecalibracion.mac
+    EspectroEnergia60keV.dat
   )
 
 foreach(_script ${TDM_SCRIPTS})
