@@ -633,9 +633,55 @@ CMakeFiles/TDM_G4exec.dir/src/TDM_ActionInitialization.cc.o
  /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/include/TDM_PrimaryGeneratorAction.hh
  /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/include/TDM_RunAction.hh
  /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/src/TDM_ActionInitialization.cc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/DualRand.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/JamesRandom.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/MTwistEngine.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/MixMaxRng.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandBinomial.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandBinomial.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandBit.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandBit.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandBreitWigner.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandBreitWigner.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandChiSquare.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandChiSquare.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandExpZiggurat.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandExponential.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandExponential.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandFlat.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandFlat.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGamma.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGamma.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGauss.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGauss.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGaussQ.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGaussQ.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGaussZiggurat.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGeneral.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGeneral.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandLandau.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandLandau.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandPoisson.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandPoisson.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandPoissonQ.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandPoissonQ.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandStudentT.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandStudentT.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/Random.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/Random.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandomEngine.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandomEngine.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/Randomize.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RanecuEngine.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/Ranlux64Engine.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RanluxEngine.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RanshiEngine.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/mixmax.h
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Units/PhysicalConstants.h
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Units/SystemOfUnits.h
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Utility/defs.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Utility/memory.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Utility/thread_local.h
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Vector/ThreeVector.h
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Vector/ThreeVector.icc
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4Allocator.hh
@@ -663,6 +709,7 @@ CMakeFiles/TDM_G4exec.dir/src/TDM_ActionInitialization.cc.o
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4VUserActionInitialization.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4VUserPrimaryGeneratorAction.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ios.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/Randomize.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/globals.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/pwdefs.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/templates.hh
@@ -1936,6 +1983,7 @@ CMakeFiles/TDM_G4exec.dir/src/TDM_RunAction.cc.o
  /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/include/TDM_PrimaryGeneratorAction.hh
  /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/include/TDM_Run.hh
  /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/include/TDM_RunAction.hh
+ /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/include/TDM_RunActionMessenger.hh
  /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/src/TDM_RunAction.cc
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Geometry/BasicVector3D.h
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Geometry/Normal3D.h
@@ -2330,3 +2378,76 @@ CMakeFiles/TDM_G4exec.dir/src/TDM_RunAction.cc.o
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/trajectoryControl.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/trkdefs.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/windefs.hh
+CMakeFiles/TDM_G4exec.dir/src/TDM_RunActionMessenger.cc.o
+ /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/include/TDM_RunAction.hh
+ /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/include/TDM_RunActionMessenger.hh
+ /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/src/TDM_RunActionMessenger.cc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/DualRand.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/JamesRandom.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/MTwistEngine.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/MixMaxRng.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandBinomial.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandBinomial.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandBit.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandBit.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandBreitWigner.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandBreitWigner.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandChiSquare.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandChiSquare.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandExpZiggurat.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandExponential.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandExponential.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandFlat.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandFlat.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGamma.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGamma.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGauss.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGauss.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGaussQ.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGaussQ.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGaussZiggurat.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGeneral.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandGeneral.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandLandau.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandLandau.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandPoisson.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandPoisson.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandPoissonQ.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandPoissonQ.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandStudentT.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandStudentT.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/Random.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/Random.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandomEngine.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RandomEngine.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/Randomize.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RanecuEngine.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/Ranlux64Engine.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RanluxEngine.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/RanshiEngine.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Random/mixmax.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Utility/defs.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Utility/memory.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Utility/thread_local.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Vector/ThreeVector.h
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Vector/ThreeVector.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ApplicationState.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ExceptionSeverity.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4String.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4String.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ThreeVector.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4Types.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4UIcmdWithADoubleAndUnit.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4UIcmdWithAnInteger.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4UIcmdWithoutParameter.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4UIcommand.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4UIdirectory.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4UImessenger.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4UIparameter.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4UItokenNum.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4UserRunAction.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ios.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/Randomize.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/globals.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/templates.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/tls.hh

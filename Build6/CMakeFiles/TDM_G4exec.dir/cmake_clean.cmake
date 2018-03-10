@@ -9,6 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/TDM_G4exec.dir/src/TDM_PrimaryGeneratorAction.cc.o"
   "CMakeFiles/TDM_G4exec.dir/src/TDM_Run.cc.o"
   "CMakeFiles/TDM_G4exec.dir/src/TDM_RunAction.cc.o"
+  "CMakeFiles/TDM_G4exec.dir/src/TDM_RunActionMessenger.cc.o"
   "TDM_G4exec.pdb"
   "TDM_G4exec"
 )

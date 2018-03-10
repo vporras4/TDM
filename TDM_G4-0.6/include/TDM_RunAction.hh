@@ -3,10 +3,12 @@
 
 #include "G4UserRunAction.hh"
 #include "globals.hh"
+#include "Randomize.hh"
 
 #include <vector>
 
 class G4Run;
+class TDM_RunActionMessenger;
 
 /// Run action class
 ///
@@ -23,6 +25,18 @@ class TDM_RunAction : public G4UserRunAction
     virtual G4Run* GenerateRun();
     virtual void BeginOfRunAction(const G4Run*);
     virtual void   EndOfRunAction(const G4Run*);
+    void SetSemilla (G4int M){
+
+    	G4Random::setTheSeed(M);
+    		int startSeed = G4Random::getTheSeed();
+    		G4cout<<"Semilla: " << startSeed << G4endl;
+    }
+
+    private:
+
+ //   TDM_RunActionMessenger*     Action;
+
+
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

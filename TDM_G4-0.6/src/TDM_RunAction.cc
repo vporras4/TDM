@@ -3,6 +3,7 @@
 #include "TDM_DetectorConstruction.hh"
 #include "TDM_Run.hh"
 #include "TDM_Analysis.hh"
+#include "TDM_RunActionMessenger.hh"
 
 #include "G4RunManager.hh"
 #include "G4LogicalVolumeStore.hh"
@@ -29,9 +30,11 @@ TDM_RunAction::TDM_RunAction()
 	  // The choice of analysis technology is done via selectin of a namespace
 	  // in B4Analysis.hh
 
-	G4Random::setTheSeed(525);
-	int startSeed = G4Random::getTheSeed();
-	G4cout<<"Semilla: " << startSeed << G4endl;
+	//G4Random::setTheSeed(525);
+	//int startSeed = G4Random::getTheSeed();
+	//G4cout<<"Semilla: " << startSeed << G4endl;
+
+	  //SetSemilla(567);
 
 	  auto analysisManager = G4AnalysisManager::Instance();
 	  G4cout << "Using " << analysisManager->GetType() << G4endl;
@@ -70,6 +73,7 @@ TDM_RunAction::TDM_RunAction()
 TDM_RunAction::~TDM_RunAction()
 {
 	  delete G4AnalysisManager::Instance();
+	 // delete Action;
 }
 
 G4Run* TDM_RunAction::GenerateRun()
@@ -149,3 +153,5 @@ void TDM_RunAction::EndOfRunAction(const G4Run*)
 	  analysisManager->Write();
 	  analysisManager->CloseFile();
 }
+
+

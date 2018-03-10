@@ -13,6 +13,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/feature_tests.c"
   "CMakeFiles/feature_tests.cxx"
   "/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/CMakeLists.txt"
+  "/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/EspectroEnergia60keV.dat"
   "/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/MODIFICACION.C"
   "/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/analisis.C"
   "/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/example.mac"
@@ -141,6 +142,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "analisis.C"
   "MODIFICACION.C"
   "examplecalibracion.mac"
+  "EspectroEnergia60keV.dat"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

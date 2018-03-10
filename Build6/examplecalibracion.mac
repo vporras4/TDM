@@ -22,8 +22,6 @@
 #/gps/ene/max 0.06 MeV
 #/gps/ene/gradient 1
 #/gps/ene/intercept 1
-
-#/random/setSeeds 5896 525
-
+/TDM/Random/Seed  
 /run/beamOn 100
 
