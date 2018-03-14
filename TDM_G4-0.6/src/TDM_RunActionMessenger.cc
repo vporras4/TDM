@@ -40,15 +40,15 @@
 
 TDM_RunActionMessenger::TDM_RunActionMessenger(
                                              TDM_RunAction* run)
-:Action(run)
+:Mensaje(run)
 {
-  gunDir = new G4UIdirectory("/TDM/Random");
+  gunDir = new G4UIdirectory("/TDM/Build6/Random/");
   gunDir->SetGuidance("Estableciendo la semilla para los numeros aleatorios");
 
-  Cmd = new G4UIcmdWithAnInteger("/TDM/Random/seed",this);
+  Cmd = new G4UIcmdWithAnInteger("/TDM/Build6/Random/seed",this);
   Cmd->SetParameterName("Seed",false);
-  Cmd->SetRange("Seed>0.");
-  Cmd->AvailableForStates(G4State_PreInit);
+  Cmd->SetRange("Seed>=0");
+  //Cmd->AvailableForStates(G4State_PreInit);
 
 }
 
@@ -67,7 +67,7 @@ void TDM_RunActionMessenger::SetNewValue(G4UIcommand* command,
 {
 
   if( command == Cmd )
-   {Action->SetSemilla(Cmd->GetNewIntValue(newValue));}
+   {Mensaje->SetSemilla(Cmd->GetNewIntValue(newValue));}
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

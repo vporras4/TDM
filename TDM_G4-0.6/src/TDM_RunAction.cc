@@ -6,13 +6,15 @@
 #include "TDM_RunActionMessenger.hh"
 
 #include "G4RunManager.hh"
+#include "G4MTRunManager.hh"
+#include "G4WorkerRunManager.hh"
+#include <G4WorkerThread.hh>
 #include "G4LogicalVolumeStore.hh"
 #include "G4LogicalVolume.hh"
 #include "G4UnitsTable.hh"
 #include "G4SystemOfUnits.hh"
 //#include "CLHEP/Random/Random.h"
 #include "Randomize.hh"
-
 
 #include <ctime>
 #include <string>
@@ -21,18 +23,57 @@
 #include <stdio.h>      /* puts */
 #include <time.h>       /* time_t, struct tm, time, localtime, strftime */
 
+ #include "G4Threading.hh"
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 TDM_RunAction::TDM_RunAction()
 : G4UserRunAction()
 {
+
+	TheSeed = G4Random::getTheSeed();;
+	//create a messenger for this class
+	  MessengerAction = new TDM_RunActionMessenger(this);
+
+	 G4RunManager::RMType TType = G4RunManager::GetRunManager()->GetRunManagerType();
+	 switch( TType ){
+		 case G4RunManager::RMType::sequentialRM:
+		 {
+			 G4cout << "Corriendo en modo secuencial" << G4endl;
+			 break;
+		 }
+		 case G4RunManager::RMType::masterRM:
+		 {
+
+			 G4cout << "Corriendo en el hilo maestro" << G4endl;
+			 break;
+		 }
+		 case G4RunManager::RMType::workerRM:
+		 {
+
+			 G4cout << "Corriendo en un hilo esclavo" << G4endl;
+			 const TDM_RunAction *MasterRunAction = static_cast<const TDM_RunAction*>(G4MTRunManager::GetMasterRunManager()->GetUserRunAction());
+			 //const TDM_RunAction *MasterRunAction = static_cast<const TDM_RunAction*>(G4RunManager::GetRunManager()->GetUserRunAction());
+			 //G4int tmp = 0;
+			 G4int tmp = MasterRunAction->GetSemilla();
+			 G4cout<<"master seed: "<< tmp << G4endl;
+			 G4int TId = G4Threading::G4GetThreadId();
+			 G4int tmp2 = tmp*(TId+2);
+			 G4Random::setTheSeed(tmp2);
+			 break;
+		 }
+	 }
+     //= G4RunManager::GetRunManager();
+	//G4cout<<"Thread ID is: "<< G4Threading::G4GetPidId() << G4endl;
+	G4cout<<"Thread ID is: "<< G4Threading::G4GetThreadId() << G4endl;
+
 	// Create analysis manager
 	  // The choice of analysis technology is done via selectin of a namespace
 	  // in B4Analysis.hh
 
-	//G4Random::setTheSeed(525);
-	//int startSeed = G4Random::getTheSeed();
-	//G4cout<<"Semilla: " << startSeed << G4endl;
+//	G4Random::setTheSeed(TheSeed);
+	int startSeed = G4Random::getTheSeed();
+	G4cout<<"TDM_RunAction::TDM_RunAction Semilla: " << startSeed << G4endl;
 
 	  //SetSemilla(567);
 
@@ -73,6 +114,7 @@ TDM_RunAction::TDM_RunAction()
 TDM_RunAction::~TDM_RunAction()
 {
 	  delete G4AnalysisManager::Instance();
+	  delete MessengerAction;
 	 // delete Action;
 }
 
@@ -154,4 +196,10 @@ void TDM_RunAction::EndOfRunAction(const G4Run*)
 	  analysisManager->CloseFile();
 }
 
-
+void TDM_RunAction::SetSemilla (G4int M){
+	TheSeed = M;
+	G4cout << "Semilla del archivo: " << M << G4endl;
+	//G4Random::setTheSeed(M);
+    //int startSeed = G4Random::getTheSeed();
+    //G4cout<<"TDM_RunAction::SetSemilla Semilla: " << startSeed << G4endl;
+}

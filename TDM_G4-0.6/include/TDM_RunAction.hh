@@ -25,16 +25,13 @@ class TDM_RunAction : public G4UserRunAction
     virtual G4Run* GenerateRun();
     virtual void BeginOfRunAction(const G4Run*);
     virtual void   EndOfRunAction(const G4Run*);
-    void SetSemilla (G4int M){
-
-    	G4Random::setTheSeed(M);
-    		int startSeed = G4Random::getTheSeed();
-    		G4cout<<"Semilla: " << startSeed << G4endl;
-    }
+    void SetSemilla (G4int M);
+    G4int GetSemilla() const {return TheSeed;};
 
     private:
 
- //   TDM_RunActionMessenger*     Action;
+    TDM_RunActionMessenger*     MessengerAction;
+    G4int						TheSeed;
 
 
 };

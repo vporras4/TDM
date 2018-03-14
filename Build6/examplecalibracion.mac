@@ -1,3 +1,4 @@
+
 /control/verbose 0
 /tracking/verbose 0
 #/event/verbose 0
@@ -22,6 +23,10 @@
 #/gps/ene/max 0.06 MeV
 #/gps/ene/gradient 1
 #/gps/ene/intercept 1
-/TDM/Random/Seed  
-/run/beamOn 100
 
+/TDM/Build6/Random/seed 123 
+
+/run/beamOn 1000000
+
+
+/run/beamOn 1000000

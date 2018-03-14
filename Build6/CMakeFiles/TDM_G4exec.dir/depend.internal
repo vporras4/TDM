@@ -133,6 +133,22 @@ CMakeFiles/TDM_G4exec.dir/TDM_G4main.cc.o
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4LorentzVector.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MCCIndexConversionTable.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTBarrier.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.icc
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRunManager.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4Material.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MaterialCutsCouple.hh
@@ -688,6 +704,22 @@ CMakeFiles/TDM_G4exec.dir/src/TDM_ActionInitialization.cc.o
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4AllocatorPool.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4AutoLock.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ExceptionSeverity.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.icc
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4PDefManager.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ParticleDefinition.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ParticleDefinition.icc
@@ -835,6 +867,22 @@ CMakeFiles/TDM_G4exec.dir/src/TDM_DetectorConstruction.cc.o
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4LogicalVolume.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4LogicalVolume.icc
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4LorentzVector.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.icc
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4Material.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MaterialPropertiesTable.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MaterialPropertiesTable.icc
@@ -1131,6 +1179,22 @@ CMakeFiles/TDM_G4exec.dir/src/TDM_EventAction.cc.o
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4LogicalVolume.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4LogicalVolume.icc
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4LorentzVector.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.icc
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4Material.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MaterialPropertiesTable.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MaterialPropertiesTable.icc
@@ -1593,6 +1657,22 @@ CMakeFiles/TDM_G4exec.dir/src/TDM_PhysicsList.cc.o
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4LossTableBuilder.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4LossTableManager.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MCCIndexConversionTable.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.icc
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4Material.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MaterialCutsCouple.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MaterialPropertiesTable.hh
@@ -1875,6 +1955,22 @@ CMakeFiles/TDM_G4exec.dir/src/TDM_PrimaryGeneratorAction.cc.o
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4Log.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4LogicalVolume.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4LogicalVolume.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.icc
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4NavigationHistory.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4NavigationHistory.icc
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4NavigationHistoryPool.hh
@@ -2111,6 +2207,24 @@ CMakeFiles/TDM_G4exec.dir/src/TDM_RunAction.cc.o
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4LogicalVolume.icc
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4LogicalVolumeStore.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4LorentzVector.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTBarrier.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRunManager.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4Material.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MaterialPropertiesTable.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MaterialPropertiesTable.icc
@@ -2159,6 +2273,7 @@ CMakeFiles/TDM_G4exec.dir/src/TDM_RunAction.cc.o
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ProcessType.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ProcessVector.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ProcessVector.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4RNGHelper.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ReferenceCountedHandle.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4Region.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4Region.icc
@@ -2274,6 +2389,8 @@ CMakeFiles/TDM_G4exec.dir/src/TDM_RunAction.cc.o
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4VVolumeMaterialScanner.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4VoxelNavigation.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4VoxelNavigation.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4WorkerRunManager.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4WorkerThread.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ios.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/Randomize.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/evmandefs.hh
@@ -2433,6 +2550,22 @@ CMakeFiles/TDM_G4exec.dir/src/TDM_RunActionMessenger.cc.o
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/CLHEP/Vector/ThreeVector.icc
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ApplicationState.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ExceptionSeverity.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.icc
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.hh
+ /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.icc
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4String.hh
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4String.icc
  /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4ThreeVector.hh

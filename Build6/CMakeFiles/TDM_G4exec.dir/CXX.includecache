@@ -361,6 +361,12 @@ TDM_RunActionMessenger.hh
 /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/src/TDM_RunActionMessenger.hh
 G4RunManager.hh
 /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/src/G4RunManager.hh
+G4MTRunManager.hh
+/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/src/G4MTRunManager.hh
+G4WorkerRunManager.hh
+/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/src/G4WorkerRunManager.hh
+G4WorkerThread.hh
+-
 G4LogicalVolumeStore.hh
 /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/src/G4LogicalVolumeStore.hh
 G4LogicalVolume.hh
@@ -381,6 +387,8 @@ stdio.h
 -
 time.h
 -
+G4Threading.hh
+/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/src/G4Threading.hh
 
 /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.6/src/TDM_RunActionMessenger.cc
 TDM_RunActionMessenger.hh
@@ -2127,6 +2135,90 @@ G4Threading.hh
 /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4Threading.hh
 windefs.hh
 /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/windefs.hh
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.hh
+CLHEP/Random/RandomEngine.h
+-
+CLHEP/Random/RandExponential.h
+-
+CLHEP/Random/RandFlat.h
+-
+CLHEP/Random/RandBit.h
+-
+CLHEP/Random/RandGamma.h
+-
+CLHEP/Random/RandGaussQ.h
+-
+CLHEP/Random/RandGeneral.h
+-
+tls.hh
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/tls.hh
+G4Types.hh
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4Types.hh
+G4MTHepRandom.icc
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.icc
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.icc
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.hh
+G4MTRandFlat.hh
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.hh
+G4MTRandBit.icc
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.icc
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandBit.icc
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.hh
+G4MTHepRandom.hh
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.hh
+G4MTRandExponential.icc
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.icc
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandExponential.icc
+cmath
+-
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.hh
+G4MTHepRandom.hh
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.hh
+G4MTRandFlat.icc
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.icc
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandFlat.icc
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.hh
+G4MTHepRandom.hh
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.hh
+G4MTRandGamma.icc
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.icc
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGamma.icc
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.hh
+G4MTHepRandom.hh
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.hh
+G4MTRandGauss.icc
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.icc
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.icc
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.hh
+G4MTRandGauss.hh
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGauss.hh
+G4MTRandGaussQ.icc
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.icc
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGaussQ.icc
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.hh
+vector
+-
+G4MTHepRandom.hh
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTHepRandom.hh
+G4MTRandGeneral.icc
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.icc
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRandGeneral.icc
 
 /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4MTRunManager.hh
 G4RunManager.hh
@@ -5185,6 +5277,20 @@ G4VoxelNavigation.icc
 /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4VoxelNavigation.icc
 
 /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4VoxelNavigation.icc
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4WorkerRunManager.hh
+G4RNGHelper.hh
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4RNGHelper.hh
+G4RunManager.hh
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4RunManager.hh
+
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4WorkerThread.hh
+G4Types.hh
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4Types.hh
+G4String.hh
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4String.hh
+G4Threading.hh
+/home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4Threading.hh
 
 /home/eduardo/Geant4/geant4.10.03-install/include/Geant4/G4XiMinus.hh
 globals.hh

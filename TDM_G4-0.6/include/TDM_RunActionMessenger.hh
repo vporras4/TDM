@@ -51,7 +51,7 @@ class TDM_RunActionMessenger: public G4UImessenger
     void SetNewValue(G4UIcommand*, G4String);
 
   private:
-    TDM_RunAction*     Action;
+    TDM_RunAction*     Mensaje;
 
     G4UIdirectory*     gunDir;
     G4UIcmdWithAnInteger* Cmd;

@@ -20,10 +20,13 @@ int main(int argc,char** argv) {
   // Run manager
 #ifdef G4MULTITHREADED
   auto runManager = new G4MTRunManager;
-  runManager->SetNumberOfThreads(1);
+  runManager->SetNumberOfThreads(3);
 #else
   auto runManager = new G4RunManager;
 #endif
+
+  G4Random::setTheSeed(2);
+
   // UserInitialization classes (mandatory)
   //---
   //  Create Detector

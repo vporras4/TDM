@@ -24,6 +24,7 @@
 				<pathentry kind="mac" name="G4VERBOSE" path="" value=""/>
 				<pathentry kind="mac" name="G4UI_USE" path="" value=""/>
 				<pathentry kind="mac" name="G4VIS_USE" path="" value=""/>
+				<pathentry kind="mac" name="G4MULTITHREADED" path="" value=""/>
 				<pathentry kind="mac" name="G4UI_USE_TCSH" path="" value=""/>
 				<pathentry kind="mac" name="G4INTY_USE_QT" path="" value=""/>
 				<pathentry kind="mac" name="G4UI_USE_QT" path="" value=""/>

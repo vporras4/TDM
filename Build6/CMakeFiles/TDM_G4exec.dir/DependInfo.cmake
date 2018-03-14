@@ -21,6 +21,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
   "G4INTY_USE_QT"
+  "G4MULTITHREADED"
   "G4UI_USE"
   "G4UI_USE_QT"
   "G4UI_USE_TCSH"
