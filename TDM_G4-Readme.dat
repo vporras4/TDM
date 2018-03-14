@@ -2,3 +2,4 @@ TDM_G4-0.3 --------------------------------> Pruebas de calibracion (Distribucio
 TDM_G4-0.4---------------------------------> Geometria correcta para realizar operaciones 
 TDM_G4-0.5---------------------------------> Calibracion, utilizando los TLD
 TDM_G4-0.6---------------------------------> Realizando corridas, archivo que se exporta para utlizar Beremiz
+TDM_G4-0.7---------------------------------> (LIMPIA)Realizando corridas, archivo que se exporta para utlizar Beremiz. Contiene la asignacion de las semillas por hilo.
