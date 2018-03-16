@@ -6,7 +6,7 @@
 
 void GetTDM_Totals(const char* TDMRootFileName){
 	
-	const Int_t m = 4; // Número de TLD utilizados en Geant4
+	const Int_t m = 1; // Número de TLD utilizados en Geant4
 
 	Long64_t Entries;
 	Double_t AbsoEdep[m] = {0};

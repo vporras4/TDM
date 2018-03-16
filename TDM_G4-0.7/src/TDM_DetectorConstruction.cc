@@ -377,7 +377,7 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
 
  		 		  //G4VPhysicalVolume* physical_camilla =
  		 		    new G4PVPlacement(0,                 								    //no rotation
- 		 		                      G4ThreeVector(-0.55*m,0.265*m,-0.209*m +camilla_Z + PMMAZ_SizeHalf+TLD_HalfSizeZ),       			//at (0,0,-0.3)
+ 		 		                      G4ThreeVector(-0.55*m,0.265*m,-0.209*m +camilla_Z + PMMAZ_SizeHalf+2*TLD_HalfSizeZ),       			//at (0,0,-0.3)
  		 		                      logic_PMMA,			          					//its logical volume
  		 		                      "PMMA_physical",               					//its name
  		 		                      logic_WorldCube,                     								//its mother  volume
@@ -389,21 +389,21 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
  /*************************************Detectors Primitive Score ****************************/
 
  		 		/****************Detector 0 ************************************/
- 		 		TDM_TLD_Cons(water, logic_WorldCube, "0Abso", G4ThreeVector(-0.55*m,0.265*m,-0.209*m + camilla_Z)); //ABAJO DEL CENTRO DEL PMMA
+ 		 		TDM_TLD_Cons(water, logic_WorldCube, "0Abso", G4ThreeVector(-0.55*m,0.265*m,-0.209*m + camilla_Z+TLD_HalfSizeZ),TLD_HalfSizeX,TLD_HalfSizeY,TLD_HalfSizeZ); //ABAJO DEL CENTRO DEL PMMA
  		 		//TDM_TLD_Cons(water, logic_WorldCube, "0Abso", G4ThreeVector(-0.55*m,0.265*m,-0.209*m + camilla_Z + 2*PMMAZ_SizeHalf + TLD_HalfSizeZ)); // ARRIBA DEL CENTRO DEL PMMA
 
  		 		/****************Detector 1 ************************************/
- 		 		TDM_TLD_Cons(water, logic_WorldCube, "1Abso", G4ThreeVector(-0.55*m,0.265*m,-0.209*m + camilla_Z + 2*PMMAZ_SizeHalf + TLD_HalfSizeZ)); // ARRIBA DEL CENTRO DEL PMMA
+ 		 		TDM_TLD_Cons(water, logic_WorldCube, "1Abso", G4ThreeVector(-0.55*m,0.265*m,-0.209*m + camilla_Z + 2*PMMAZ_SizeHalf + 3*TLD_HalfSizeZ),TLD_HalfSizeX,TLD_HalfSizeY,TLD_HalfSizeZ); // ARRIBA DEL CENTRO DEL PMMA
  		 		/****************Detector 2 ************************************/
- 		 		TDM_TLD_Cons(water, logic_WorldCube, "2Abso", G4ThreeVector(-0.55*m,1.265*m,-0.209*m + camilla_Z + PMMAZ_SizeHalf)); // A 1 METRO DEL CENTRO DEL PMMA
+ 		 		TDM_TLD_Cons(water, logic_WorldCube, "2Abso", G4ThreeVector(-0.55*m,1.265*m + PMMAX_SizeHalf - TLD_HalfSizeY,-0.209*m + camilla_Z + PMMAZ_SizeHalf+2*TLD_HalfSizeZ),TLD_HalfSizeX,TLD_HalfSizeY,TLD_HalfSizeZ); // A 1 METRO DEL CENTRO DEL PMMA
  		 		/****************Detector 3 ************************************/
- 		 		TDM_TLD_Cons(water, logic_WorldCube, "3Abso", G4ThreeVector(2.3725*m- TLD_HalfSizeX,0.265*m,-0.209*m + camilla_Z + PMMAZ_SizeHalf)); // PUERTA DE LA CLINICA
+ 		 		TDM_TLD_Cons(water, logic_WorldCube, "3Abso", G4ThreeVector(2.3725*m- TLD_HalfSizeX,0.265*m,-0.209*m + camilla_Z + PMMAZ_SizeHalf),TLD_HalfSizeZ,TLD_HalfSizeY,TLD_HalfSizeX); // PUERTA DE LA CLINICA
 
 
    return physical_WorldCube;
 }
 
-inline void  TDM_DetectorConstruction::TDM_TLD_Cons( G4Material* Material, G4LogicalVolume* MotherVolume, G4String Name, G4ThreeVector Position)
+inline void  TDM_DetectorConstruction::TDM_TLD_Cons( G4Material* Material, G4LogicalVolume* MotherVolume, G4String Name, G4ThreeVector Position,G4double X, G4double Y,G4double Z)
 {
 	/************************** Primitive Score ************************/
 
@@ -411,7 +411,7 @@ inline void  TDM_DetectorConstruction::TDM_TLD_Cons( G4Material* Material, G4Log
 	  //
 	  auto absorberS
 		= new G4Box(Name,            // its name
-					 TLD_HalfSizeX, TLD_HalfSizeY, TLD_HalfSizeZ); // its size
+					 X, Y, Z); // its size
 
 	  auto absorberLV
 		= new G4LogicalVolume(

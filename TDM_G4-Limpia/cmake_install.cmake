@@ -1,4 +1,4 @@
-# Install script for directory: /home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.7
+# Install script for directory: /home/victor/Tesis/git_clone/TDM/TDM_G4-0.7
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-Limpia/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/victor/Tesis/git_clone/TDM/TDM_G4-Limpia/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

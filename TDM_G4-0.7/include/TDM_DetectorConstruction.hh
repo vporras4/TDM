@@ -26,7 +26,7 @@ public:
 
 
   // TLD construction
-  inline void TDM_TLD_Cons( G4Material* Material, G4LogicalVolume* MotherVolume, G4String Name, G4ThreeVector Position);
+  inline void TDM_TLD_Cons( G4Material* Material, G4LogicalVolume* MotherVolume, G4String Name, G4ThreeVector Position,G4double X, G4double Y,G4double Z);
   inline void TDM_SetTLD_SD(  G4String Name );
 
 
