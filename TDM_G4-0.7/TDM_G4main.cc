@@ -25,7 +25,7 @@ int main(int argc,char** argv) {
   auto runManager = new G4RunManager;
 #endif
 
- // G4Random::setTheSeed(925);
+   G4Random::setTheSeed(925);
 
   // UserInitialization classes (mandatory)
   //---

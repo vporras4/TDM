@@ -327,12 +327,15 @@
 				<pathentry kind="mac" name="__GLIBCXX_TYPE_INT_N_0" path="" value="__int128"/>
 				<pathentry kind="mac" name="__GLIBCXX_BITSIZE_INT_N_0" path="" value="128"/>
 				<pathentry kind="mac" name="_GNU_SOURCE" path="" value="1"/>
-				<pathentry include="/home/victor/Geant4/geant4.10.03-install/include/Geant4" kind="inc" path="" system="true"/>
-				<pathentry include="/usr/include/qt4" kind="inc" path="" system="true"/>
-				<pathentry include="/usr/include/qt4/QtCore" kind="inc" path="" system="true"/>
-				<pathentry include="/usr/include/qt4/QtGui" kind="inc" path="" system="true"/>
-				<pathentry include="/usr/include/qt4/QtOpenGL" kind="inc" path="" system="true"/>
-				<pathentry include="/home/victor/Tesis/git_clone/TDM/TDM_G4-0.7/include" kind="inc" path="" system="true"/>
+				<pathentry include="/home/eduardo/Geant4/geant4.10.03-install/include/Geant4" kind="inc" path="" system="true"/>
+				<pathentry include="/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-0.7/include" kind="inc" path="" system="true"/>
+				<pathentry include="/usr/include/x86_64-linux-gnu/qt5" kind="inc" path="" system="true"/>
+				<pathentry include="/usr/include/x86_64-linux-gnu/qt5/QtWidgets" kind="inc" path="" system="true"/>
+				<pathentry include="/usr/include/x86_64-linux-gnu/qt5/QtGui" kind="inc" path="" system="true"/>
+				<pathentry include="/usr/include/x86_64-linux-gnu/qt5/QtCore" kind="inc" path="" system="true"/>
+				<pathentry include="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64" kind="inc" path="" system="true"/>
+				<pathentry include="/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport" kind="inc" path="" system="true"/>
+				<pathentry include="/usr/include/x86_64-linux-gnu/qt5/QtOpenGL" kind="inc" path="" system="true"/>
 				<pathentry include="/usr/lib/gcc/x86_64-linux-gnu/6/include" kind="inc" path="" system="true"/>
 				<pathentry include="/usr/local/include" kind="inc" path="" system="true"/>
 				<pathentry include="/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed" kind="inc" path="" system="true"/>
@@ -374,14 +377,14 @@
 					</target>
 					<target name="Build" path="[Targets]/[exe] TDM_G4exec" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-C "/home/victor/Tesis/git_clone/TDM/TDM_G4-Limpia" -j4</buildArguments>
+						<buildArguments>-C "/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-Limpia" -j4</buildArguments>
 						<buildTarget>TDM_G4exec</buildTarget>
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
 					<target name="Clean" path="[Targets]/[exe] TDM_G4exec" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/cmake</buildCommand>
-						<buildArguments>-E chdir "/home/victor/Tesis/git_clone/TDM/TDM_G4-Limpia" "/usr/bin/cmake" -P "CMakeFiles/TDM_G4exec.dir/cmake_clean.cmake"</buildArguments>
+						<buildArguments>-E chdir "/home/eduardo/Geant4/Github Clones/TDM/TDM_G4-Limpia" "/usr/bin/cmake" -P "CMakeFiles/TDM_G4exec.dir/cmake_clean.cmake"</buildArguments>
 						<buildTarget></buildTarget>
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>

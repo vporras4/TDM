@@ -50,6 +50,7 @@ set(TDM_SCRIPTS
     MODIFICACION.C
     examplecalibracion.mac
     EspectroEnergia60keV.dat
+    generador.py
   )
 
 foreach(_script ${TDM_SCRIPTS})

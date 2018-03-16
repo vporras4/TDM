@@ -57,7 +57,7 @@ TDM_RunAction::TDM_RunAction()
 			 G4cout<<"master seed: "<< tmp << G4endl;
 			 G4int TId = G4Threading::G4GetThreadId();
 			 G4int tmp2 = tmp*(TId+2);
-			 //G4Random::setTheSeed(tmp2);
+			 G4Random::setTheSeed(tmp2);
 			 break;
 		 }
 	 }
