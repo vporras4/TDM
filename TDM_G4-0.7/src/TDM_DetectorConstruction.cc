@@ -29,9 +29,9 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 : G4VUserDetectorConstruction()
 {
 	// World cube (world)
-	WorldCube_SizeHalfX	= (4.745/2.0)*m;
-	WorldCube_SizeHalfY	= (3.480/2.0)*m;
-	WorldCube_SizeHalfZ	= (2.460/2.0)*m;
+	WorldCube_SizeHalfX	= (4.745/2.0)*m + (0.2/2.0)*m ;
+	WorldCube_SizeHalfY	= (3.480/2.0)*m + (0.2/2.0)*m;
+	WorldCube_SizeHalfZ	= (2.460/2.0)*m + (0.2/2.0)*m;
 
 	// Water cube (world)
 	WaterCube_SizeHalf	= 0.50*m;
@@ -126,6 +126,14 @@ TDM_DetectorConstruction::TDM_DetectorConstruction()
 	  PMMAX_SizeHalf=0.203/2*m;
 	  PMMAY_SizeHalf=0.203/2*m;
 	  PMMAZ_SizeHalf=19.3/2*cm;
+
+	  /**********************Paredes*****************************/
+
+	  Pared_SizeHalfX = (4.745/2.0)*m;
+	  Pared_SizeHalfY	= (3.480/2.0)*m ;
+	  Pared_SizeHalfZ	= (2.460/2.0)*m ;
+	  Pared_GrosorMedio = (0.1/2.0)*m;
+
 }
 
 TDM_DetectorConstruction::~TDM_DetectorConstruction()
@@ -206,6 +214,11 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
   //Lead
   G4Material* Lead = new G4Material("Lead", density=11.35*g/cm3, nelements=1);
   Lead->AddElement(Pb,1);
+
+  //Concreto
+
+  G4NistManager* man = G4NistManager::Instance();
+  G4Material* concreto = man->FindOrBuildMaterial("G4_CONCRETE");
 
   	  	  	  	  	  	  //=====================================
 
@@ -399,6 +412,15 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
  		 		/****************Detector 3 ************************************/
  		 		TDM_TLD_Cons(water, logic_WorldCube, "3Abso", G4ThreeVector(2.3725*m- TLD_HalfSizeX,0.265*m,-0.209*m + camilla_Z + PMMAZ_SizeHalf),TLD_HalfSizeZ,TLD_HalfSizeY,TLD_HalfSizeX); // PUERTA DE LA CLINICA
 
+/******************************************Paredes********************************************/
+
+ 		 		Paredes_Cons(concreto,logic_WorldCube,"Pared-Puerta1",G4ThreeVector(WorldCube_SizeHalfX-Pared_GrosorMedio,0,0),Pared_GrosorMedio,WorldCube_SizeHalfY,WorldCube_SizeHalfZ);//Pared de la puerta
+ 		 		Paredes_Cons(concreto,logic_WorldCube,"Pared-Puerta2",G4ThreeVector(-WorldCube_SizeHalfX+Pared_GrosorMedio,0,0),Pared_GrosorMedio,WorldCube_SizeHalfY,WorldCube_SizeHalfZ);//Pared de la parte trasera
+ 		 		Paredes_Cons(concreto,logic_WorldCube,"Pared-izquierda",G4ThreeVector(0,WorldCube_SizeHalfY-Pared_GrosorMedio,0),WorldCube_SizeHalfX-2*(Pared_GrosorMedio),Pared_GrosorMedio,WorldCube_SizeHalfZ);//Pared del lado izquierdo
+ 		 		Paredes_Cons(concreto,logic_WorldCube,"Pared-derecho",G4ThreeVector(0,-WorldCube_SizeHalfY+Pared_GrosorMedio,0),WorldCube_SizeHalfX-2*(Pared_GrosorMedio),Pared_GrosorMedio,WorldCube_SizeHalfZ);//Pared del lado derecho
+ 		 		Paredes_Cons(concreto,logic_WorldCube,"Pared-Arriba",G4ThreeVector(0,0,WorldCube_SizeHalfZ-Pared_GrosorMedio),WorldCube_SizeHalfX-2*(Pared_GrosorMedio),WorldCube_SizeHalfY-2*(Pared_GrosorMedio),Pared_GrosorMedio);//Pared de arriba
+ 		 		Paredes_Cons(concreto,logic_WorldCube,"Pared-Abajo",G4ThreeVector(0,0,-WorldCube_SizeHalfZ+Pared_GrosorMedio),WorldCube_SizeHalfX-2*(Pared_GrosorMedio),WorldCube_SizeHalfY-2*(Pared_GrosorMedio),Pared_GrosorMedio);//Pared de abajo
+
 
    return physical_WorldCube;
 }
@@ -501,5 +523,32 @@ void TDM_DetectorConstruction::ConstructSDandField() {
 	 	 TDM_SetTLD_SD(a);
  	 	 	 }
 
+}
+
+inline void  TDM_DetectorConstruction::Paredes_Cons( G4Material* Material, G4LogicalVolume* MotherVolume, G4String Name, G4ThreeVector Position,G4double X, G4double Y,G4double Z)
+{
+	 // Paredes
+	  //
+	  auto Pared
+		= new G4Box(Name,            // its name
+					 X, Y, Z); // its size
+
+	  auto paredLV
+		= new G4LogicalVolume(
+					 Pared,        // its solid
+					 Material, // its material
+					 Name.append("LV"));          // its name
+
+	   new G4PVPlacement(
+					 0,                // no rotation
+					 Position, //  its position
+					 paredLV,       // its logical volume
+					 Name.append("PL"),           // its name
+					 MotherVolume,          // its mother  volume
+					 false,            // no boolean operation
+					 0,                // copy number
+					 false);  // checking overlaps
+
+	 		 		  //
 }
 

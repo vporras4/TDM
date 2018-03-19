@@ -28,7 +28,7 @@ public:
   // TLD construction
   inline void TDM_TLD_Cons( G4Material* Material, G4LogicalVolume* MotherVolume, G4String Name, G4ThreeVector Position,G4double X, G4double Y,G4double Z);
   inline void TDM_SetTLD_SD(  G4String Name );
-
+  inline void Paredes_Cons( G4Material* Material, G4LogicalVolume* MotherVolume, G4String Name, G4ThreeVector Position,G4double X, G4double Y,G4double Z);
 
   // Data members
 
@@ -132,5 +132,11 @@ public:
        G4double PMMAX_SizeHalf;
        G4double PMMAY_SizeHalf;
        G4double PMMAZ_SizeHalf;
+
+       /**********************Paredes********************************/
+       G4double Pared_SizeHalfX;
+	   G4double Pared_SizeHalfY;
+	   G4double Pared_SizeHalfZ;
+	   G4double Pared_GrosorMedio;
 };
 #endif
