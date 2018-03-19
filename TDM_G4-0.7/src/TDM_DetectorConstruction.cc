@@ -412,7 +412,7 @@ G4VPhysicalVolume* TDM_DetectorConstruction::Construct()
  		 		/****************Detector 3 ************************************/
  		 		TDM_TLD_Cons(water, logic_WorldCube, "3Abso", G4ThreeVector(2.3725*m- TLD_HalfSizeX,0.265*m,-0.209*m + camilla_Z + PMMAZ_SizeHalf),TLD_HalfSizeZ,TLD_HalfSizeY,TLD_HalfSizeX); // PUERTA DE LA CLINICA
 
-/******************************************Paredes********************************************/
+/*****************************************Paredes********************************************/
 
  		 		Paredes_Cons(concreto,logic_WorldCube,"Pared-Puerta1",G4ThreeVector(WorldCube_SizeHalfX-Pared_GrosorMedio,0,0),Pared_GrosorMedio,WorldCube_SizeHalfY,WorldCube_SizeHalfZ);//Pared de la puerta
  		 		Paredes_Cons(concreto,logic_WorldCube,"Pared-Puerta2",G4ThreeVector(-WorldCube_SizeHalfX+Pared_GrosorMedio,0,0),Pared_GrosorMedio,WorldCube_SizeHalfY,WorldCube_SizeHalfZ);//Pared de la parte trasera
